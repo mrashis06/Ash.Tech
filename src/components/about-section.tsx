@@ -1,16 +1,17 @@
 import Image from 'next/image';
-import { SkillProgressBar } from './skill-progress-bar';
 
 const skills = [
-  { name: 'Python', level: 90, icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" width={32} height={32} className="w-8 h-8 filter grayscale group-hover:grayscale-0 transition-all" /> },
-  { name: 'JavaScript / TypeScript', level: 85, icon: <div className="flex gap-2"><Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" width={32} height={32} className="w-8 h-8 filter grayscale group-hover:grayscale-0 transition-all" /><Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="TypeScript" width={32} height={32} className="w-8 h-8 filter grayscale group-hover:grayscale-0 transition-all" /></div> },
-  { name: 'React / Next.js', level: 88, icon: <div className="flex gap-2"><Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" width={32} height={32} className="w-8 h-8 filter grayscale group-hover:grayscale-0 transition-all" /><Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" alt="Next.js" width={32} height={32} className="w-8 h-8 filter grayscale group-hover:grayscale-0 transition-all" /></div> },
-  { name: 'Node.js', level: 80, icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" width={32} height={32} className="w-8 h-8 filter grayscale group-hover:grayscale-0 transition-all" /> },
-  { name: 'Java', level: 85, icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" width={32} height={32} className="w-8 h-8 filter grayscale group-hover:grayscale-0 transition-all" /> },
-  { name: 'C', level: 75, icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="C" width={32} height={32} className="w-8 h-8 filter grayscale group-hover:grayscale-0 transition-all" /> },
-  { name: 'MongoDB', level: 82, icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" alt="MongoDB" width={32} height={32} className="w-8 h-8 filter grayscale group-hover:grayscale-0 transition-all" /> },
-  { name: 'SQL', level: 82, icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL" width={32} height={32} className="w-8 h-8 filter grayscale group-hover:grayscale-0 transition-all" /> },
-  { name: 'Google Cloud', level: 78, icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud" width={32} height={32} className="w-8 h-8 filter grayscale group-hover:grayscale-0 transition-all" /> },
+  { name: 'Python', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
+  { name: 'JavaScript', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
+  { name: 'TypeScript', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="TypeScript" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
+  { name: 'React', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
+  { name: 'Next.js', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" alt="Next.js" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
+  { name: 'Node.js', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
+  { name: 'Java', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
+  { name: 'C', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="C" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
+  { name: 'MongoDB', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" alt="MongoDB" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
+  { name: 'SQL', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
+  { name: 'Google Cloud', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
 ];
 
 export function AboutSection() {
@@ -37,13 +38,11 @@ export function AboutSection() {
             </p>
             <div className="space-y-4">
               <h3 className="text-2xl font-bold">My Skills</h3>
-              <div className="grid gap-6">
+              <div className="flex flex-wrap gap-4">
                 {skills.map((skill) => (
-                  <div key={skill.name} className="flex items-center gap-4 group">
-                    <div className="w-12 h-12 flex items-center justify-center">{skill.icon}</div>
-                    <div className="w-full">
-                      <SkillProgressBar skill={skill.name} level={skill.level} />
-                    </div>
+                  <div key={skill.name} className="flex flex-col items-center justify-center gap-2 p-4 rounded-lg bg-card/50 w-32 h-32 group transition-transform transform hover:scale-105 hover:shadow-xl">
+                    {skill.icon}
+                    <span className="text-sm font-medium text-center">{skill.name}</span>
                   </div>
                 ))}
               </div>
