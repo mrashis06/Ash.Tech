@@ -45,7 +45,7 @@ export function ExperienceSection() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {experiences.map((experience, index) => (
-            <Card key={index} className="text-center p-6 relative">
+            <Card key={index} className="text-center p-6 relative transition-transform transform hover:scale-105 hover:shadow-xl">
               {experience.link && (
                 <Link href={experience.link} target="_blank" rel="noopener noreferrer" className="absolute top-4 right-4 text-muted-foreground hover:text-primary transition-colors">
                   <ExternalLink className="w-6 h-6" />
