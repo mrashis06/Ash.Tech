@@ -6,8 +6,10 @@ const skills = [
   { name: 'JavaScript / TypeScript', level: 85 },
   { name: 'React / Next.js', level: 88 },
   { name: 'Node.js', level: 80 },
-  { name: 'TensorFlow / PyTorch', level: 75 },
-  { name: 'SQL / NoSQL', level: 82 },
+  { name: 'Java', level: 85 },
+  { name: 'C', level: 75 },
+  { name: 'MongoDB', level: 82 },
+  { name: 'SQL', level: 82 },
 ];
 
 export function AboutSection() {
