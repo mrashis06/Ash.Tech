@@ -32,6 +32,12 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
     if (ragRepo) {
       ragRepo.description = 'Implemented a RAG system combining retrieval-based and generative models to enhance response generation.';
     }
+
+    // Manually set description for OFFLINE_FILE_TRANSFER
+    const offlineFileTransferRepo = repos.find(repo => repo.name.toLowerCase() === 'offline_file_transfer');
+    if (offlineFileTransferRepo) {
+      offlineFileTransferRepo.description = 'Developed a system enabling file transfers without an active internet connection';
+    }
     
     return repos;
   } catch (error) {
