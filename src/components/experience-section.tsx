@@ -4,18 +4,18 @@ import { Trophy, Zap, Code } from 'lucide-react';
 const experiences = [
   {
     icon: <Trophy className="w-8 h-8 text-primary" />,
-    title: 'Hackathon Winner',
-    description: '1st place at the National AI Innovation Challenge 2023 for developing a novel recommendation engine.',
-  },
-  {
-    icon: <Zap className="w-8 h-8 text-primary" />,
-    title: 'Top Performer Award',
-    description: 'Recognized for outstanding performance and contribution to the flagship product at TechCorp Inc.',
+    title: 'Nurturing Innovation Challenge 3.0',
+    description: 'Selected among Top 29 finalists for SmartSetu, a fintech platform that leverages AI and alternative data to assess creditworthiness of street vendors, promoting financial inclusion.',
   },
   {
     icon: <Code className="w-8 h-8 text-primary" />,
-    title: 'Open Source Contributor',
-    description: 'Active contributor to popular open-source machine learning libraries, including Scikit-learn.',
+    title: 'Adobe India Hackathon',
+    description: 'Participated in a national-level hackathon by Adobe, working on innovative AI-driven solutions.',
+  },
+  {
+    icon: <Zap className="w-8 h-8 text-primary" />,
+    title: 'National Coding League 2.0',
+    description: 'Achieved the position of regional qualifier in a competitive national coding league.',
   },
 ];
 
