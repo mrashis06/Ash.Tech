@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Trophy, Zap, Code, Cloud, BrainCircuit, ArrowUpRight } from 'lucide-react';
+import { Trophy, Zap, Code, Cloud, BrainCircuit, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 
 const experiences = [
@@ -46,7 +46,7 @@ export function ExperienceSection() {
             <Card key={index} className="text-center p-6 relative">
               {experience.link && (
                 <Link href={experience.link} target="_blank" rel="noopener noreferrer" className="absolute top-4 right-4 text-muted-foreground hover:text-primary transition-colors">
-                  <ArrowUpRight className="w-5 h-5" />
+                  <ExternalLink className="w-6 h-6" />
                   <span className="sr-only">View Certificate</span>
                 </Link>
               )}
