@@ -52,7 +52,7 @@ export function ExperienceSection() {
                   <span className="sr-only">View Certificate</span>
                 </Link>
               )}
-              <div className="flex justify-center mb-4">{experience.icon}</div>
+              <div className="flex justify-center mb-6">{experience.icon}</div>
               <CardHeader className="p-0">
                 <CardTitle>{experience.title}</CardTitle>
                 <CardDescription className="mt-4">{experience.description}</CardDescription>
