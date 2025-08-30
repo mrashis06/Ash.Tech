@@ -8,6 +8,7 @@ import { ExperienceSection } from '@/components/experience-section';
 import { BlogsSection } from '@/components/blogs-section';
 import { ContactSection } from '@/components/contact-section';
 import { summarizeText } from '@/ai/flows/summarize-text-flow';
+import { Footer } from '@/components/footer';
 
 async function getGitHubRepos(): Promise<GitHubRepo[]> {
   try {
@@ -23,6 +24,11 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
 
     // Fetch README and summarize if description is missing
     for (const repo of repos) {
+      // Manually set description for SmartSetu
+      if (repo.name.toLowerCase() === 'smartsetu') {
+        repo.description = 'SmartSetu is a modern web application designed to streamline user onboarding and document verification, leveraging AI and Firebase for a seamless, secure, and user-friendly experience.';
+        continue;
+      }
       if (!repo.description) {
         try {
           const readmeResponse = await fetch(`https://api.github.com/repos/mrashis06/${repo.name}/readme`);
@@ -31,7 +37,7 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
             const readmeContent = Buffer.from(readmeData.content, 'base64').toString('utf-8');
             repo.description = await summarizeText({ textToSummarize: readmeContent });
           }
-        } catch (error) {
+        } catch (error)
           console.error(`Error fetching README for ${repo.name}:`, error);
         }
       }

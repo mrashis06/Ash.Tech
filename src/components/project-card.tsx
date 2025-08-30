@@ -13,7 +13,7 @@ export function ProjectCard({ repo }: ProjectCardProps) {
     <Card className="flex flex-col h-full transition-transform transform hover:scale-105 hover:shadow-xl bg-card">
       <CardHeader>
         <CardTitle className="text-xl font-bold truncate">{repo.name}</CardTitle>
-        <CardDescription className="text-sm h-12 overflow-hidden">{repo.description || 'No description provided.'}</CardDescription>
+        <CardDescription className="text-sm h-24 overflow-hidden">{repo.description || 'No description provided.'}</CardDescription>
       </CardHeader>
       <CardContent className="flex-grow flex flex-col justify-end">
         <div className="flex justify-between items-center mt-4">
