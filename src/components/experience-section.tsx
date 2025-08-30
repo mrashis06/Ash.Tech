@@ -29,6 +29,7 @@ const experiences = [
     icon: <BrainCircuit className="w-8 h-8 text-primary" />,
     title: 'Machine Learning',
     description: 'Advanced concepts in mathematics for ML, predictive modeling, and feature engineering.',
+    link: 'https://drive.google.com/file/d/1yjUMsknw_BuhKVTVPAfdV2RyVlLPLDjB/view?usp=drivesdk'
   }
 ];
 
