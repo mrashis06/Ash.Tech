@@ -1,5 +1,6 @@
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Trophy, Zap, Code, Cloud, BrainCircuit } from 'lucide-react';
+import { Trophy, Zap, Code, Cloud, BrainCircuit, ArrowUpRight } from 'lucide-react';
+import Link from 'next/link';
 
 const experiences = [
   {
@@ -16,6 +17,7 @@ const experiences = [
     icon: <Zap className="w-8 h-8 text-primary" />,
     title: 'National Coding League 2.0',
     description: 'Achieved the position of regional qualifier in a competitive national coding league.',
+    link: 'https://drive.google.com/file/d/1Tfsksw1_OSRfxuZXDO2h3FdqtN2xuR8K/view?usp=drivesdk'
   },
   {
     icon: <Cloud className="w-8 h-8 text-primary" />,
@@ -41,7 +43,13 @@ export function ExperienceSection() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {experiences.map((experience, index) => (
-            <Card key={index} className="text-center p-6">
+            <Card key={index} className="text-center p-6 relative">
+              {experience.link && (
+                <Link href={experience.link} target="_blank" rel="noopener noreferrer" className="absolute top-4 right-4 text-muted-foreground hover:text-primary transition-colors">
+                  <ArrowUpRight className="w-5 h-5" />
+                  <span className="sr-only">View Certificate</span>
+                </Link>
+              )}
               <div className="flex justify-center mb-4">{experience.icon}</div>
               <CardHeader className="p-0">
                 <CardTitle>{experience.title}</CardTitle>
