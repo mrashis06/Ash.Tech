@@ -12,17 +12,20 @@ export function Header() {
           <Link href="#about" className="transition-colors hover:text-primary">
             <span className="text-primary">01.</span> About
           </Link>
+           <Link href="#skills" className="transition-colors hover:text-primary">
+            <span className="text-primary">02.</span> Skills
+          </Link>
           <Link href="#experience" className="transition-colors hover:text-primary">
-            <span className="text-primary">02.</span> Experience
+            <span className="text-primary">03.</span> Experience
           </Link>
           <Link href="#projects" className="transition-colors hover:text-primary">
-            <span className="text-primary">03.</span> Highlights
+            <span className="text-primary">04.</span> Highlights
           </Link>
           <Link href="#blogs" className="transition-colors hover:text-primary">
-            <span className="text-primary">04.</span> Blogs
+            <span className="text-primary">05.</span> Blogs
           </Link>
           <Link href="#contact" className="transition-colors hover:text-primary">
-            <span className="text-primary">05.</span> Contact
+            <span className="text-primary">06.</span> Contact
           </Link>
         </nav>
         <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10 hover:text-primary">
