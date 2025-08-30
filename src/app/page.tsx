@@ -26,6 +26,12 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
     if (smartSetuRepo) {
       smartSetuRepo.description = 'SmartSetu is a modern web application designed to streamline user onboarding and document verification, leveraging AI and Firebase for a seamless, secure, and user-friendly experience.';
     }
+
+    // Manually set description for rag
+    const ragRepo = repos.find(repo => repo.name.toLowerCase() === 'rag');
+    if (ragRepo) {
+      ragRepo.description = 'Implemented a RAG system combining retrieval-based and generative models to enhance response generation.';
+    }
     
     return repos;
   } catch (error) {
