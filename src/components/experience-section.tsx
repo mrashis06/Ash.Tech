@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Trophy, Zap, Code } from 'lucide-react';
+import { Trophy, Zap, Code, Cloud, BrainCircuit } from 'lucide-react';
 
 const experiences = [
   {
@@ -17,6 +17,16 @@ const experiences = [
     title: 'National Coding League 2.0',
     description: 'Achieved the position of regional qualifier in a competitive national coding league.',
   },
+  {
+    icon: <Cloud className="w-8 h-8 text-primary" />,
+    title: 'Google Cloud Arcade Facilitator',
+    description: 'Hands-on experience in Compute Engine, BigQuery, Cloud Functions for scalable cloud solutions.',
+  },
+  {
+    icon: <BrainCircuit className="w-8 h-8 text-primary" />,
+    title: 'Machine Learning',
+    description: 'Advanced concepts in mathematics for ML, predictive modeling, and feature engineering.',
+  }
 ];
 
 export function ExperienceSection() {
@@ -29,7 +39,7 @@ export function ExperienceSection() {
             A few of my proudest accomplishments and experiences.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {experiences.map((experience, index) => (
             <Card key={index} className="text-center p-6">
               <div className="flex justify-center mb-4">{experience.icon}</div>
