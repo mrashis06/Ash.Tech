@@ -55,7 +55,7 @@ export function ExperienceSection() {
               <div className="flex justify-center mb-4">{experience.icon}</div>
               <CardHeader className="p-0">
                 <CardTitle>{experience.title}</CardTitle>
-                <CardDescription className="mt-2">{experience.description}</CardDescription>
+                <CardDescription className="mt-4">{experience.description}</CardDescription>
               </CardHeader>
             </Card>
           ))}
