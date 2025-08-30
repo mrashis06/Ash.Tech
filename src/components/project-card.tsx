@@ -10,9 +10,9 @@ interface ProjectCardProps {
 
 export function ProjectCard({ repo }: ProjectCardProps) {
   return (
-    <Card className="flex flex-col h-full transition-transform transform hover:scale-105 hover:shadow-xl">
+    <Card className="flex flex-col h-full transition-transform transform hover:scale-105 hover:shadow-xl bg-card">
       <CardHeader>
-        <CardTitle className="text-xl font-bold">{repo.name}</CardTitle>
+        <CardTitle className="text-xl font-bold truncate">{repo.name}</CardTitle>
         <CardDescription className="text-sm h-12 overflow-hidden">{repo.description || 'No description provided.'}</CardDescription>
       </CardHeader>
       <CardContent className="flex-grow flex flex-col justify-end">

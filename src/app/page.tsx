@@ -11,7 +11,7 @@ import { Footer } from '@/components/footer';
 
 async function getGitHubRepos(): Promise<GitHubRepo[]> {
   try {
-    const response = await fetch('https://api.github.com/users/mrashis06/repos?sort=stars&direction=desc', {
+    const response = await fetch('https://api.github.com/users/mrashis06/repos?type=public&sort=stars&direction=desc', {
       next: { revalidate: 3600 } // Revalidate every hour
     });
     if (!response.ok) {
