@@ -7,7 +7,7 @@ import { SkillsSection } from '@/components/skills-section';
 import { ExperienceSection } from '@/components/experience-section';
 import { BlogsSection } from '@/components/blogs-section';
 import { ContactSection } from '@/components/contact-section';
-import { Footer } from '@/components/footer';
+import { summarizeText } from '@/ai/flows/summarize-text-flow';
 
 async function getGitHubRepos(): Promise<GitHubRepo[]> {
   try {
@@ -18,8 +18,26 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
       console.error('Failed to fetch GitHub repos:', response.statusText);
       return [];
     }
-    const data = await response.json();
-    return data.slice(0, 6);
+    const data: GitHubRepo[] = await response.json();
+    const repos = data.slice(0, 6);
+
+    // Fetch README and summarize if description is missing
+    for (const repo of repos) {
+      if (!repo.description) {
+        try {
+          const readmeResponse = await fetch(`https://api.github.com/repos/mrashis06/${repo.name}/readme`);
+          if (readmeResponse.ok) {
+            const readmeData = await readmeResponse.json();
+            const readmeContent = Buffer.from(readmeData.content, 'base64').toString('utf-8');
+            repo.description = await summarizeText({ textToSummarize: readmeContent });
+          }
+        } catch (error) {
+          console.error(`Error fetching README for ${repo.name}:`, error);
+        }
+      }
+    }
+    
+    return repos;
   } catch (error) {
     console.error('Error fetching GitHub repos:', error);
     return [];
