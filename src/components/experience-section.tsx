@@ -23,6 +23,7 @@ const experiences = [
     icon: <Cloud className="w-8 h-8 text-primary" />,
     title: 'Google Cloud Arcade Facilitator',
     description: 'Hands-on experience in Compute Engine, BigQuery, Cloud Functions for scalable cloud solutions.',
+    link: 'https://drive.google.com/file/d/1SxkglvcgfX3ZJJZMkC9Ud3TxMLEqMkTi/view?usp=drivesdk'
   },
   {
     icon: <BrainCircuit className="w-8 h-8 text-primary" />,
