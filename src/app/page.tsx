@@ -38,6 +38,12 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
     if (offlineFileTransferRepo) {
       offlineFileTransferRepo.description = 'Developed a system enabling file transfers without an active internet connection';
     }
+
+    // Manually set description for musox
+    const musoxRepo = repos.find(repo => repo.name.toLowerCase() === 'musox');
+    if (musoxRepo) {
+      musoxRepo.description = 'Musox – A Python-based web app that uses the Spotify API to fetch song details, find matching audio on YouTube, and stream it seamlessly.';
+    }
     
     return repos;
   } catch (error) {
