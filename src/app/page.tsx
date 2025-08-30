@@ -3,8 +3,8 @@ import { Header } from '@/components/header';
 import { HeroSection } from '@/components/hero-section';
 import { ProjectsSection } from '@/components/projects-section';
 import { AboutSection } from '@/components/about-section';
-import { AchievementsSection } from '@/components/achievements-section';
-import { CertificatesSection } from '@/components/certificates-section';
+import { ExperienceSection } from '@/components/experience-section';
+import { BlogsSection } from '@/components/blogs-section';
 import { ContactSection } from '@/components/contact-section';
 import { Footer } from '@/components/footer';
 
@@ -33,10 +33,10 @@ export default async function Home() {
       <Header />
       <main className="flex-1">
         <HeroSection />
-        <ProjectsSection repos={repos} />
         <AboutSection />
-        <AchievementsSection />
-        <CertificatesSection />
+        <ExperienceSection />
+        <ProjectsSection repos={repos} />
+        <BlogsSection />
         <ContactSection />
       </main>
       <Footer />
