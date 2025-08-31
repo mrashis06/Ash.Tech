@@ -18,11 +18,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
         <Link href="/" className="flex items-center">
-          <div className="relative group">
-            <div className="relative px-3 py-1 bg-card rounded-lg leading-none flex items-center border border-primary">
-              <span className="font-bold text-2xl text-primary group-hover:text-foreground transition duration-200">A.K.R</span>
-            </div>
-          </div>
+          <span className="font-bold text-2xl text-primary transition-colors hover:text-foreground">A.K.R</span>
         </Link>
         <nav className="hidden md:flex items-center space-x-8 text-sm font-medium">
           <Link href="#about" className="transition-colors hover:text-primary">
