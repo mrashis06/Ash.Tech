@@ -1,3 +1,5 @@
+"use client";
+
 import Image from 'next/image';
 
 export function AboutSection() {
@@ -10,12 +12,16 @@ export function AboutSection() {
         <div className="grid gap-12 lg:grid-cols-2">
           <div className="flex justify-center items-center">
              <Image
-              src="/images/profile.jpg"
+              src="/profile.jpg"
               alt="Ashis Kumar Rai"
               width={400}
               height={400}
               className="rounded-full object-cover shadow-lg"
               data-ai-hint="professional portrait"
+              onError={(e) => {
+                e.currentTarget.src = 'https://picsum.photos/400/400';
+                e.currentTarget.onerror = null; // prevent infinite loop if placeholder fails
+              }}
             />
           </div>
           <div className="flex flex-col justify-center space-y-6">
