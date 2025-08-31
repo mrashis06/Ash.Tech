@@ -141,12 +141,12 @@ body {
 }
 
 @keyframes draw-border-top {
-  from { width: 0; }
-  to { width: 100%; }
+  from { width: 0; transform-origin: left; }
+  to { width: 100%; transform-origin: left; }
 }
 @keyframes draw-border-right {
-  from { height: 0; }
-  to { height: 100%; }
+  from { height: 0; transform-origin: top; }
+  to { height: 100%; transform-origin: top; }
 }
 @keyframes draw-border-bottom {
   from { width: 0; transform-origin: right; }
