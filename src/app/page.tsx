@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -14,43 +15,60 @@ import { Footer } from '@/components/footer';
 import { ScrollAnimation } from '@/components/scroll-animation';
 import { LandingAnimation } from '@/components/landing-animation';
 
+const PINNED_REPOS = ['SmartSetu', 'rag', 'OFFLINE_FILE_TRANSFER', 'musox'];
+
 async function getGitHubRepos(): Promise<GitHubRepo[]> {
   try {
-    const response = await fetch('https://api.github.com/users/mrashis06/repos?type=public&sort=stars&direction=desc', {
+    // Fetch all repos sorted by most recently pushed
+    const response = await fetch('https://api.github.com/users/mrashis06/repos?type=public&sort=pushed&direction=desc', {
       next: { revalidate: 3600 } // Revalidate every hour
     });
+
     if (!response.ok) {
       console.error('Failed to fetch GitHub repos:', response.statusText);
       return [];
     }
-    const data: GitHubRepo[] = await response.json();
-    const repos = data.slice(0, 6);
 
-    // Manually set description for SmartSetu
-    const smartSetuRepo = repos.find(repo => repo.name.toLowerCase() === 'smartsetu');
-    if (smartSetuRepo) {
-      smartSetuRepo.description = 'SmartSetu is a modern web application designed to streamline user onboarding and document verification, leveraging AI and Firebase for a seamless, secure, and user-friendly experience.';
-    }
-
-    // Manually set description for rag
-    const ragRepo = repos.find(repo => repo.name.toLowerCase() === 'rag');
-    if (ragRepo) {
-      ragRepo.description = 'Implemented a RAG system combining retrieval-based and generative models to enhance response generation.';
-    }
-
-    // Manually set description for OFFLINE_FILE_TRANSFER
-    const offlineFileTransferRepo = repos.find(repo => repo.name.toLowerCase() === 'offline_file_transfer');
-    if (offlineFileTransferRepo) {
-      offlineFileTransferRepo.description = 'Developed a system enabling file transfers without an active internet connection';
-    }
-
-    // Manually set description for musox
-    const musoxRepo = repos.find(repo => repo.name.toLowerCase() === 'musox');
-    if (musoxRepo) {
-      musoxRepo.description = 'Musox – A Python-based web app that uses the Spotify API to fetch song details, find matching audio on YouTube, and stream it seamlessly.';
-    }
+    const allRepos: GitHubRepo[] = await response.json();
     
-    return repos;
+    // Manually set descriptions for specific repos
+    const repoDescriptions: { [key: string]: string } = {
+      smartsetu: 'SmartSetu is a modern web application designed to streamline user onboarding and document verification, leveraging AI and Firebase for a seamless, secure, and user-friendly experience.',
+      rag: 'Implemented a RAG system combining retrieval-based and generative models to enhance response generation.',
+      offline_file_transfer: 'Developed a system enabling file transfers without an active internet connection.',
+      musox: 'Musox – A Python-based web app that uses the Spotify API to fetch song details, find matching audio on YouTube, and stream it seamlessly.'
+    };
+
+    allRepos.forEach(repo => {
+      const description = repoDescriptions[repo.name.toLowerCase()];
+      if (description) {
+        repo.description = description;
+      }
+    });
+
+    // Separate pinned repos from the rest
+    const pinnedRepos: GitHubRepo[] = [];
+    const otherRepos: GitHubRepo[] = [];
+
+    allRepos.forEach(repo => {
+      if (PINNED_REPOS.some(pinned => pinned.toLowerCase() === repo.name.toLowerCase())) {
+        pinnedRepos.push(repo);
+      } else {
+        otherRepos.push(repo);
+      }
+    });
+
+    // Sort pinned repos according to the PINNED_REPOS array order
+    pinnedRepos.sort((a, b) => {
+      const aIndex = PINNED_REPOS.findIndex(name => name.toLowerCase() === a.name.toLowerCase());
+      const bIndex = PINNED_REPOS.findIndex(name => name.toLowerCase() === b.name.toLowerCase());
+      return aIndex - bIndex;
+    });
+
+    // Combine pinned repos with a slice of other repos to total 6
+    const combinedRepos = [...pinnedRepos, ...otherRepos.slice(0, 6 - pinnedRepos.length)];
+    
+    return combinedRepos;
   } catch (error) {
     console.error('Error fetching GitHub repos:', error);
     return [];
