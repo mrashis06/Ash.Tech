@@ -15,18 +15,20 @@ export function LandingAnimation({ onComplete }: LandingAnimationProps) {
   const [flickerText, setFlickerText] = useState(false);
 
   useEffect(() => {
+    // Timeout to start the flicker effect right after the text animation finishes
     const flickerTimer = setTimeout(() => {
       setFlickerText(true);
-    }, textToAnimate.length * 150 + 200);
+    }, textToAnimate.length * 150); // Removed the extra delay
 
+    // Timeout to start fading out the entire animation
     const fadeOutTimer = setTimeout(() => {
       setFadeOut(true);
-    }, textToAnimate.length * 150 + 1700);
+    }, textToAnimate.length * 150 + 1500); // Flicker duration is 1.5s
 
+    // Timeout to call the onComplete callback after fade out is done
     const completeTimer = setTimeout(() => {
       onComplete();
-    }, textToAnimate.length * 150 + 2700);
-
+    }, textToAnimate.length * 150 + 2500); // Fade out duration is 1s
 
     return () => {
       clearTimeout(flickerTimer);
