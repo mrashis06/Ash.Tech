@@ -16,12 +16,8 @@ export function AboutSection() {
               alt="Ashis Kumar Rai"
               width={400}
               height={400}
-              className="rounded-full object-cover shadow-lg"
+              className="rounded-full object-cover shadow-lg filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out"
               data-ai-hint="professional portrait"
-              onError={(e) => {
-                e.currentTarget.src = 'https://picsum.photos/400/400';
-                e.currentTarget.onerror = null; // prevent infinite loop if placeholder fails
-              }}
             />
           </div>
           <div className="flex flex-col justify-center space-y-6">
