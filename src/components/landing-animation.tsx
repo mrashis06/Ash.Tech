@@ -17,15 +17,15 @@ export function LandingAnimation({ onComplete }: LandingAnimationProps) {
   useEffect(() => {
     const flickerTimer = setTimeout(() => {
       setFlickerText(true);
-    }, textToAnimate.length * 150 + 500);
+    }, textToAnimate.length * 150 + 200);
 
     const fadeOutTimer = setTimeout(() => {
       setFadeOut(true);
-    }, textToAnimate.length * 150 + 2000);
+    }, textToAnimate.length * 150 + 1700);
 
     const completeTimer = setTimeout(() => {
       onComplete();
-    }, textToAnimate.length * 150 + 3000);
+    }, textToAnimate.length * 150 + 2700);
 
 
     return () => {
