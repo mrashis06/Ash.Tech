@@ -20,7 +20,7 @@ export function Header() {
           <div className="relative group">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-pink-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
             <div className="relative px-3 py-1 bg-card rounded-lg leading-none flex items-center">
-              <span className="font-bold text-2xl text-primary group-hover:text-white transition duration-200">A.KR</span>
+              <span className="font-bold text-2xl text-primary group-hover:text-white transition duration-200">(A.K.R)</span>
             </div>
           </div>
         </Link>
