@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { Button } from './ui/button';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Menu } from 'lucide-react';
 
 export function Header() {
   return (
@@ -28,9 +30,44 @@ export function Header() {
             <span className="text-primary">06.</span> Contact
           </Link>
         </nav>
-        <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10 hover:text-primary">
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
-        </Button>
+        <div className="flex items-center gap-4">
+          <Button asChild variant="outline" className="hidden md:flex border-primary text-primary hover:bg-primary/10 hover:text-primary">
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+          </Button>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">Toggle navigation menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right">
+              <div className="flex flex-col gap-6 pt-12">
+                <Link href="#about" className="text-lg font-medium transition-colors hover:text-primary">
+                  <span className="text-primary">01.</span> About
+                </Link>
+                <Link href="#skills" className="text-lg font-medium transition-colors hover:text-primary">
+                  <span className="text-primary">02.</span> Skills
+                </Link>
+                <Link href="#experience" className="text-lg font-medium transition-colors hover:text-primary">
+                  <span className="text-primary">03.</span> Experience
+                </Link>
+                <Link href="#projects" className="text-lg font-medium transition-colors hover:text-primary">
+                  <span className="text-primary">04.</span> Highlights
+                </Link>
+                <Link href="#blogs" className="text-lg font-medium transition-colors hover:text-primary">
+                  <span className="text-primary">05.</span> Blogs
+                </Link>
+                <Link href="#contact" className="text-lg font-medium transition-colors hover:text-primary">
+                  <span className="text-primary">06.</span> Contact
+                </Link>
+                <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10 hover:text-primary">
+                  <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+                </Button>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );
