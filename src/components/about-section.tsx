@@ -12,7 +12,7 @@ export function AboutSection() {
         <div className="grid gap-12 lg:grid-cols-2">
           <div className="flex justify-center items-center">
              <Image
-              src="/profile.jpg"
+              src="/profile.jpeg"
               alt="Ashis Kumar Rai"
               width={400}
               height={400}
