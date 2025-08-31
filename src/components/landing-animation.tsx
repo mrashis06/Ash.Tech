@@ -12,16 +12,9 @@ const textToAnimate = "Ash.Tech";
 
 export function LandingAnimation({ onComplete }: LandingAnimationProps) {
   const [fadeOut, setFadeOut] = useState(false);
-  const [visibleChars, setVisibleChars] = useState(0);
   const [flickerText, setFlickerText] = useState(false);
 
   useEffect(() => {
-    const charTimers = Array.from({ length: textToAnimate.length }, (_, i) =>
-      setTimeout(() => {
-        setVisibleChars(i + 1);
-      }, i * 150)
-    );
-
     const flickerTimer = setTimeout(() => {
       setFlickerText(true);
     }, textToAnimate.length * 150 + 500);
@@ -36,7 +29,6 @@ export function LandingAnimation({ onComplete }: LandingAnimationProps) {
 
 
     return () => {
-      charTimers.forEach(clearTimeout);
       clearTimeout(flickerTimer);
       clearTimeout(fadeOutTimer);
       clearTimeout(completeTimer);
@@ -67,10 +59,8 @@ export function LandingAnimation({ onComplete }: LandingAnimationProps) {
           {textToAnimate.split('').map((char, index) => (
             <span
               key={index}
-              className={cn(
-                "transition-opacity duration-300",
-                index < visibleChars ? 'opacity-100' : 'opacity-0'
-              )}
+              className="animate-fade-in opacity-0"
+              style={{ animationDelay: `${index * 150}ms`, animationFillMode: 'forwards' }}
             >
               {char}
             </span>
