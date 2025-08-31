@@ -10,19 +10,17 @@ interface LandingAnimationProps {
 
 export function LandingAnimation({ onComplete }: LandingAnimationProps) {
   const [fadeOut, setFadeOut] = useState(false);
-  const [animationStep, setAnimationStep] = useState(0);
-  const [isMounted, setIsMounted] = useState(false);
+  const [startAnimation, setStartAnimation] = useState(false);
+  const [showText, setShowText] = useState(false);
+  const [flickerText, setFlickerText] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
     const timers = [
-      setTimeout(() => setAnimationStep(1), 0),      // top
-      setTimeout(() => setAnimationStep(2), 500),    // right
-      setTimeout(() => setAnimationStep(3), 1000),   // bottom
-      setTimeout(() => setAnimationStep(4), 1500),   // left & start text fade-in
-      setTimeout(() => setAnimationStep(5), 2500),   // text flicker
-      setTimeout(() => setFadeOut(true), 4000),      // fade out
-      setTimeout(() => onComplete(), 5000),          // complete
+      setTimeout(() => setStartAnimation(true), 100),    // Start border animation
+      setTimeout(() => setShowText(true), 1500),         // Start text fade-in
+      setTimeout(() => setFlickerText(true), 2500),      // Start text flicker
+      setTimeout(() => setFadeOut(true), 4000),          // Start fade out of whole component
+      setTimeout(() => onComplete(), 5000),              // Animation complete
     ];
 
     return () => {
@@ -39,17 +37,14 @@ export function LandingAnimation({ onComplete }: LandingAnimationProps) {
       "fixed inset-0 z-[100] flex items-center justify-center bg-background transition-opacity duration-1000",
       fadeOut ? 'opacity-0' : 'opacity-100'
     )}>
-      <div className={cn(
-        "relative font-headline text-4xl md:text-6xl lg:text-8xl text-foreground transition-opacity duration-300",
-        isMounted ? 'opacity-100' : 'opacity-0'
-      )}>
+      <div className="relative font-headline text-4xl md:text-6xl lg:text-8xl text-foreground">
         <h1
           className={cn(
             "relative tracking-widest transition-opacity duration-1000",
-            animationStep >= 4 ? 'opacity-100' : 'opacity-0'
+            showText ? 'opacity-100' : 'opacity-0'
           )}
           style={{
-            animation: animationStep >= 5 ? 'text-flicker 1.5s linear' : 'none',
+            animation: flickerText ? 'text-flicker 1.5s linear' : 'none',
             textShadow: `
               0 0 5px hsl(var(--primary)),
               0 0 10px hsl(var(--primary)),
@@ -63,13 +58,13 @@ export function LandingAnimation({ onComplete }: LandingAnimationProps) {
         </h1>
         <div className="absolute -inset-2 rounded-lg">
           {/* Top */}
-          <div className={cn(borderBaseClasses, borderTopBottomClasses, "top-0 left-0")} style={{ width: animationStep >= 1 ? '100%' : '0', transition: 'width 0.5s linear' }} />
+          <div className={cn(borderBaseClasses, borderTopBottomClasses, "top-0 left-0", startAnimation ? 'w-full' : 'w-0')} style={{ transition: 'width 0.5s linear' }} />
           {/* Right */}
-          <div className={cn(borderBaseClasses, borderLeftRightClasses, "top-0 right-0")} style={{ height: animationStep >= 2 ? '100%' : '0', transition: 'height 0.5s linear' }} />
+          <div className={cn(borderBaseClasses, borderLeftRightClasses, "top-0 right-0", startAnimation ? 'h-full' : 'h-0')} style={{ transition: 'height 0.5s linear 0.5s' }} />
           {/* Bottom */}
-          <div className={cn(borderBaseClasses, borderTopBottomClasses, "bottom-0 right-0 origin-right")} style={{ width: animationStep >= 3 ? '100%' : '0', transition: 'width 0.5s linear' }} />
+          <div className={cn(borderBaseClasses, borderTopBottomClasses, "bottom-0 right-0 origin-right", startAnimation ? 'w-full' : 'w-0')} style={{ transition: 'width 0.5s linear 1s' }} />
           {/* Left */}
-          <div className={cn(borderBaseClasses, borderLeftRightClasses, "bottom-0 left-0 origin-bottom")} style={{ height: animationStep >= 4 ? '100%' : '0', transition: 'height 0.5s linear' }} />
+          <div className={cn(borderBaseClasses, borderLeftRightClasses, "bottom-0 left-0 origin-bottom", startAnimation ? 'h-full' : 'h-0')} style={{ transition: 'height 0.5s linear 1.5s' }} />
         </div>
       </div>
     </div>
