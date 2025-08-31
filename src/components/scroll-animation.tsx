@@ -16,12 +16,14 @@ export function ScrollAnimation({
   duration = 0.5,
 }: ScrollAnimationProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const isInView = useInView(ref, { once: false, amount: 0.2 });
   const mainControls = useAnimation();
 
   useEffect(() => {
     if (isInView) {
       mainControls.start('visible');
+    } else {
+      mainControls.start('hidden');
     }
   }, [isInView, mainControls]);
 
