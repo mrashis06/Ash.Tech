@@ -15,11 +15,6 @@ export function HeroSection() {
           <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
             A passionate developer dedicated to building innovative solutions and exploring the frontiers of technology.
           </p>
-          <div className="flex justify-center">
-            <Button asChild size="lg">
-              <Link href="#contact">Hire Me</Link>
-            </Button>
-          </div>
         </div>
       </div>
     </section>
