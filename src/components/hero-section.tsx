@@ -10,7 +10,7 @@ export function HeroSection() {
             Ashis Kumar Rai
           </h1>
           <p className="max-w-[700px] mx-auto text-primary text-xl md:text-2xl font-semibold">
-            AI/ML Enthusiast | Full Stack Developer | Innovator
+            AI/ML & MLOps Enthusiast | Full Stack Developer | DevOps Practitioner
           </p>
           <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
             Passionate about creating smart solutions, automating workflows, and deploying AI-driven applications efficiently
