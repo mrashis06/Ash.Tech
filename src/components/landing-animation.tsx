@@ -16,10 +16,10 @@ export function LandingAnimation({ onComplete }: LandingAnimationProps) {
       setTimeout(() => setAnimationStep(1), 0),      // top
       setTimeout(() => setAnimationStep(2), 500),    // right
       setTimeout(() => setAnimationStep(3), 1000),   // bottom
-      setTimeout(() => setAnimationStep(4), 1500),   // left
-      setTimeout(() => setAnimationStep(5), 2000),   // text flicker
-      setTimeout(() => setFadeOut(true), 3500),      // fade out
-      setTimeout(() => onComplete(), 4500),          // complete
+      setTimeout(() => setAnimationStep(4), 1500),   // left & start text fade-in
+      setTimeout(() => setAnimationStep(5), 2500),   // text flicker
+      setTimeout(() => setFadeOut(true), 4000),      // fade out
+      setTimeout(() => onComplete(), 5000),          // complete
     ];
 
     return () => {
@@ -39,8 +39,8 @@ export function LandingAnimation({ onComplete }: LandingAnimationProps) {
       <div className="relative font-headline text-4xl md:text-6xl lg:text-8xl text-foreground">
         <h1
           className={cn(
-            "relative tracking-widest transition-opacity duration-500",
-            animationStep >= 5 ? 'opacity-100' : 'opacity-0'
+            "relative tracking-widest transition-opacity duration-1000",
+            animationStep >= 4 ? 'opacity-100' : 'opacity-0'
           )}
           style={{
             animation: animationStep >= 5 ? 'text-flicker 1.5s linear' : 'none',
