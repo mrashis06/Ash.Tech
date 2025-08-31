@@ -1,29 +1,19 @@
+import type { MediumPost } from '@/types';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 
-const blogPosts = [
-  {
-    title: 'Getting Started with Next.js and Genkit',
-    description: 'A comprehensive guide to building AI-powered applications using the latest web technologies.',
-    tags: ['Next.js', 'Genkit', 'AI'],
-    link: '#',
-  },
-  {
-    title: 'The Rise of Large Language Models',
-    description: 'Exploring the impact of LLMs on software development and future trends.',
-    tags: ['LLM', 'AI', 'Tech'],
-    link: '#',
-  },
-  {
-    title: 'A Deep Dive into React Server Components',
-    description: 'Understand the power of Server Components and how they are changing the React ecosystem.',
-    tags: ['React', 'Next.js', 'WebDev'],
-    link: '#',
-  },
-];
+interface BlogsSectionProps {
+  blogs: MediumPost[];
+}
 
-export function BlogsSection() {
+// Helper function to strip HTML and truncate text
+const createSnippet = (html: string, length: number = 100) => {
+  const stripped = html.replace(/<[^>]+>/g, '');
+  return stripped.length > length ? `${stripped.substring(0, length)}...` : stripped;
+};
+
+export function BlogsSection({ blogs }: BlogsSectionProps) {
   return (
     <section id="blogs" className="w-full py-12 md:py-24">
       <div className="container px-4 md:px-6">
@@ -33,23 +23,23 @@ export function BlogsSection() {
             Sharing my thoughts on technology, development, and AI.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
-            <Card key={index} className="flex flex-col h-full hover:border-primary transition-colors">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {blogs.slice(0, 3).map((post) => (
+            <Card key={post.guid} className="flex flex-col h-full hover:border-primary transition-colors">
               <CardHeader>
-                <CardTitle>{post.title}</CardTitle>
-                <CardDescription>{post.description}</CardDescription>
+                <CardTitle className="text-xl h-20 line-clamp-3">{post.title}</CardTitle>
+                <CardDescription className="h-24 line-clamp-4">{createSnippet(post.description)}</CardDescription>
               </CardHeader>
               <CardContent className="flex-grow">
                 <div className="flex flex-wrap gap-2">
-                  {post.tags.map((tag) => (
+                  {post.categories.slice(0, 3).map((tag) => (
                     <Badge key={tag} variant="secondary">{tag}</Badge>
                   ))}
                 </div>
               </CardContent>
               <CardFooter>
-                 <Link href={post.link} className="text-sm font-medium text-primary hover:underline">
-                  Read More
+                 <Link href={post.link} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-primary hover:underline">
+                  Read More on Medium
                 </Link>
               </CardFooter>
             </Card>

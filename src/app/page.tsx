@@ -1,4 +1,4 @@
-import type { GitHubRepo } from '@/types';
+import type { GitHubRepo, MediumPost } from '@/types';
 import { Header } from '@/components/header';
 import { HeroSection } from '@/components/hero-section';
 import { ProjectsSection } from '@/components/projects-section';
@@ -52,8 +52,26 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
   }
 }
 
+async function getMediumBlogs(): Promise<MediumPost[]> {
+  try {
+    const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2F%40ash-tech', {
+      next: { revalidate: 3600 } // Revalidate every hour
+    });
+    if (!response.ok) {
+      console.error('Failed to fetch Medium blogs:', response.statusText);
+      return [];
+    }
+    const data = await response.json();
+    return data.items || [];
+  } catch (error) {
+    console.error('Error fetching Medium blogs:', error);
+    return [];
+  }
+}
+
 export default async function Home() {
   const repos = await getGitHubRepos();
+  const blogs = await getMediumBlogs();
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -64,7 +82,7 @@ export default async function Home() {
         <SkillsSection />
         <ExperienceSection />
         <ProjectsSection repos={repos} />
-        <BlogsSection />
+        <BlogsSection blogs={blogs} />
         <ContactSection />
       </main>
       <Footer />
