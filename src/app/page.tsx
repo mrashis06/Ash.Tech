@@ -8,6 +8,7 @@ import { ExperienceSection } from '@/components/experience-section';
 import { BlogsSection } from '@/components/blogs-section';
 import { ContactSection } from '@/components/contact-section';
 import { Footer } from '@/components/footer';
+import { ScrollAnimation } from '@/components/scroll-animation';
 
 async function getGitHubRepos(): Promise<GitHubRepo[]> {
   try {
@@ -77,13 +78,27 @@ export default async function Home() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-1">
-        <HeroSection />
-        <AboutSection />
-        <SkillsSection />
-        <ExperienceSection />
-        <ProjectsSection repos={repos} />
-        <BlogsSection blogs={blogs} />
-        <ContactSection />
+        <ScrollAnimation>
+          <HeroSection />
+        </ScrollAnimation>
+        <ScrollAnimation>
+          <AboutSection />
+        </ScrollAnimation>
+        <ScrollAnimation>
+          <SkillsSection />
+        </ScrollAnimation>
+        <ScrollAnimation>
+          <ExperienceSection />
+        </ScrollAnimation>
+        <ScrollAnimation>
+          <ProjectsSection repos={repos} />
+        </ScrollAnimation>
+        <ScrollAnimation>
+          <BlogsSection blogs={blogs} />
+        </ScrollAnimation>
+        <ScrollAnimation>
+          <ContactSection />
+        </ScrollAnimation>
       </main>
       <Footer />
     </div>
