@@ -45,7 +45,7 @@ export function ExperienceSection() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {experiences.map((experience, index) => (
-            <Card key={index} className="text-center p-6 relative transition-transform transform hover:scale-105 hover:shadow-xl">
+            <Card key={index} className="text-center p-6 relative transition-transform transform hover:scale-105 hover:shadow-xl bg-card animated-gradient-border">
               {experience.link && (
                 <Link href={experience.link} target="_blank" rel="noopener noreferrer" className="absolute top-4 right-4 text-muted-foreground hover:text-primary transition-colors">
                   <ExternalLink className="w-6 h-6" />
@@ -54,8 +54,8 @@ export function ExperienceSection() {
               )}
               <div className="flex justify-center mb-6">{experience.icon}</div>
               <CardHeader className="p-0">
-                <CardTitle>{experience.title}</CardTitle>
-                <CardDescription className="mt-4">{experience.description}</CardDescription>
+                <CardTitle className="mt-4">{experience.title}</CardTitle>
+                <CardDescription className="text-sm text-muted-foreground mt-4">{experience.description}</CardDescription>
               </CardHeader>
             </Card>
           ))}
