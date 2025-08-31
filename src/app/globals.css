@@ -139,3 +139,20 @@ body {
   77% { opacity: 0.9; }
   100% { opacity: 0.9; }
 }
+
+@keyframes draw-border-top {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes draw-border-right {
+  from { height: 0; }
+  to { height: 100%; }
+}
+@keyframes draw-border-bottom {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes draw-border-left {
+  from { height: 0; }
+  to { height: 100%; }
+}

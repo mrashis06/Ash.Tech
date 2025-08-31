@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import { cn } from '@/lib/utils';
 
 interface LandingAnimationProps {
   onComplete: () => void;
@@ -8,29 +9,41 @@ interface LandingAnimationProps {
 
 export function LandingAnimation({ onComplete }: LandingAnimationProps) {
   const [fadeOut, setFadeOut] = useState(false);
+  const [animationStep, setAnimationStep] = useState(0);
 
   useEffect(() => {
-    const fadeTimer = setTimeout(() => {
-      setFadeOut(true);
-    }, 2500); // Start fade out after 2.5 seconds
-
-    const completeTimer = setTimeout(() => {
-      onComplete();
-    }, 3500); // Complete animation after 3.5 seconds
+    const timers = [
+      setTimeout(() => setAnimationStep(1), 0),      // top
+      setTimeout(() => setAnimationStep(2), 500),    // right
+      setTimeout(() => setAnimationStep(3), 1000),   // bottom
+      setTimeout(() => setAnimationStep(4), 1500),   // left
+      setTimeout(() => setAnimationStep(5), 2000),   // text flicker
+      setTimeout(() => setFadeOut(true), 3500),      // fade out
+      setTimeout(() => onComplete(), 4500),          // complete
+    ];
 
     return () => {
-      clearTimeout(fadeTimer);
-      clearTimeout(completeTimer);
+      timers.forEach(clearTimeout);
     };
   }, [onComplete]);
 
+  const borderBaseClasses = "absolute bg-primary shadow-[0_0_10px_hsl(var(--primary))]";
+  const borderTopBottomClasses = "h-[2px]";
+  const borderLeftRightClasses = "w-[2px]";
+
   return (
-    <div className={`fixed inset-0 z-[100] flex items-center justify-center bg-background transition-opacity duration-1000 ${fadeOut ? 'opacity-0' : 'opacity-100'}`}>
+    <div className={cn(
+      "fixed inset-0 z-[100] flex items-center justify-center bg-background transition-opacity duration-1000",
+      fadeOut ? 'opacity-0' : 'opacity-100'
+    )}>
       <div className="relative font-headline text-4xl md:text-6xl lg:text-8xl text-foreground">
         <h1
-          className="relative tracking-widest"
+          className={cn(
+            "relative tracking-widest transition-opacity duration-500",
+            animationStep >= 5 ? 'opacity-100' : 'opacity-0'
+          )}
           style={{
-            animation: 'text-flicker 3s linear',
+            animation: animationStep >= 5 ? 'text-flicker 1.5s linear' : 'none',
             textShadow: `
               0 0 5px hsl(var(--primary)),
               0 0 10px hsl(var(--primary)),
@@ -42,13 +55,16 @@ export function LandingAnimation({ onComplete }: LandingAnimationProps) {
         >
           Ash.Tech
         </h1>
-        <div
-          className="absolute -inset-2 rounded-lg border-2 border-primary"
-          style={{
-            animation: 'border-flicker 2s linear',
-            boxShadow: '0 0 10px hsl(var(--primary))',
-          }}
-        />
+        <div className="absolute -inset-2 rounded-lg">
+          {/* Top */}
+          <div className={cn(borderBaseClasses, borderTopBottomClasses, "top-0 left-0")} style={{ animation: animationStep >= 1 ? 'draw-border-top 0.5s linear forwards' : 'none' }} />
+          {/* Right */}
+          <div className={cn(borderBaseClasses, borderLeftRightClasses, "top-0 right-0")} style={{ animation: animationStep >= 2 ? 'draw-border-right 0.5s linear forwards' : 'none' }} />
+          {/* Bottom */}
+          <div className={cn(borderBaseClasses, borderTopBottomClasses, "bottom-0 right-0 origin-right")} style={{ animation: animationStep >= 3 ? 'draw-border-bottom 0.5s linear forwards' : 'none' }} />
+          {/* Left */}
+          <div className={cn(borderBaseClasses, borderLeftRightClasses, "bottom-0 left-0 origin-bottom")} style={{ animation: animationStep >= 4 ? 'draw-border-left 0.5s linear forwards' : 'none' }} />
+        </div>
       </div>
     </div>
   );
