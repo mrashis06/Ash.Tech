@@ -23,9 +23,11 @@ export function SkillsSection() {
                 </div>
                 <div className="flex flex-wrap justify-center gap-8">
                     {skills.map((skill) => (
-                        <div key={skill.name} className="flex flex-col items-center justify-center gap-2 p-4 rounded-lg bg-card/50 w-32 h-32 group transition-transform transform hover:scale-105 hover:shadow-xl">
-                            {skill.icon}
-                            <span className="text-sm font-medium text-center">{skill.name}</span>
+                        <div key={skill.name} className="relative transition-transform transform hover:scale-105 group animated-gradient-border rounded-2xl w-32 h-32">
+                            <div className="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-card h-full">
+                                {skill.icon}
+                                <span className="text-sm font-medium text-center">{skill.name}</span>
+                            </div>
                         </div>
                     ))}
                 </div>
