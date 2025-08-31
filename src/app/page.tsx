@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect } from 'react';
 import type { GitHubRepo, MediumPost } from '@/types';
 import { Header } from '@/components/header';
 import { HeroSection } from '@/components/hero-section';
@@ -9,6 +12,7 @@ import { BlogsSection } from '@/components/blogs-section';
 import { ContactSection } from '@/components/contact-section';
 import { Footer } from '@/components/footer';
 import { ScrollAnimation } from '@/components/scroll-animation';
+import { LandingAnimation } from '@/components/landing-animation';
 
 async function getGitHubRepos(): Promise<GitHubRepo[]> {
   try {
@@ -70,10 +74,31 @@ async function getMediumBlogs(): Promise<MediumPost[]> {
   }
 }
 
-export default async function Home() {
-  const repos = await getGitHubRepos();
-  const blogs = await getMediumBlogs();
+export default function Home() {
+  const [repos, setRepos] = useState<GitHubRepo[]>([]);
+  const [blogs, setBlogs] = useState<MediumPost[]>([]);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    async function fetchData() {
+      const [repoData, blogData] = await Promise.all([
+        getGitHubRepos(),
+        getMediumBlogs()
+      ]);
+      setRepos(repoData);
+      setBlogs(blogData);
+    }
+    fetchData();
+  }, []);
+
+  const handleAnimationComplete = () => {
+    setLoading(false);
+  };
+
+  if (loading) {
+    return <LandingAnimation onComplete={handleAnimationComplete} />;
+  }
+  
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
