@@ -60,22 +60,29 @@ body {
   .animated-gradient-border::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: inherit;
-    padding: 2px;
-    background: conic-gradient(from var(--gradient-angle), #6f00ed, #9400d3, #e6e6fa, #9400d3, #6f00ed);
-    -webkit-mask: 
-      linear-gradient(#fff 0 0) content-box, 
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    animation: gradient-spin 5s linear infinite;
+    inset: -2px;
+    border-radius: 1rem; /* 16px */
+    background: conic-gradient(
+      from var(--gradient-angle),
+      #8A2BE2,
+      #FF6EC7,
+      #FFB347,
+      #42E695,
+      #00C6FF,
+      #8A2BE2
+    );
+    animation: gradient-spin 7s linear infinite;
     z-index: -1;
+    transition: filter 300ms, opacity 300ms;
+  }
+
+  .animated-gradient-border:hover::before {
+    animation-duration: 4s;
+    filter: blur(8px);
+    opacity: 0.8;
   }
 }
+
 
 @property --gradient-angle {
   syntax: '<angle>';
