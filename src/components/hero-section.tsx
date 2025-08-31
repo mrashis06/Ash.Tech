@@ -6,7 +6,7 @@ export function HeroSection() {
     <section id="hero" className="w-full py-24 md:py-32 lg:py-48">
       <div className="container px-4 md:px-6 text-center">
         <div className="space-y-4">
-          <p className="text-lg font-code text-muted-foreground">
+          <p className="text-lg font-code text-primary">
             Hi, my name is
           </p>
           <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline">
