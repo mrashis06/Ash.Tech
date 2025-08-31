@@ -16,6 +16,20 @@ function XLogo(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
+// SVG for the Medium logo
+function MediumLogo(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      {...props}
+    >
+      <path d="M5.6 4.75a.9.9 0 00-.9.9v12.8c0 .5.4.9.9.9h12.8c.5 0 .9-.4.9-.9V5.65c0-.5-.4-.9-.9-.9H5.6zM17 10.6a2.8 2.8 0 01-1.1 2.3l-2.6 2.3c-.2.2-.3.2-.4 0l-2.1-2.4c-.1-.1-.2-.1-.2 0l-1.3 1.4c-.1.1-.2 0-.2-.1V8.5c0-.1.1-.2.2-.2h6.7c.1 0 .2.1.2.2v2.1z" />
+    </svg>
+  );
+}
+
 
 export function ContactSection() {
   return (
@@ -44,6 +58,10 @@ export function ContactSection() {
             <Link href="https://x.com/mrashis0603" target="_blank" rel="noopener noreferrer">
               <XLogo className="w-7 h-7 text-foreground hover:text-primary transition-colors" />
               <span className="sr-only">X</span>
+            </Link>
+            <Link href="https://medium.com/@ash-tech" target="_blank" rel="noopener noreferrer">
+              <MediumLogo className="w-8 h-8 text-foreground hover:text-primary transition-colors" />
+              <span className="sr-only">Medium</span>
             </Link>
           </div>
         </div>
