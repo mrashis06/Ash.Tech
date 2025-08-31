@@ -13,6 +13,7 @@ export default {
         body: ['"Source Code Pro"', 'monospace'],
         headline: ['"Source Code Pro"', 'monospace'],
         code: ['"Source Code Pro"', 'monospace'],
+        sans: ['"Inter"', 'sans-serif'],
       },
       colors: {
         background: 'hsl(var(--background))',
