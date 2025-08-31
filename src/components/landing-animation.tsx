@@ -57,13 +57,13 @@ export function LandingAnimation({ onComplete }: LandingAnimationProps) {
         </h1>
         <div className="absolute -inset-2 rounded-lg">
           {/* Top */}
-          <div className={cn(borderBaseClasses, borderTopBottomClasses, "top-0 left-0")} style={{ animation: animationStep >= 1 ? 'draw-border-top 0.5s linear forwards' : 'none' }} />
+          <div className={cn(borderBaseClasses, borderTopBottomClasses, "top-0 left-0")} style={{ width: animationStep >= 1 ? '100%' : '0', transition: 'width 0.5s linear' }} />
           {/* Right */}
-          <div className={cn(borderBaseClasses, borderLeftRightClasses, "top-0 right-0")} style={{ animation: animationStep >= 2 ? 'draw-border-right 0.5s linear forwards' : 'none' }} />
+          <div className={cn(borderBaseClasses, borderLeftRightClasses, "top-0 right-0")} style={{ height: animationStep >= 2 ? '100%' : '0', transition: 'height 0.5s linear' }} />
           {/* Bottom */}
-          <div className={cn(borderBaseClasses, borderTopBottomClasses, "bottom-0 right-0 origin-right")} style={{ animation: animationStep >= 3 ? 'draw-border-bottom 0.5s linear forwards' : 'none' }} />
+          <div className={cn(borderBaseClasses, borderTopBottomClasses, "bottom-0 right-0 origin-right")} style={{ width: animationStep >= 3 ? '100%' : '0', transition: 'width 0.5s linear' }} />
           {/* Left */}
-          <div className={cn(borderBaseClasses, borderLeftRightClasses, "bottom-0 left-0 origin-bottom")} style={{ animation: animationStep >= 4 ? 'draw-border-left 0.5s linear forwards' : 'none' }} />
+          <div className={cn(borderBaseClasses, borderLeftRightClasses, "bottom-0 left-0 origin-bottom")} style={{ height: animationStep >= 4 ? '100%' : '0', transition: 'height 0.5s linear' }} />
         </div>
       </div>
     </div>
