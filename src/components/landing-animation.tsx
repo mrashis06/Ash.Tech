@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -10,8 +11,10 @@ interface LandingAnimationProps {
 export function LandingAnimation({ onComplete }: LandingAnimationProps) {
   const [fadeOut, setFadeOut] = useState(false);
   const [animationStep, setAnimationStep] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     const timers = [
       setTimeout(() => setAnimationStep(1), 0),      // top
       setTimeout(() => setAnimationStep(2), 500),    // right
@@ -36,7 +39,10 @@ export function LandingAnimation({ onComplete }: LandingAnimationProps) {
       "fixed inset-0 z-[100] flex items-center justify-center bg-background transition-opacity duration-1000",
       fadeOut ? 'opacity-0' : 'opacity-100'
     )}>
-      <div className="relative font-headline text-4xl md:text-6xl lg:text-8xl text-foreground">
+      <div className={cn(
+        "relative font-headline text-4xl md:text-6xl lg:text-8xl text-foreground transition-opacity duration-300",
+        isMounted ? 'opacity-100' : 'opacity-0'
+      )}>
         <h1
           className={cn(
             "relative tracking-widest transition-opacity duration-1000",
