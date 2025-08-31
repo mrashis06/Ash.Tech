@@ -13,7 +13,7 @@ export function HeroSection() {
             AI/ML Enthusiast | Full Stack Developer | Innovator
           </p>
           <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
-            A passionate developer dedicated to building innovative solutions and exploring the frontiers of technology.
+            Passionate about creating smart solutions, automating workflows, and deploying AI-driven applications efficiently
           </p>
         </div>
       </div>
