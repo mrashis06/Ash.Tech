@@ -60,7 +60,7 @@ body {
   .animated-gradient-border::before {
     content: '';
     position: absolute;
-    inset: -3px;
+    inset: -4px;
     border-radius: 1rem; /* 16px */
     background: conic-gradient(
       from var(--gradient-angle),

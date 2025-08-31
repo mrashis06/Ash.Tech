@@ -59,7 +59,7 @@ export function ExperienceSection() {
                     <CardTitle className="mt-4">{experience.title}</CardTitle>
                   </CardHeader>
                 </div>
-                <CardDescription className="text-sm text-muted-foreground mt-4">{experience.description}</CardDescription>
+                <CardDescription className="text-sm text-muted-foreground mt-4 flex-grow">{experience.description}</CardDescription>
               </Card>
             </div>
           ))}
