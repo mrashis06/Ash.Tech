@@ -46,17 +46,19 @@ export function ExperienceSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {experiences.map((experience, index) => (
             <div key={index} className="relative transition-transform transform hover:scale-105 group animated-gradient-border rounded-2xl">
-              <Card className="text-center p-6 bg-card h-full rounded-xl flex flex-col justify-start">
-                {experience.link && (
-                  <Link href={experience.link} target="_blank" rel="noopener noreferrer" className="absolute top-4 right-4 text-muted-foreground hover:text-primary transition-colors">
-                    <ExternalLink className="w-6 h-6" />
-                    <span className="sr-only">View Certificate</span>
-                  </Link>
-                )}
-                <div className="flex justify-center mb-4">{experience.icon}</div>
-                <CardHeader className="p-0 flex-grow flex flex-col justify-center">
-                  <CardTitle className="mt-2">{experience.title}</CardTitle>
-                </CardHeader>
+              <Card className="text-center p-6 bg-card h-full rounded-xl flex flex-col justify-between">
+                <div>
+                  {experience.link && (
+                    <Link href={experience.link} target="_blank" rel="noopener noreferrer" className="absolute top-4 right-4 text-muted-foreground hover:text-primary transition-colors">
+                      <ExternalLink className="w-6 h-6" />
+                      <span className="sr-only">View Certificate</span>
+                    </Link>
+                  )}
+                  <div className="flex justify-center mb-4">{experience.icon}</div>
+                  <CardHeader className="p-0">
+                    <CardTitle className="mt-2">{experience.title}</CardTitle>
+                  </CardHeader>
+                </div>
                 <CardDescription className="text-sm text-muted-foreground mt-4">{experience.description}</CardDescription>
               </Card>
             </div>
