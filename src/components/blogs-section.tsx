@@ -9,6 +9,7 @@ interface BlogsSectionProps {
 
 // Helper function to strip HTML and truncate text
 const createSnippet = (html: string, length: number = 100) => {
+  if (!html) return '';
   const stripped = html.replace(/<[^>]+>/g, '');
   return stripped.length > length ? `${stripped.substring(0, length)}...` : stripped;
 };
@@ -25,24 +26,26 @@ export function BlogsSection({ blogs }: BlogsSectionProps) {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogs.slice(0, 3).map((post) => (
-            <Card key={post.guid} className="flex flex-col h-full hover:border-primary transition-colors">
-              <CardHeader>
-                <CardTitle className="text-xl h-20 line-clamp-3">{post.title}</CardTitle>
-                <CardDescription className="h-24 line-clamp-4">{createSnippet(post.description)}</CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <div className="flex flex-wrap gap-2">
-                  {post.categories.slice(0, 3).map((tag) => (
-                    <Badge key={tag} variant="secondary">{tag}</Badge>
-                  ))}
-                </div>
-              </CardContent>
-              <CardFooter>
-                 <Link href={post.link} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-primary hover:underline">
-                  Read More on Medium
-                </Link>
-              </CardFooter>
-            </Card>
+            <div key={post.guid} className="relative transition-transform transform hover:scale-105 group animated-gradient-border rounded-2xl h-full">
+              <Card className="flex flex-col h-full bg-card rounded-xl">
+                <CardHeader>
+                  <CardTitle className="text-xl h-20 line-clamp-3">{post.title}</CardTitle>
+                  <CardDescription className="h-24 line-clamp-4">{createSnippet(post.content)}</CardDescription>
+                </CardHeader>
+                <CardContent className="flex-grow">
+                  <div className="flex flex-wrap gap-2">
+                    {post.categories.slice(0, 3).map((tag) => (
+                      <Badge key={tag} variant="secondary">{tag}</Badge>
+                    ))}
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Link href={post.link} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-primary hover:underline">
+                    Read More on Medium
+                  </Link>
+                </CardFooter>
+              </Card>
+            </div>
           ))}
         </div>
       </div>
