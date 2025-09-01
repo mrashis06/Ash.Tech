@@ -4,6 +4,7 @@ export interface GitHubRepo {
   html_url: string;
   description: string;
   stargazers_count: number;
+  homepage?: string;
 }
 
 export interface MediumPost {

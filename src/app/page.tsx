@@ -32,17 +32,31 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
     const allRepos: GitHubRepo[] = await response.json();
     
     // Manually set descriptions for specific repos
-    const repoDescriptions: { [key: string]: string } = {
-      smartsetu: 'SmartSetu is a modern web application designed to streamline user onboarding and document verification, leveraging AI and Firebase for a seamless, secure, and user-friendly experience.',
-      rag: 'Implemented a RAG system combining retrieval-based and generative models to enhance response generation.',
-      offline_file_transfer: 'Developed a system enabling file transfers without an active internet connection.',
-      musox: 'Musox – A Python-based web app that uses the Spotify API to fetch song details, find matching audio on YouTube, and stream it seamlessly.'
+    const repoDetails: { [key: string]: { description?: string; homepage?: string } } = {
+      smartsetu: {
+        description: 'SmartSetu is a modern web application designed to streamline user onboarding and document verification, leveraging AI and Firebase for a seamless, secure, and user-friendly experience.',
+        homepage: 'https://smart-setu.vercel.app/'
+      },
+      rag: {
+        description: 'Implemented a RAG system combining retrieval-based and generative models to enhance response generation.'
+      },
+      offline_file_transfer: {
+        description: 'Developed a system enabling file transfers without an active internet connection.'
+      },
+      musox: {
+        description: 'Musox – A Python-based web app that uses the Spotify API to fetch song details, find matching audio on YouTube, and stream it seamlessly.'
+      }
     };
 
     allRepos.forEach(repo => {
-      const description = repoDescriptions[repo.name.toLowerCase()];
-      if (description) {
-        repo.description = description;
+      const details = repoDetails[repo.name.toLowerCase()];
+      if (details) {
+        if (details.description) {
+          repo.description = details.description;
+        }
+        if (details.homepage) {
+          repo.homepage = details.homepage;
+        }
       }
     });
 

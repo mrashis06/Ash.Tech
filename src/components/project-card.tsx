@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Star } from 'lucide-react';
+import { Star, ExternalLink } from 'lucide-react';
 import type { GitHubRepo } from '@/types';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -22,9 +22,16 @@ export function ProjectCard({ repo }: ProjectCardProps) {
               <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
               <span>{repo.stargazers_count}</span>
             </Badge>
-            <Link href={repo.html_url} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-primary hover:underline">
-              View on GitHub
-            </Link>
+            <div className="flex items-center space-x-4">
+              {repo.homepage && (
+                <Link href={repo.homepage} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-primary hover:underline flex items-center gap-1">
+                  View Live <ExternalLink className="w-4 h-4" />
+                </Link>
+              )}
+              <Link href={repo.html_url} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-primary hover:underline">
+                View on GitHub
+              </Link>
+            </div>
           </div>
         </CardContent>
       </Card>
