@@ -1,4 +1,6 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="512" height="512" rx="90" fill="#0A0A0A"/>
-<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="'Source Code Pro', monospace" font-size="240" fill="#00E5E5" dy=".1em">A.T</text>
+<rect width="512" height="512" rx="64" fill="hsl(240 10% 3.9%)"/>
+<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Source Code Pro, monospace" font-size="256" fill="hsl(180 100% 40%)" font-weight="bold">
+A.T
+</text>
 </svg>
