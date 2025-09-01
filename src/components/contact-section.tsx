@@ -53,7 +53,7 @@ export function ContactSection() {
               <Github className="w-8 h-8 text-foreground hover:text-primary transition-colors" />
               <span className="sr-only">GitHub</span>
             </Link>
-            <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+            <Link href="https://www.linkedin.com/in/mrashis06/" target="_blank" rel="noopener noreferrer">
               <Linkedin className="w-8 h-8 text-foreground hover:text-primary transition-colors" />
               <span className="sr-only">LinkedIn</span>
             </Link>
