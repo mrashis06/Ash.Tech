@@ -148,13 +148,13 @@ export default function Home() {
         <ScrollAnimation>
           <SkillsSection />
         </ScrollAnimation>
-        <ScrollAnimation>
+        <ScrollAnimation duration={0.3}>
           <ExperienceSection />
         </ScrollAnimation>
-        <ScrollAnimation>
+        <ScrollAnimation duration={0.3}>
           <ProjectsSection repos={repos} />
         </ScrollAnimation>
-        <ScrollAnimation>
+        <ScrollAnimation duration={0.3}>
           <BlogsSection blogs={blogs} />
         </ScrollAnimation>
         <ScrollAnimation>
