@@ -10,7 +10,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['"Source Code Pro"', 'monospace'],
+        body: ['"Inter"', 'sans-serif'],
         headline: ['"Source Code Pro"', 'monospace'],
         code: ['"Source Code Pro"', 'monospace'],
         sans: ['"Inter"', 'sans-serif'],
