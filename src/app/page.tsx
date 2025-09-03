@@ -110,12 +110,8 @@ export default function Home() {
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [blogs, setBlogs] = useState<MediumPost[]>([]);
   const [loading, setLoading] = useState(true);
-  const [animationKey, setAnimationKey] = useState(0);
 
   useEffect(() => {
-    // By changing the key, we force the animation component to remount on refresh
-    setAnimationKey(prevKey => prevKey + 1);
-
     async function fetchData() {
       const [repoData, blogData] = await Promise.all([
         getGitHubRepos(),
@@ -132,7 +128,7 @@ export default function Home() {
   };
 
   if (loading) {
-    return <LandingAnimation key={animationKey} onComplete={handleAnimationComplete} />;
+    return <LandingAnimation onComplete={handleAnimationComplete} />;
   }
   
   return (
