@@ -16,7 +16,7 @@ const createSnippet = (html: string, length: number = 100) => {
 
 export function BlogsSection({ blogs }: BlogsSectionProps) {
   return (
-    <section id="blogs" className="w-full py-12 md:py-24 bg-black">
+    <section id="blogs" className="w-full py-12 md:py-24">
       <div className="container px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">Blogs</h2>
