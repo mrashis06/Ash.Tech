@@ -42,7 +42,7 @@ export function SkillsSection() {
                               <div 
                                   key={skill.name} 
                                   className="relative transition-transform transform hover:scale-105 group animated-gradient-border rounded-2xl w-32 h-32"
-                                  style={{ animation: `float 4s ease-in-out infinite`, animationDelay: `${index * 0.2}s` }}
+                                  style={{ animation: `float 3s ease-in-out infinite`, animationDelay: `${index * 0.2}s` }}
                               >
                                   <div className="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-card h-full">
                                       {skill.icon}
