@@ -83,7 +83,7 @@ body {
   }
 
   .animate-fade-in {
-    animation: fade-in 0.3s ease-in-out;
+    animation: fade-in 0.3s ease-in-out forwards;
   }
 }
 
@@ -113,6 +113,12 @@ body {
   from { transform: translateY(20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
+
+@keyframes slideInDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
 
 @keyframes border-flicker {
   0% { opacity: 0.1; }
