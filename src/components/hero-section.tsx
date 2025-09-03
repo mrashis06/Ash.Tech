@@ -8,7 +8,7 @@ interface HeroSectionProps {
 export function HeroSection({ animated = false }: HeroSectionProps) {
   return (
     <section id="hero" className="relative w-full h-screen flex items-center justify-center">
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 flex justify-center">
         <div className="flex flex-col items-start space-y-4 max-w-2xl">
           <p className={cn(
             "text-lg font-code text-primary opacity-0",
