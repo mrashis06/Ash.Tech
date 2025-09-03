@@ -25,7 +25,10 @@ export function ProjectsSection({ repos }: ProjectsSectionProps) {
             >
               <div className={`hidden md:flex items-center gap-6 ${index % 2 === 0 ? 'col-start-1 justify-end' : 'col-start-2 justify-start'}`}>
                 <div className="w-6 h-0.5 bg-primary/20"></div>
-                <div className="relative p-3 rounded-full bg-card border border-primary/30 z-10">
+                <div 
+                  className="relative p-3 rounded-full bg-card border border-primary/30 z-10"
+                  style={{ animation: `float 2s ease-in-out infinite` }}
+                >
                   <FolderKanban className="w-8 h-8 text-primary transition-transform duration-300 group-hover:scale-110" />
                 </div>
                 <div className="w-6 h-0.5 bg-primary/20"></div>

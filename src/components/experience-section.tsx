@@ -56,7 +56,10 @@ export function ExperienceSection() {
               {/* Icon and Connector */}
               <div className={`flex items-center gap-6 ${index % 2 === 0 ? 'md:col-start-1 md:justify-end' : 'md:col-start-2 md:justify-start'}`}>
                 <div className="hidden md:block w-6 h-0.5 bg-primary/20"></div>
-                <div className="relative p-3 rounded-full bg-card border border-primary/30 z-10">
+                <div 
+                  className="relative p-3 rounded-full bg-card border border-primary/30 z-10"
+                  style={{ animation: `float 2s ease-in-out infinite` }}
+                >
                   {experience.icon}
                 </div>
                 <div className="hidden md:block w-6 h-0.5 bg-primary/20"></div>
