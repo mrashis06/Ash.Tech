@@ -44,24 +44,43 @@ export function ExperienceSection() {
             A few of my proudest accomplishments and experiences.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="relative space-y-12">
+          {/* Vertical line for the timeline effect */}
+          <div className="absolute left-1/2 hidden md:block w-0.5 h-full bg-primary/20 transform -translate-x-1/2"></div>
+          
           {experiences.map((experience, index) => (
-            <div key={index} className="relative transition-transform transform hover:scale-105 group animated-gradient-border rounded-2xl">
-              <Card className="text-center p-6 bg-card h-full rounded-xl flex flex-col justify-start">
-                <div>
-                  {experience.link && (
-                    <Link href={experience.link} target="_blank" rel="noopener noreferrer" className="absolute top-4 right-4 text-muted-foreground hover:text-primary transition-colors">
-                      <ExternalLink className="w-6 h-6" />
-                      <span className="sr-only">View Certificate</span>
-                    </Link>
-                  )}
-                  <div className="flex justify-center mb-4">{experience.icon}</div>
-                  <CardHeader className="p-0">
-                    <CardTitle className="mt-4">{experience.title}</CardTitle>
-                  </CardHeader>
+            <div 
+              key={index} 
+              className="relative md:grid md:grid-cols-2 md:gap-12 items-center group"
+            >
+              {/* Icon and Connector */}
+              <div className={`flex items-center gap-6 ${index % 2 === 0 ? 'md:col-start-1 md:justify-end' : 'md:col-start-2 md:justify-start'}`}>
+                <div className="hidden md:block w-6 h-0.5 bg-primary/20"></div>
+                <div className="relative p-3 rounded-full bg-card border border-primary/30 z-10 animated-gradient-border">
+                  {experience.icon}
                 </div>
-                <CardDescription className="text-sm text-muted-foreground mt-4 flex-grow">{experience.description}</CardDescription>
-              </Card>
+                <div className="hidden md:block w-6 h-0.5 bg-primary/20"></div>
+              </div>
+              
+              {/* Card Content */}
+              <div 
+                className={`relative transition-transform transform hover:scale-105 ${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1 md:row-start-1'}`}
+              >
+                <Card className="p-6 bg-card rounded-xl shadow-lg">
+                  <CardHeader className="p-0">
+                    <div className="flex justify-between items-center">
+                      <CardTitle>{experience.title}</CardTitle>
+                      {experience.link && (
+                        <Link href={experience.link} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                          <ExternalLink className="w-5 h-5" />
+                          <span className="sr-only">View Certificate</span>
+                        </Link>
+                      )}
+                    </div>
+                  </CardHeader>
+                  <CardDescription className="text-muted-foreground mt-2">{experience.description}</CardDescription>
+                </Card>
+              </div>
             </div>
           ))}
         </div>
