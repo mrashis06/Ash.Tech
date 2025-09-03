@@ -71,13 +71,13 @@ body {
       #00C6FF,
       #8A2BE2
     );
-    animation: gradient-spin 7s linear infinite;
+    animation: gradient-spin 3s linear infinite;
     z-index: -1;
     transition: filter 300ms, opacity 300ms;
   }
 
   .animated-gradient-border:hover::before {
-    animation-duration: 4s;
+    animation-duration: 1.5s;
     filter: blur(8px);
     opacity: 0.8;
   }
