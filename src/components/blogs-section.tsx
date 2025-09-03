@@ -1,3 +1,4 @@
+
 import type { MediumPost } from '@/types';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -49,7 +50,7 @@ export function BlogsSection({ blogs }: BlogsSectionProps) {
                 <div className="relative transition-transform transform hover:scale-105 group animated-gradient-border rounded-2xl h-full">
                   <Card className="flex flex-col h-full bg-card rounded-xl">
                     <CardHeader>
-                      <CardTitle className="text-xl h-20 line-clamp-3">{post.title}</CardTitle>
+                      <CardTitle className="text-lg md:text-xl h-20 line-clamp-3">{post.title}</CardTitle>
                       <CardDescription className="h-24 line-clamp-4">{createSnippet(post.content)}</CardDescription>
                     </CardHeader>
                     <CardContent className="flex-grow">

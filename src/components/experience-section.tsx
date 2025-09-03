@@ -1,3 +1,4 @@
+
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Trophy, Zap, Code, Cloud, BrainCircuit, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
@@ -40,7 +41,7 @@ export function ExperienceSection() {
       <div className="container px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">Experience</h2>
-          <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl mt-6">
+          <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl mt-4 md:mt-6">
             A few of my proudest accomplishments and experiences.
           </p>
         </div>
@@ -73,10 +74,10 @@ export function ExperienceSection() {
                 <div className="relative transition-transform transform hover:scale-105 group animated-gradient-border rounded-2xl h-full">
                   <Card className="p-6 bg-card rounded-xl shadow-lg h-full">
                     <CardHeader className="p-0">
-                      <div className="flex justify-between items-center">
+                      <div className="flex justify-between items-start">
                         <CardTitle>{experience.title}</CardTitle>
                         {experience.link && (
-                          <Link href={experience.link} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                          <Link href={experience.link} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors flex-shrink-0 ml-4">
                             <ExternalLink className="w-5 h-5" />
                             <span className="sr-only">View Certificate</span>
                           </Link>

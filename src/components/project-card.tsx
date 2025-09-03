@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Star, ExternalLink } from 'lucide-react';
 import type { GitHubRepo } from '@/types';
@@ -13,9 +14,9 @@ export function ProjectCard({ repo }: ProjectCardProps) {
     <div className="relative transition-transform transform hover:scale-105 group animated-gradient-border rounded-2xl h-full">
       <Card className="flex flex-col h-full bg-card rounded-xl">
         <CardHeader>
-          <div className="flex justify-between items-center">
-            <CardTitle className="text-xl font-bold truncate">{repo.name}</CardTitle>
-            <div className="flex items-center space-x-4">
+          <div className="flex justify-between items-start">
+            <CardTitle className="text-xl font-bold">{repo.name}</CardTitle>
+            <div className="flex items-center space-x-4 flex-shrink-0 ml-4">
                 {repo.homepage && (
                   <Link href={repo.homepage} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                     <ExternalLink className="w-5 h-5" />
@@ -29,7 +30,7 @@ export function ProjectCard({ repo }: ProjectCardProps) {
               </div>
           </div>
         </CardHeader>
-        <CardContent className="flex-grow flex flex-col justify-end">
+        <CardContent className="flex-grow flex flex-col justify-between">
           <CardDescription className="text-sm h-24 overflow-hidden">{repo.description || 'No description provided.'}</CardDescription>
           <div className="flex justify-between items-center mt-4">
             <Badge variant="secondary" className="flex items-center gap-1">

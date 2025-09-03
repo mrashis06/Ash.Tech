@@ -15,15 +15,15 @@ export function AboutSection() {
              <Image
               src="/profile.jpeg"
               alt="Ashis Kumar Rai"
-              width={400}
-              height={400}
-              className="rounded-full object-cover shadow-lg filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out"
+              width={300}
+              height={300}
+              className="rounded-full object-cover shadow-lg filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out md:w-[400px] md:h-[400px]"
               style={{ animation: `float 2s ease-in-out infinite` }}
               data-ai-hint="professional portrait"
             />
           </div>
           <div className="flex flex-col justify-center space-y-6">
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-lg text-center lg:text-left">
               I am a dedicated and results-driven developer with a strong passion for Artificial Intelligence and Machine Learning. With extensive experience in full-stack development, I enjoy building scalable, efficient, and user-friendly applications. My journey in tech is fueled by a desire to innovate and solve complex problems. I am constantly learning and exploring new technologies to push the boundaries of what's possible.
             </p>
           </div>

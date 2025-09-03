@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { Github, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
@@ -11,9 +12,9 @@ export function ContactSection() {
           <p className="text-muted-foreground md:text-xl">
             I'm currently open to new opportunities and collaborations. Feel free to reach out!
           </p>
-          <Button asChild size="lg">
+          <Button asChild size="lg" className="text-sm sm:text-base">
             <a href="mailto:theashis0610@gmail.com">
-              <Mail className="mr-2 h-5 w-5" />
+              <Mail className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
               Contact Me
             </a>
           </Button>

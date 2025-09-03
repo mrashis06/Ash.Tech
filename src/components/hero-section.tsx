@@ -17,19 +17,19 @@ export function HeroSection({ animated = false }: HeroSectionProps) {
             Hi, my name is
           </p>
           <h1 className={cn(
-            "text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline opacity-0 text-center",
+            "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter font-headline opacity-0 text-center",
             animated && "animate-fade-in"
           )} style={{ animationDelay: '1.1s' }}>
             Ashis Kumar Rai
           </h1>
           <p className={cn(
-            "max-w-[700px] text-primary text-xl md:text-2xl font-semibold opacity-0 text-center",
+            "max-w-[700px] text-primary text-lg md:text-2xl font-semibold opacity-0 text-center",
             animated && "animate-fade-in"
           )} style={{ animationDelay: '1.2s' }}>
             AI/ML & MLOps Enthusiast | Full Stack Developer | DevOps Practitioner
           </p>
           <p className={cn(
-            "max-w-[700px] text-muted-foreground md:text-xl opacity-0 text-center",
+            "max-w-[700px] text-muted-foreground text-base md:text-xl opacity-0 text-center",
             animated && "animate-fade-in"
           )} style={{ animationDelay: '1.3s' }}>
             Passionate about creating smart solutions, automating workflows, and deploying AI-driven applications efficiently
