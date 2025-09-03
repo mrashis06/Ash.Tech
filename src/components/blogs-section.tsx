@@ -41,6 +41,7 @@ export function BlogsSection({ blogs }: BlogsSectionProps) {
 
               <div 
                 className={`relative transition-transform transform hover:scale-105 ${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1 md:row-start-1'}`}
+                style={{ animation: `float 2s ease-in-out infinite`, animationDelay: `${index * 0.2}s` }}
               >
                 <div className="relative transition-transform transform hover:scale-105 group animated-gradient-border rounded-2xl h-full">
                   <Card className="flex flex-col h-full bg-card rounded-xl">

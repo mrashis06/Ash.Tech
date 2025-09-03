@@ -32,6 +32,7 @@ export function ProjectsSection({ repos }: ProjectsSectionProps) {
               </div>
               <div 
                 className={`relative transition-transform transform hover:scale-105 ${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1 md:row-start-1'}`}
+                style={{ animation: `float 2s ease-in-out infinite`, animationDelay: `${index * 0.2}s` }}
               >
                 <ProjectCard repo={repo} />
               </div>
