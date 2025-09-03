@@ -139,27 +139,27 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-1">
-        
-          <HeroSection />
-        
-        <ScrollAnimation>
-          <AboutSection />
-        </ScrollAnimation>
-        <ScrollAnimation>
-          <SkillsSection />
-        </ScrollAnimation>
-        <ScrollAnimation duration={0.3}>
-          <ExperienceSection />
-        </ScrollAnimation>
-        <ScrollAnimation duration={0.3}>
-          <ProjectsSection repos={repos} />
-        </ScrollAnimation>
-        <ScrollAnimation duration={0.3}>
-          <BlogsSection blogs={blogs} />
-        </ScrollAnimation>
-        <ScrollAnimation>
-          <ContactSection />
-        </ScrollAnimation>
+        <HeroSection />
+        <div className="container max-w-5xl mx-auto">
+          <ScrollAnimation>
+            <AboutSection />
+          </ScrollAnimation>
+          <ScrollAnimation>
+            <SkillsSection />
+          </ScrollAnimation>
+          <ScrollAnimation duration={0.3}>
+            <ExperienceSection />
+          </ScrollAnimation>
+          <ScrollAnimation duration={0.3}>
+            <ProjectsSection repos={repos} />
+          </ScrollAnimation>
+          <ScrollAnimation duration={0.3}>
+            <BlogsSection blogs={blogs} />
+          </ScrollAnimation>
+          <ScrollAnimation>
+            <ContactSection />
+          </ScrollAnimation>
+        </div>
       </main>
       <Footer />
     </div>
