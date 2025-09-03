@@ -1,5 +1,14 @@
-# Firebase Studio
+# Ash Techie - Portfolio
 
-This is a NextJS starter in Firebase Studio.
+Welcome to **Ash Techie** — my personal portfolio website!
 
-To get started, take a look at src/app/page.tsx.
+🌐 **Live Site:** [ash-techie.vercel.app](https://ash-techie.vercel.app)
+
+## About
+
+This site is a showcase of my work, skills, and projects in technology and development.  
+Explore to learn more about me, see my featured projects, and get in touch!
+
+---
+
+Thank you for visiting!
