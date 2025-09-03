@@ -4,30 +4,30 @@ import Link from 'next/link';
 
 const experiences = [
   {
-    icon: <Trophy className="w-8 h-8 text-primary" />,
+    icon: <Trophy className="w-8 h-8 text-primary transition-transform duration-300 group-hover:scale-110" />,
     title: 'Nurturing Innovation Challenge 3.0',
     description: 'Selected among Top 29 finalists for SmartSetu, a fintech platform that leverages AI and alternative data to assess creditworthiness of street vendors, promoting financial inclusion.',
   },
   {
-    icon: <Code className="w-8 h-8 text-primary" />,
+    icon: <Code className="w-8 h-8 text-primary transition-transform duration-300 group-hover:scale-110" />,
     title: 'Adobe India Hackathon',
     description: 'Participated in a national-level hackathon by Adobe, working on innovative AI-driven solutions.',
     link: 'https://drive.google.com/file/d/1oFyeaTxsdiEUDdyae1nXtV-d2G2f-vhM/view?usp=drive_link',
   },
   {
-    icon: <Zap className="w-8 h-8 text-primary" />,
+    icon: <Zap className="w-8 h-8 text-primary transition-transform duration-300 group-hover:scale-110" />,
     title: 'National Coding League 2.0',
     description: 'Achieved the position of regional qualifier in a competitive national coding league.',
     link: 'https://drive.google.com/file/d/1Tfsksw1_OSRfxuZXDO2h3FdqtN2xuR8K/view?usp=drivesdk'
   },
   {
-    icon: <Cloud className="w-8 h-8 text-primary" />,
+    icon: <Cloud className="w-8 h-8 text-primary transition-transform duration-300 group-hover:scale-110" />,
     title: 'Google Cloud Arcade Facilitator',
     description: 'Hands-on experience in Compute Engine, BigQuery, Cloud Functions for scalable cloud solutions.',
     link: 'https://drive.google.com/file/d/1SxkglvcgfX3ZJJZMkC9Ud3TxMLEqMkTi/view?usp=drivesdk'
   },
   {
-    icon: <BrainCircuit className="w-8 h-8 text-primary" />,
+    icon: <BrainCircuit className="w-8 h-8 text-primary transition-transform duration-300 group-hover:scale-110" />,
     title: 'Machine Learning',
     description: 'Advanced concepts in mathematics for ML, predictive modeling, and feature engineering.',
     link: 'https://drive.google.com/file/d/1yjUMsknw_BuhKVTVPAfdV2RyVlLPLDjB/view?usp=drivesdk'
