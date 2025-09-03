@@ -56,7 +56,7 @@ export function ExperienceSection() {
               {/* Icon and Connector */}
               <div className={`flex items-center gap-6 ${index % 2 === 0 ? 'md:col-start-1 md:justify-end' : 'md:col-start-2 md:justify-start'}`}>
                 <div className="hidden md:block w-6 h-0.5 bg-primary/20"></div>
-                <div className="relative p-3 rounded-full bg-card border border-primary/30 z-10 animated-gradient-border">
+                <div className="relative p-3 rounded-full bg-card border border-primary/30 z-10">
                   {experience.icon}
                 </div>
                 <div className="hidden md:block w-6 h-0.5 bg-primary/20"></div>
@@ -66,20 +66,22 @@ export function ExperienceSection() {
               <div 
                 className={`relative transition-transform transform hover:scale-105 ${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1 md:row-start-1'}`}
               >
-                <Card className="p-6 bg-card rounded-xl shadow-lg">
-                  <CardHeader className="p-0">
-                    <div className="flex justify-between items-center">
-                      <CardTitle>{experience.title}</CardTitle>
-                      {experience.link && (
-                        <Link href={experience.link} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                          <ExternalLink className="w-5 h-5" />
-                          <span className="sr-only">View Certificate</span>
-                        </Link>
-                      )}
-                    </div>
-                  </CardHeader>
-                  <CardDescription className="text-muted-foreground mt-2">{experience.description}</CardDescription>
-                </Card>
+                <div className="relative transition-transform transform hover:scale-105 group animated-gradient-border rounded-2xl h-full">
+                  <Card className="p-6 bg-card rounded-xl shadow-lg h-full">
+                    <CardHeader className="p-0">
+                      <div className="flex justify-between items-center">
+                        <CardTitle>{experience.title}</CardTitle>
+                        {experience.link && (
+                          <Link href={experience.link} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                            <ExternalLink className="w-5 h-5" />
+                            <span className="sr-only">View Certificate</span>
+                          </Link>
+                        )}
+                      </div>
+                    </CardHeader>
+                    <CardDescription className="text-muted-foreground mt-2">{experience.description}</CardDescription>
+                  </Card>
+                </div>
               </div>
             </div>
           ))}
