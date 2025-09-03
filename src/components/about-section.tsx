@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from 'next/image';
@@ -17,7 +18,6 @@ export function AboutSection() {
               width={400}
               height={400}
               className="rounded-full object-cover shadow-lg filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out"
-              style={{ animation: `float 4s ease-in-out infinite` }}
               data-ai-hint="professional portrait"
             />
           </div>
