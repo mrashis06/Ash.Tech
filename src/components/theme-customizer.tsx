@@ -31,7 +31,7 @@ export function ThemeCustomizer() {
     <Popover>
       <PopoverTrigger asChild>
         <Button variant="ghost" size="icon">
-          <Palette className="h-5 w-5" />
+          <Palette className="h-6 w-6" />
           <span className="sr-only">Customize theme</span>
         </Button>
       </PopoverTrigger>
