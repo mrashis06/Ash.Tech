@@ -1,9 +1,15 @@
+
 import type {Metadata} from 'next';
 import './globals.css';
 import Link from 'next/link';
 import { Github, Linkedin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+export const metadata: Metadata = {
+  title: 'Ash.Tech',
+  description: 'Portfolio of Ashis Kumar Rai, an AI/ML Enthusiast, Full Stack Developer, and Innovator.',
+  manifest: '/manifest.json',
+};
 
 // SVG for the X logo
 function XLogo(props: React.SVGProps<SVGSVGElement>) {
@@ -35,13 +41,6 @@ function MediumLogo(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-
-export const metadata: Metadata = {
-  title: 'Ash.Tech',
-  description: 'Portfolio of Ashis Kumar Rai, an AI/ML Enthusiast, Full Stack Developer, and Innovator.',
-  manifest: '/manifest.json',
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -58,6 +57,36 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased">
         {children}
+
+        {/* Left Social Bar */}
+        <div className={cn(
+          "hidden md:flex fixed left-10 bottom-0 flex-col items-center space-y-6 z-[51]"
+        )}>
+          <Link href="https://www.linkedin.com/in/mrashis06/" target="_blank" rel="noopener noreferrer">
+            <Linkedin className="w-6 h-6 text-foreground hover:text-primary transition-colors" />
+            <span className="sr-only">LinkedIn</span>
+          </Link>
+          <Link href="https://github.com/mrashis06" target="_blank" rel="noopener noreferrer">
+            <Github className="w-6 h-6 text-foreground hover:text-primary transition-colors" />
+            <span className="sr-only">GitHub</span>
+          </Link>
+          <div className="h-24 w-px bg-foreground/50"></div>
+        </div>
+
+        {/* Right Social Bar */}
+        <div className={cn(
+          "hidden md:flex fixed right-10 bottom-0 flex-col items-center space-y-6 z-[51]"
+        )}>
+          <Link href="https://x.com/mrashis0603" target="_blank" rel="noopener noreferrer">
+            <XLogo className="w-5 h-5 text-foreground hover:text-primary transition-colors" />
+            <span className="sr-only">X</span>
+          </Link>
+          <Link href="https://medium.com/@ash-tech" target="_blank" rel="noopener noreferrer">
+            <MediumLogo className="w-6 h-6 text-foreground hover:text-primary transition-colors" />
+            <span className="sr-only">Medium</span>
+          </Link>
+          <div className="h-24 w-px bg-foreground/50"></div>
+        </div>
       </body>
     </html>
   );
