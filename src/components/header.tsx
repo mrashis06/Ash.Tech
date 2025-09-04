@@ -54,9 +54,11 @@ export function Header({ animated = false }: HeaderProps) {
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-4">
-          <div className={cn("hidden md:flex opacity-0 items-center gap-4", animated && "animate-fade-in")} style={{ animationDelay: '0.9s' }}>
+        <div className="flex items-center gap-2">
+          <div className={cn("opacity-0", animated && "animate-fade-in")} style={{ animationDelay: '0.9s' }}>
              <ThemeCustomizer />
+          </div>
+          <div className={cn("hidden md:flex opacity-0 items-center", animated && "animate-fade-in")} style={{ animationDelay: '1s' }}>
             <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10 hover:text-primary">
               <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
             </Button>
@@ -78,7 +80,6 @@ export function Header({ animated = false }: HeaderProps) {
                      <span className="text-primary">{link.number}</span> {link.label}
                    </Link>
                 ))}
-                 <ThemeCustomizer />
                 <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10 hover:text-primary">
                   <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
                 </Button>
