@@ -60,8 +60,8 @@ body {
   .animated-gradient-border::before {
     content: '';
     position: absolute;
-    inset: -4px;
-    border-radius: 1rem; /* 16px */
+    inset: -2px;
+    border-radius: 1.25rem; /* 20px */
     background: conic-gradient(
       from var(--gradient-angle),
       #8A2BE2,
@@ -71,15 +71,17 @@ body {
       #00C6FF,
       #8A2BE2
     );
-    animation: gradient-spin 3s linear infinite;
     z-index: -1;
-    transition: filter 300ms, opacity 300ms;
+    filter: blur(8px);
+    opacity: 0;
+    transition: opacity 300ms, filter 300ms, animation-duration 300ms;
+    animation: gradient-spin 3s linear infinite paused;
   }
 
   .animated-gradient-border:hover::before {
-    animation-duration: 1.5s;
-    filter: blur(8px);
     opacity: 0.8;
+    animation-play-state: running;
+    animation-duration: 1.5s;
   }
 
   .animate-fade-in {

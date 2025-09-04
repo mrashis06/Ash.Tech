@@ -59,7 +59,6 @@ export function ExperienceSection() {
                 <div className="hidden md:block w-6 h-0.5 bg-primary/20"></div>
                 <div 
                   className="relative p-3 rounded-full bg-card border border-primary/30 z-10"
-                  style={{ animation: `float 2s ease-in-out infinite` }}
                 >
                   {experience.icon}
                 </div>
@@ -68,10 +67,9 @@ export function ExperienceSection() {
               
               {/* Card Content */}
               <div 
-                className={`relative transition-transform transform hover:scale-105 ${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1 md:row-start-1'}`}
-                style={{ animation: `float 2s ease-in-out infinite`, animationDelay: `${index * 0.2}s` }}
+                className={`relative ${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1 md:row-start-1'}`}
               >
-                <div className="relative transition-transform transform hover:scale-105 group animated-gradient-border rounded-2xl h-full">
+                <div className="relative group animated-gradient-border rounded-2xl h-full">
                   <Card className="p-6 bg-card rounded-xl shadow-lg h-full">
                     <CardHeader className="p-0">
                       <div className="flex justify-between items-start">

@@ -11,7 +11,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ repo }: ProjectCardProps) {
   return (
-    <div className="relative transition-transform transform hover:scale-105 group animated-gradient-border rounded-2xl h-full">
+    <div className="relative group animated-gradient-border rounded-2xl h-full">
       <Card className="flex flex-col h-full bg-card rounded-xl">
         <CardHeader>
           <div className="flex justify-between items-start">

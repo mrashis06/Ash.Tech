@@ -28,15 +28,13 @@ export function ProjectsSection({ repos }: ProjectsSectionProps) {
                 <div className="w-6 h-0.5 bg-primary/20"></div>
                 <div 
                   className="relative p-3 rounded-full bg-card border border-primary/30 z-10"
-                  style={{ animation: `float 2s ease-in-out infinite` }}
                 >
                   <FolderKanban className="w-8 h-8 text-primary transition-transform duration-300 group-hover:scale-110" />
                 </div>
                 <div className="w-6 h-0.5 bg-primary/20"></div>
               </div>
               <div 
-                className={`relative transition-transform transform hover:scale-105 ${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1 md:row-start-1'}`}
-                style={{ animation: `float 2s ease-in-out infinite`, animationDelay: `${index * 0.2}s` }}
+                className={`relative ${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1 md:row-start-1'}`}
               >
                 <ProjectCard repo={repo} />
               </div>

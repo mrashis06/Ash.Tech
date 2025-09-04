@@ -39,11 +39,10 @@ export function SkillsSection() {
                     <div key={category.title}>
                       <h3 className="text-2xl font-bold text-center mb-8">{category.title}</h3>
                       <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-                          {category.skills.map((skill, index) => (
+                          {category.skills.map((skill) => (
                               <div 
                                   key={skill.name} 
-                                  className="relative transition-transform transform hover:scale-105 group animated-gradient-border rounded-2xl w-28 h-28 md:w-32 md:h-32"
-                                  style={{ animation: `float 2s ease-in-out infinite`, animationDelay: `${index * 0.2}s` }}
+                                  className="relative group animated-gradient-border rounded-2xl w-28 h-28 md:w-32 md:h-32"
                               >
                                   <div className="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-card h-full">
                                       {skill.icon}
