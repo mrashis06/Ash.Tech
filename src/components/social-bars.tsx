@@ -1,7 +1,6 @@
 
 "use client";
 
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Github, Linkedin } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -36,22 +35,17 @@ function MediumLogo(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function SocialBars() {
-  const [isMounted, setIsMounted] = useState(false);
+interface SocialBarsProps {
+  animated?: boolean;
+}
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsMounted(true);
-    }, 500); // Delay to match the main content animation
-    return () => clearTimeout(timer);
-  }, []);
-
+export function SocialBars({ animated = false }: SocialBarsProps) {
   return (
     <>
       {/* Left Social Bar */}
       <div className={cn(
         "hidden md:flex fixed left-10 bottom-0 flex-col items-center space-y-6 z-[51] opacity-0",
-        isMounted && "animate-fade-in"
+        animated && "animate-fade-in"
       )} style={{ animationDelay: '1.4s' }}>
         <Link href="https://www.linkedin.com/in/mrashis06/" target="_blank" rel="noopener noreferrer">
           <Linkedin className="w-6 h-6 text-foreground hover:text-primary transition-colors" />
@@ -67,7 +61,7 @@ export function SocialBars() {
       {/* Right Social Bar */}
       <div className={cn(
         "hidden md:flex fixed right-10 bottom-0 flex-col items-center space-y-6 z-[51] opacity-0",
-        isMounted && "animate-fade-in"
+        animated && "animate-fade-in"
       )} style={{ animationDelay: '1.4s' }}>
         <Link href="https://x.com/mrashis0603" target="_blank" rel="noopener noreferrer">
           <XLogo className="w-5 h-5 text-foreground hover:text-primary transition-colors" />

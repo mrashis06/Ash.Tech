@@ -14,6 +14,7 @@ import { ContactSection } from '@/components/contact-section';
 import { Footer } from '@/components/footer';
 import { ScrollAnimation } from '@/components/scroll-animation';
 import { LandingAnimation } from '@/components/landing-animation';
+import { SocialBars } from '@/components/social-bars';
 
 
 const PINNED_REPOS = ['SmartSetu', 'rag', 'OFFLINE_FILE_TRANSFER', 'musox'];
@@ -164,6 +165,7 @@ export default function Home() {
           </div>
         </main>
         <Footer />
+        <SocialBars animated={showContent} />
       </div>
   );
 }
