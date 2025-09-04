@@ -73,14 +73,12 @@ body {
     );
     z-index: -1;
     filter: blur(8px);
-    opacity: 0;
+    opacity: 0.8;
     transition: opacity 300ms, filter 300ms, animation-duration 300ms;
-    animation: gradient-spin 3s linear infinite paused;
+    animation: gradient-spin 3s linear infinite;
   }
 
   .animated-gradient-border:hover::before {
-    opacity: 0.8;
-    animation-play-state: running;
     animation-duration: 1.5s;
   }
 
