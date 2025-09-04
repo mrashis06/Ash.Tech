@@ -7,6 +7,7 @@ import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ThemeCustomizer } from './theme-customizer';
 
 
 interface HeaderProps {
@@ -54,7 +55,8 @@ export function Header({ animated = false }: HeaderProps) {
           ))}
         </nav>
         <div className="flex items-center gap-4">
-          <div className={cn("hidden md:flex opacity-0", animated && "animate-fade-in")} style={{ animationDelay: '0.9s' }}>
+          <div className={cn("hidden md:flex opacity-0 items-center gap-4", animated && "animate-fade-in")} style={{ animationDelay: '0.9s' }}>
+             <ThemeCustomizer />
             <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10 hover:text-primary">
               <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
             </Button>
@@ -76,6 +78,7 @@ export function Header({ animated = false }: HeaderProps) {
                      <span className="text-primary">{link.number}</span> {link.label}
                    </Link>
                 ))}
+                 <ThemeCustomizer />
                 <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10 hover:text-primary">
                   <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
                 </Button>
