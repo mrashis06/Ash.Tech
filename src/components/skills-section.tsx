@@ -43,7 +43,7 @@ export function SkillsSection() {
                               <div 
                                   key={skill.name} 
                                   className="relative group animated-gradient-border rounded-2xl w-28 h-28 md:w-32 md:h-32"
-                                  style={{ animation: `float 3s ease-in-out infinite`, animationDelay: `${index * 0.1}s` }}
+                                  style={{ animation: `float 2s ease-in-out infinite`, animationDelay: `${index * 0.1}s` }}
                               >
                                   <div className="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-card h-full">
                                       {skill.icon}

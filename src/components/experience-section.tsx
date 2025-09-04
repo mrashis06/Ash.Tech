@@ -53,7 +53,7 @@ export function ExperienceSection() {
             <div 
               key={index} 
               className="relative md:grid md:grid-cols-2 md:gap-12 items-center group"
-              style={{ animation: `float 3s ease-in-out infinite`, animationDelay: `${index * 0.2}s` }}
+              style={{ animation: `float 2s ease-in-out infinite`, animationDelay: `${index * 0.2}s` }}
             >
               {/* Icon and Connector */}
               <div className={`flex items-center gap-6 ${index % 2 === 0 ? 'md:col-start-1 md:justify-end' : 'md:col-start-2 md:justify-start'}`}>
