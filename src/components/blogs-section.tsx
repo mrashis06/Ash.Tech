@@ -31,6 +31,7 @@ export function BlogsSection({ blogs }: BlogsSectionProps) {
             <div 
               key={post.guid} 
               className="relative md:grid md:grid-cols-2 md:gap-12 items-start group"
+              style={{ animation: `float 3s ease-in-out infinite`, animationDelay: `${index * 0.2}s` }}
             >
               <div className={`hidden md:flex items-center gap-6 ${index % 2 === 0 ? 'col-start-1 justify-end' : 'col-start-2 justify-start'}`}>
                 <div className="w-6 h-0.5 bg-primary/20"></div>
