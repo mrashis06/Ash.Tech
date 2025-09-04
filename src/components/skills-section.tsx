@@ -2,23 +2,23 @@
 import Image from 'next/image';
 
 const programmingLanguages = [
-  { name: 'Python', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
-  { name: 'JavaScript', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
-  { name: 'TypeScript', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="TypeScript" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
-  { name: 'Java', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
   { name: 'C', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="C" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
+  { name: 'Java', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
+  { name: 'JavaScript', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
+  { name: 'Python', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
+  { name: 'TypeScript', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="TypeScript" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
 ];
 
 const frontendSkills = [
-  { name: 'React', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
   { name: 'Next.js', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" alt="Next.js" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
+  { name: 'React', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
 ];
 
 const backendSkills = [
-  { name: 'Node.js', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
-  { name: 'MongoDB', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" alt="MongoDB" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
-  { name: 'SQL', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
   { name: 'Google Cloud', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
+  { name: 'MongoDB', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" alt="MongoDB" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
+  { name: 'Node.js', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
+  { name: 'SQL', icon: <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL" width={48} height={48} className="w-12 h-12 filter grayscale group-hover:grayscale-0 transition-all" /> },
 ];
 
 const skillCategories = [
