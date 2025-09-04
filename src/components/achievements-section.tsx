@@ -1,43 +1,93 @@
-import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Trophy, Zap, Code } from 'lucide-react';
 
-const experiences = [
+import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Trophy, Zap, Code, Cloud, BrainCircuit, ExternalLink } from 'lucide-react';
+import Link from 'next/link';
+
+const achievements = [
   {
-    icon: <Trophy className="w-8 h-8 text-primary" />,
-    title: 'Hackathon Winner',
-    description: '1st place at the National AI Innovation Challenge 2023 for developing a novel recommendation engine.',
+    icon: <Trophy className="w-8 h-8 text-primary transition-transform duration-300 group-hover:scale-110" />,
+    title: 'Nurturing Innovation Challenge 3.0',
+    description: 'Selected among Top 29 finalists for SmartSetu, a fintech platform that leverages AI and alternative data to assess creditworthiness of street vendors, promoting financial inclusion.',
   },
   {
-    icon: <Zap className="w-8 h-8 text-primary" />,
-    title: 'Top Performer Award',
-    description: 'Recognized for outstanding performance and contribution to the flagship product at TechCorp Inc.',
+    icon: <Code className="w-8 h-8 text-primary transition-transform duration-300 group-hover:scale-110" />,
+    title: 'Adobe India Hackathon',
+    description: 'Participated in a national-level hackathon by Adobe, working on innovative AI-driven solutions.',
+    link: 'https://drive.google.com/file/d/1oFyeaTxsdiEUDdyae1nXtV-d2G2f-vhM/view?usp=drive_link',
   },
   {
-    icon: <Code className="w-8 h-8 text-primary" />,
-    title: 'Open Source Contributor',
-    description: 'Active contributor to popular open-source machine learning libraries, including Scikit-learn.',
+    icon: <Zap className="w-8 h-8 text-primary transition-transform duration-300 group-hover:scale-110" />,
+    title: 'National Coding League 2.0',
+    description: 'Achieved the position of regional qualifier in a competitive national coding league.',
+    link: 'https://drive.google.com/file/d/1Tfsksw1_OSRfxuZXDO2h3FdqtN2xuR8K/view?usp=drivesdk'
   },
+  {
+    icon: <Cloud className="w-8 h-8 text-primary transition-transform duration-300 group-hover:scale-110" />,
+    title: 'Google Cloud Arcade Facilitator',
+    description: 'Hands-on experience in Compute Engine, BigQuery, Cloud Functions for scalable cloud solutions.',
+    link: 'https://drive.google.com/file/d/1SxkglvcgfX3ZJJZMkC9Ud3TxMLEqMkTi/view?usp=drivesdk'
+  },
+  {
+    icon: <BrainCircuit className="w-8 h-8 text-primary transition-transform duration-300 group-hover:scale-110" />,
+    title: 'Machine Learning',
+    description: 'Advanced concepts in mathematics for ML, predictive modeling, and feature engineering.',
+    link: 'https://drive.google.com/file/d/1yjUMsknw_BuhKVTVPAfdV2RyVlLPLDjB/view?usp=drivesdk'
+  }
 ];
 
-export function ExperienceSection() {
+export function AchievementsSection() {
   return (
-    <section id="experience" className="w-full py-12 md:py-24 bg-muted/40">
+    <section id="achievements" className="w-full py-12 md:py-24">
       <div className="container px-4 md:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">Experience</h2>
-          <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl mt-4">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">Achievements</h2>
+          <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl mt-4 md:mt-6">
             A few of my proudest accomplishments and experiences.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {experiences.map((experience, index) => (
-            <Card key={index} className="text-center p-6">
-              <div className="flex justify-center mb-4">{experience.icon}</div>
-              <CardHeader className="p-0">
-                <CardTitle>{experience.title}</CardTitle>
-                <CardDescription className="mt-2">{experience.description}</CardDescription>
-              </CardHeader>
-            </Card>
+        <div className="relative space-y-12">
+          {/* Vertical line for the timeline effect */}
+          <div className="absolute left-1/2 hidden md:block w-0.5 h-full bg-primary/20 transform -translate-x-1/2"></div>
+          
+          {achievements.map((achievement, index) => (
+            <div 
+              key={index} 
+              className="relative md:grid md:grid-cols-2 md:gap-12 items-center group"
+              style={{ animation: `float 2s ease-in-out infinite`, animationDelay: `${index * 0.2}s` }}
+            >
+              {/* Icon and Connector */}
+              <div className={`flex items-center gap-6 ${index % 2 === 0 ? 'md:col-start-1 md:justify-end' : 'md:col-start-2 md:justify-start'}`}>
+                <div className="hidden md:block w-6 h-0.5 bg-primary/20"></div>
+                <div 
+                  className="relative p-3 rounded-full bg-card border border-primary/30 z-10"
+                >
+                  {achievement.icon}
+                </div>
+                <div className="hidden md:block w-6 h-0.5 bg-primary/20"></div>
+              </div>
+              
+              {/* Card Content */}
+              <div 
+                className={`relative ${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1 md:row-start-1'}`}
+              >
+                <div className="relative group animated-gradient-border rounded-2xl h-full">
+                  <Card className="p-6 bg-card rounded-xl shadow-lg h-full">
+                    <CardHeader className="p-0">
+                      <div className="flex justify-between items-start">
+                        <CardTitle>{achievement.title}</CardTitle>
+                        {achievement.link && (
+                          <Link href={achievement.link} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors flex-shrink-0 ml-4">
+                            <ExternalLink className="w-5 h-5" />
+                            <span className="sr-only">View Certificate</span>
+                          </Link>
+                        )}
+                      </div>
+                    </CardHeader>
+                    <CardDescription className="text-muted-foreground mt-2">{achievement.description}</CardDescription>
+                  </Card>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
