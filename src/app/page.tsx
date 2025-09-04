@@ -133,7 +133,7 @@ export default function Home() {
     }, 500);
   };
 
-  if (loading) {
+  if (loading && !showContent) {
     return <LandingAnimation onComplete={handleAnimationComplete} />;
   }
   
