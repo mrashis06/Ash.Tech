@@ -42,10 +42,10 @@ export function SkillsSection() {
                           {category.skills.map((skill, index) => (
                               <div 
                                   key={skill.name} 
-                                  className="relative group animated-gradient-border rounded-2xl w-28 h-28 md:w-32 md:h-32 transition-transform duration-300 hover:scale-105"
+                                  className="relative group animated-gradient-border rounded-2xl w-28 h-28 md:w-32 md:h-32"
                                   style={{ animation: `float 2s ease-in-out infinite`, animationDelay: `${index * 0.1}s` }}
                               >
-                                  <div className="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-card h-full">
+                                  <div className="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-card h-full transition-transform duration-300 group-hover:scale-105">
                                       {skill.icon}
                                       <span className="text-sm font-medium text-center">{skill.name}</span>
                                   </div>
