@@ -41,8 +41,24 @@ const themes: { [key: string]: { [key: string]: string } } = {
   },
 };
 
+const THEME_STORAGE_KEY = "accent-theme";
+
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  const [theme, setTheme] = React.useState("cyan");
+  const [theme, setThemeState] = React.useState("cyan");
+
+  React.useEffect(() => {
+    const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+    if (storedTheme && themes[storedTheme]) {
+      setThemeState(storedTheme);
+    }
+  }, []);
+
+  const setTheme = (newTheme: string) => {
+    if (themes[newTheme]) {
+      setThemeState(newTheme);
+      localStorage.setItem(THEME_STORAGE_KEY, newTheme);
+    }
+  };
 
   React.useEffect(() => {
     const root = window.document.documentElement;
