@@ -35,7 +35,7 @@ export function ProjectsSection({ repos }: ProjectsSectionProps) {
                 <div className="w-6 h-0.5 bg-primary/20"></div>
               </div>
               <div 
-                className={`relative ${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1 md:row-start-1'}`}
+                className={`relative transition-transform duration-300 hover:scale-105 ${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1 md:row-start-1'}`}
               >
                 <ProjectCard repo={repo} />
               </div>

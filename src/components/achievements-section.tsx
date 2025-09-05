@@ -70,7 +70,7 @@ export function AchievementsSection() {
               <div 
                 className={`relative ${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1 md:row-start-1'}`}
               >
-                <div className="relative group animated-gradient-border rounded-2xl h-full">
+                <div className="relative group animated-gradient-border rounded-2xl h-full transition-transform duration-300 hover:scale-105">
                   <Card className="p-6 bg-card rounded-xl shadow-lg h-full">
                     <CardHeader className="p-0">
                       <div className="flex justify-between items-start">

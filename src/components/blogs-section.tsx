@@ -46,7 +46,7 @@ export function BlogsSection({ blogs }: BlogsSectionProps) {
               <div 
                 className={`relative ${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1 md:row-start-1'}`}
               >
-                <div className="relative group animated-gradient-border rounded-2xl h-full">
+                <div className="relative group animated-gradient-border rounded-2xl h-full transition-transform duration-300 hover:scale-105">
                   <Card className="flex flex-col h-full bg-card rounded-xl">
                     <CardHeader>
                       <CardTitle className="text-lg md:text-xl h-20 line-clamp-3">{post.title}</CardTitle>
