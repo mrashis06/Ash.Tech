@@ -48,7 +48,7 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
       musox: {
         description: 'Musox – A Python-based web app that uses the Spotify API to fetch song details, find matching audio on YouTube, and stream it seamlessly.'
       },
-      mrashis06: {
+      "ash.tech": {
         description: 'This is the GitHub repository for my portfolio website itself. Explore the code to see how it was built.'
       }
     };
