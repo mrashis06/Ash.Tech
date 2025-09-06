@@ -47,13 +47,16 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
       },
       musox: {
         description: 'Musox – A Python-based web app that uses the Spotify API to fetch song details, find matching audio on YouTube, and stream it seamlessly.'
+      },
+      mrashis06: {
+        description: ''
       }
     };
 
     allRepos.forEach(repo => {
       const details = repoDetails[repo.name.toLowerCase()];
       if (details) {
-        if (details.description) {
+        if (details.description !== undefined) {
           repo.description = details.description;
         }
         if (details.homepage) {
