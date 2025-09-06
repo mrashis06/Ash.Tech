@@ -31,7 +31,7 @@ export function ProjectCard({ repo }: ProjectCardProps) {
           </div>
         </CardHeader>
         <CardContent className="flex-grow flex flex-col justify-between">
-          <CardDescription className="text-sm h-24 overflow-hidden">{repo.description || 'No description provided.'}</CardDescription>
+          <CardDescription className="text-sm h-24 overflow-hidden">{repo.description || 'This is a key project in my portfolio, where you can explore my skills and the work I have accomplished.'}</CardDescription>
           <div className="flex justify-between items-center mt-4">
             <Badge variant="secondary" className="flex items-center gap-1">
               <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
