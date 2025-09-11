@@ -18,7 +18,6 @@ export function AboutSection() {
               width={300}
               height={300}
               className="rounded-full object-cover shadow-lg filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out md:w-[400px] md:h-[400px]"
-              style={{ animation: `float 1.5s ease-in-out infinite` }}
               data-ai-hint="professional portrait"
             />
           </div>
