@@ -60,7 +60,7 @@ export function Header({ animated = false }: HeaderProps) {
           </div>
           <div className={cn("hidden md:flex opacity-0 items-center", animated && "animate-fade-in")} style={{ animationDelay: '1s' }}>
             <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10 hover:text-primary">
-              <a href="/resume" target="_blank" rel="noopener noreferrer">Resume</a>
+              <a href="https://drive.google.com/file/d/1tQPrHgEN1GEfSzCN67UXAZ-OKRFQCnI4/view" target="_blank" rel="noopener noreferrer">Resume</a>
             </Button>
           </div>
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
@@ -81,7 +81,7 @@ export function Header({ animated = false }: HeaderProps) {
                    </Link>
                 ))}
                 <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10 hover:text-primary">
-                  <a href="/resume" target="_blank" rel="noopener noreferrer">Resume</a>
+                  <a href="https://drive.google.com/file/d/1tQPrHgEN1GEfSzCN67UXAZ-OKRFQCnI4/view" target="_blank" rel="noopener noreferrer">Resume</a>
                 </Button>
               </div>
             </SheetContent>
