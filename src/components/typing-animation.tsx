@@ -31,9 +31,9 @@ export function TypingAnimation({ className, texts, startDelay = 0 }: TypingAnim
   useEffect(() => {
     if (!canStart) return;
 
-    const typingSpeed = 150;
-    const deletingSpeed = 75;
-    const delayAfterTyping = 1500;
+    const typingSpeed = 120;
+    const deletingSpeed = 60;
+    const delayAfterTyping = 1200;
 
     const handleTyping = () => {
       const fullText = texts[textIndex];
