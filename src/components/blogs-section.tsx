@@ -1,8 +1,23 @@
+
+"use client";
+
+import { useState } from 'react';
 import type { MediumPost } from '@/types';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
-import { Rss } from 'lucide-react';
+import { Rss, BrainCircuit } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { summarizeText } from '@/ai/flows/summarize-text-flow';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
 
 interface BlogsSectionProps {
   blogs: MediumPost[];
@@ -15,6 +30,30 @@ const createSnippet = (html: string, length: number = 100) => {
 };
 
 export function BlogsSection({ blogs }: BlogsSectionProps) {
+  const [summary, setSummary] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleSummarize = async (content: string) => {
+    setIsLoading(true);
+    setIsDialogOpen(true);
+    try {
+      const plainTextContent = content.replace(/<[^>]+>/g, '');
+      const result = await summarizeText({ textToSummarize: plainTextContent });
+      setSummary(result);
+    } catch (error) {
+      console.error('Error summarizing text:', error);
+      setSummary('Sorry, I was unable to generate a summary at this time.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const closeDialog = () => {
+    setIsDialogOpen(false);
+    setSummary(null);
+  }
+
   return (
     <section id="blogs" className="w-full py-12 md:py-24">
       <div className="container px-4 md:px-6">
@@ -58,10 +97,14 @@ export function BlogsSection({ blogs }: BlogsSectionProps) {
                         ))}
                       </div>
                     </CardContent>
-                    <CardFooter>
+                    <CardFooter className="flex justify-between items-center">
                       <Link href={post.link} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-primary hover:underline">
-                        Read More on Medium
+                        Read More
                       </Link>
+                      <Button variant="ghost" size="sm" onClick={() => handleSummarize(post.content)} disabled={isLoading}>
+                        <BrainCircuit className="w-4 h-4 mr-2" />
+                        Summarize with AI
+                      </Button>
                     </CardFooter>
                   </Card>
                 </div>
@@ -70,6 +113,19 @@ export function BlogsSection({ blogs }: BlogsSectionProps) {
           ))}
         </div>
       </div>
+      <AlertDialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>AI Summary</AlertDialogTitle>
+            <AlertDialogDescription>
+              {isLoading ? 'Generating summary...' : summary}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction onClick={closeDialog}>Close</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </section>
   );
 }
