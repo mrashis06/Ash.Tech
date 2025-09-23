@@ -1,9 +1,17 @@
 
 import { cn } from '@/lib/utils';
+import { TypingAnimation } from './typing-animation';
 
 interface HeroSectionProps {
   animated?: boolean;
 }
+
+const roles = [
+  "AI/ML Enthusiast",
+  "MLOps Enthusiast",
+  "Full Stack Developer",
+  "DevOps Practitioner",
+];
 
 export function HeroSection({ animated = false }: HeroSectionProps) {
   return (
@@ -22,12 +30,12 @@ export function HeroSection({ animated = false }: HeroSectionProps) {
           )} style={{ animationDelay: '1.1s' }}>
             Ashis Kumar Rai
           </h1>
-          <p className={cn(
-            "max-w-[700px] text-primary text-lg md:text-2xl font-semibold opacity-0 text-center",
-            animated && "animate-fade-in"
-          )} style={{ animationDelay: '1.2s' }}>
-            AI/ML & MLOps Enthusiast | Full Stack Developer | DevOps Practitioner
-          </p>
+          <div className={cn("h-10 md:h-12 opacity-0", animated && "animate-fade-in")} style={{ animationDelay: '1.2s' }}>
+            <TypingAnimation
+              texts={roles}
+              className="text-primary text-lg md:text-2xl font-semibold text-center"
+            />
+          </div>
           <p className={cn(
             "max-w-[700px] text-muted-foreground text-base md:text-xl opacity-0 text-center",
             animated && "animate-fade-in"

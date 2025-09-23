@@ -187,3 +187,14 @@ body {
     transform: translateY(0px);
   }
 }
+
+/* Typing animation */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: hsl(var(--primary)); }
+}
+
+.typing-cursor {
+  border-right: 0.15em solid hsl(var(--primary));
+  animation: blink-caret 0.75s step-end infinite;
+}
