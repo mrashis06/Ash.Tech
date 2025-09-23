@@ -170,7 +170,7 @@ export function ContactSection() {
           </div>
 
            <div className="mt-12 text-center">
-            <h3 className="text-lg font-semibold mb-4">...or connect with me on social media</h3>
+            <h3 className="text-2xl font-headline font-semibold mb-6">...or connect with me on social media</h3>
             <div className="flex justify-center space-x-6">
               <Link href="https://www.linkedin.com/in/mrashis06/" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="w-8 h-8 text-muted-foreground hover:text-primary transition-colors" />
