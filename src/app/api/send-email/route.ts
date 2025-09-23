@@ -1,3 +1,4 @@
+
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { z } from 'zod';
@@ -8,6 +9,7 @@ const toEmail = process.env.PERSONAL_EMAIL;
 const formSchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
+  reason: z.string(),
   message: z.string().min(10),
 });
 
@@ -32,17 +34,18 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Invalid input.' }, { status: 400 });
     }
 
-    const { name, email, message } = parseResult.data;
+    const { name, email, reason, message } = parseResult.data;
 
     const { data, error } = await resend.emails.send({
       from: 'Portfolio Contact <onboarding@resend.dev>',
       to: [toEmail],
-      subject: `${name} - ${email} | New Portfolio Message`,
+      subject: `[${reason}] - ${name} | New Portfolio Message`,
       reply_to: email,
       html: `
         <p>You received a new message from your portfolio contact form.</p>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Reason:</strong> ${reason}</p>
         <p><strong>Message:</strong></p>
         <p>${message}</p>
       `,
