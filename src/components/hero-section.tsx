@@ -34,6 +34,7 @@ export function HeroSection({ animated = false }: HeroSectionProps) {
             <TypingAnimation
               texts={roles}
               className="text-primary text-lg md:text-2xl font-semibold text-center"
+              startDelay={1400} // Delay in ms (1.1s + 0.3s fade-in)
             />
           </div>
           <p className={cn(

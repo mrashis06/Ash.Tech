@@ -7,15 +7,30 @@ import { cn } from '@/lib/utils';
 interface TypingAnimationProps {
   className?: string;
   texts: string[];
+  startDelay?: number;
 }
 
-export function TypingAnimation({ className, texts }: TypingAnimationProps) {
+export function TypingAnimation({ className, texts, startDelay = 0 }: TypingAnimationProps) {
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [currentText, setCurrentText] = useState('');
+  const [canStart, setCanStart] = useState(false);
 
   useEffect(() => {
+    if (startDelay > 0) {
+      const startTimer = setTimeout(() => {
+        setCanStart(true);
+      }, startDelay);
+      return () => clearTimeout(startTimer);
+    } else {
+      setCanStart(true);
+    }
+  }, [startDelay]);
+
+  useEffect(() => {
+    if (!canStart) return;
+
     const typingSpeed = 150;
     const deletingSpeed = 75;
     const delayAfterTyping = 1500;
@@ -46,10 +61,10 @@ export function TypingAnimation({ className, texts }: TypingAnimationProps) {
 
     const timeout = setTimeout(handleTyping, isDeleting ? deletingSpeed : typingSpeed);
     return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, textIndex, texts]);
+  }, [charIndex, isDeleting, textIndex, texts, canStart]);
 
   return (
-    <span className={cn(className, "typing-cursor")}>
+    <span className={cn(className, canStart && "typing-cursor")}>
       {currentText}&nbsp;
     </span>
   );
