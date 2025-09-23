@@ -21,16 +21,16 @@ export function HeroSection({ animated = false }: HeroSectionProps) {
           <p className={cn(
             "text-lg font-code text-primary opacity-0",
             animated && "animate-fade-in"
-          )} style={{ animationDelay: '1s' }}>
+          )} style={{ animationDelay: '0.5s' }}>
             Hi, my name is
           </p>
           <h1 className={cn(
             "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter font-headline opacity-0 text-center",
             animated && "animate-fade-in"
-          )} style={{ animationDelay: '1.1s' }}>
+          )} style={{ animationDelay: '0.7s' }}>
             Ashis Kumar Rai
           </h1>
-          <div className={cn("h-10 md:h-12 opacity-0", animated && "animate-fade-in")} style={{ animationDelay: '1.2s' }}>
+          <div className={cn("h-10 md:h-12 opacity-0", animated && "animate-fade-in")} style={{ animationDelay: '0.9s' }}>
             <TypingAnimation
               texts={roles}
               className="text-primary text-lg md:text-2xl font-semibold text-center"
@@ -39,7 +39,7 @@ export function HeroSection({ animated = false }: HeroSectionProps) {
           <p className={cn(
             "max-w-[700px] text-muted-foreground text-base md:text-xl opacity-0 text-center",
             animated && "animate-fade-in"
-          )} style={{ animationDelay: '1.3s' }}>
+          )} style={{ animationDelay: '1.1s' }}>
             Passionate about creating smart solutions, automating workflows, and deploying AI-driven applications efficiently
           </p>
         </div>
