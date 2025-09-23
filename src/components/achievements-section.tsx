@@ -1,4 +1,3 @@
-
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Trophy, Zap, Code, Cloud, BrainCircuit, ExternalLink } from 'lucide-react';
 import Link from 'next/link';

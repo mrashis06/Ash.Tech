@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import { Star, ExternalLink, Code2 } from 'lucide-react';
 import type { GitHubRepo } from '@/types';

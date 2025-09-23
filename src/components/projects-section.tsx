@@ -1,4 +1,3 @@
-
 import type { GitHubRepo } from '@/types';
 import { ProjectCard } from './project-card';
 import { FolderKanban } from 'lucide-react';
