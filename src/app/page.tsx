@@ -34,22 +34,27 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
     const allRepos: GitHubRepo[] = await response.json();
     
     // Manually set descriptions for specific repos
-    const repoDetails: { [key: string]: { description?: string; homepage?: string } } = {
+    const repoDetails: { [key: string]: { description?: string; homepage?: string; appType?: string; } } = {
       smartsetu: {
         description: 'SmartSetu is a modern web application designed to streamline user onboarding and document verification, leveraging AI and Firebase for a seamless, secure, and user-friendly experience.',
-        homepage: 'https://smart-setu.vercel.app/'
+        homepage: 'https://smart-setu.vercel.app/',
+        appType: 'Web App'
       },
       rag: {
-        description: 'Implemented a RAG system combining retrieval-based and generative models to enhance response generation.'
+        description: 'Implemented a RAG system combining retrieval-based and generative models to enhance response generation.',
+        appType: 'AI System'
       },
       offline_file_transfer: {
-        description: 'Developed a system enabling file transfers without an active internet connection.'
+        description: 'Developed a system enabling file transfers without an active internet connection.',
+        appType: 'System / Utility'
       },
       musox: {
-        description: 'Musox – A Python-based web app that uses the Spotify API to fetch song details, find matching audio on YouTube, and stream it seamlessly.'
+        description: 'Musox – A Python-based web app that uses the Spotify API to fetch song details, find matching audio on YouTube, and stream it seamlessly.',
+        appType: 'Web App'
       },
       "ash.tech": {
-        description: 'This is the GitHub repository for my portfolio website itself. Explore the code to see how it was built.'
+        description: 'This is the GitHub repository for my portfolio website itself. Explore the code to see how it was built.',
+        appType: 'Web App'
       }
     };
 
@@ -61,6 +66,9 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
         }
         if (details.homepage) {
           repo.homepage = details.homepage;
+        }
+        if (details.appType) {
+          repo.appType = details.appType;
         }
       }
     });

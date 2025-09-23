@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { Star, ExternalLink } from 'lucide-react';
+import { Star, ExternalLink, Code2 } from 'lucide-react';
 import type { GitHubRepo } from '@/types';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -33,10 +33,18 @@ export function ProjectCard({ repo }: ProjectCardProps) {
         <CardContent className="flex-grow flex flex-col justify-between">
           <CardDescription className="text-sm h-24 overflow-hidden">{repo.description}</CardDescription>
           <div className="flex justify-between items-center mt-4">
-            <Badge variant="secondary" className="flex items-center gap-1">
-              <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-              <span>{repo.stargazers_count}</span>
-            </Badge>
+            <div className="flex items-center gap-2">
+              <Badge variant="secondary" className="flex items-center gap-1">
+                <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                <span>{repo.stargazers_count}</span>
+              </Badge>
+              {repo.appType && (
+                <Badge variant="outline" className="flex items-center gap-1 border-primary/50 text-primary">
+                  <Code2 className="w-4 h-4" />
+                  <span>{repo.appType}</span>
+                </Badge>
+              )}
+            </div>
           </div>
         </CardContent>
       </Card>
