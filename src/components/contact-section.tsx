@@ -12,7 +12,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Send } from "lucide-react";
 import { useState } from "react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -21,7 +20,6 @@ const formSchema = z.object({
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
-  reason: z.string({ required_error: "Please select a reason for contacting."}).min(1, { message: "Please select a reason." }),
   message: z.string().min(10, {
     message: "Message must be at least 10 characters.",
   }),
@@ -36,7 +34,6 @@ export function ContactSection() {
     defaultValues: {
       name: "",
       email: "",
-      reason: "",
       message: "",
     },
   });
@@ -109,29 +106,6 @@ export function ContactSection() {
                           <FormControl>
                             <Input placeholder="your.email@example.com" {...field} disabled={isSubmitting} />
                           </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="reason"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Reason for Contact</FormLabel>
-                          <Select onValueChange={field.onChange} defaultValue={field.value} disabled={isSubmitting}>
-                            <FormControl>
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select a reason" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              <SelectItem value="Job Opportunity">Job Opportunity</SelectItem>
-                              <SelectItem value="Project Collaboration">Project Collaboration</SelectItem>
-                              <SelectItem value="General Question">General Question</SelectItem>
-                              <SelectItem value="Feedback">Feedback</SelectItem>
-                            </SelectContent>
-                          </Select>
                           <FormMessage />
                         </FormItem>
                       )}
