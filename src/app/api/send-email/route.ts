@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { z } from 'zod';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resendApiKey = process.env.RESEND_API_KEY;
 const toEmail = process.env.PERSONAL_EMAIL;
 
 const formSchema = z.object({
@@ -13,10 +13,17 @@ const formSchema = z.object({
 
 export async function POST(req: Request) {
   try {
+    if (!resendApiKey) {
+      console.error('RESEND_API_KEY environment variable is not set.');
+      return NextResponse.json({ error: 'Server configuration error.' }, { status: 500 });
+    }
+
     if (!toEmail) {
       console.error('PERSONAL_EMAIL environment variable is not set.');
       return NextResponse.json({ error: 'Server configuration error.' }, { status: 500 });
     }
+
+    const resend = new Resend(resendApiKey);
 
     const body = await req.json();
     const parseResult = formSchema.safeParse(body);
