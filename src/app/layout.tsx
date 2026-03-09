@@ -7,7 +7,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { CustomCursor } from '@/components/custom-cursor';
 
 export const metadata: Metadata = {
-  title: 'Ash.Tech',
+  title: 'ASHisRIGHT | Portfolio',
   description: 'Portfolio of Ashis Kumar Rai, an AI/ML Enthusiast, Full Stack Developer, and Innovator.',
   manifest: '/manifest.json',
 };
