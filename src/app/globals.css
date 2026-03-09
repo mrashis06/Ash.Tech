@@ -4,6 +4,11 @@
 
 body {
   font-family: 'Inter', sans-serif;
+  cursor: none;
+}
+
+a, button {
+  cursor: none;
 }
 
 @layer base {
@@ -197,4 +202,61 @@ body {
 .typing-cursor {
   border-right: 0.15em solid hsl(var(--primary));
   animation: blink-caret 0.75s step-end infinite;
+}
+
+/* New Custom Cursor Styles */
+.custom-cursor-dot,
+.custom-cursor-circle,
+.cursor-inner-ring,
+.cursor-outer-glow,
+.cursor-pulse,
+.cursor-trail-particle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  transform-origin: center center;
+}
+
+.custom-cursor-circle,
+.cursor-inner-ring {
+  border-style: solid;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              box-shadow 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              border-color 0.2s ease-out,
+              opacity 0.2s ease-out;
+}
+
+.cursor-outer-glow,
+.custom-cursor-dot {
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              background 0.2s ease-out;
+}
+
+.cursor-trail-particle {
+  transition: opacity 0.5s ease-out;
+  animation: trail-fade 0.5s forwards;
+}
+
+@keyframes trail-fade {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0); }
+}
+
+.cursor-pulse {
+  border-style: solid;
+  animation: pulse-animation 1.5s infinite cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes pulse-animation {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
 }
