@@ -148,10 +148,10 @@ export function CustomCursor() {
       <div
         className="cursor-outer-glow"
         style={{
-          left: `${cursorPosition.x}px`,
-          top: `${cursorPosition.y}px`,
           width: '100px',
           height: '100px',
+          left: `${cursorPosition.x}px`,
+          top: `${cursorPosition.y}px`,
           background: `radial-gradient(circle, ${shadowColor} 0%, transparent 70%)`,
           transform: `translate(-50%, -50%) scale(${isHovering ? 1.5 : 1})`,
         }}
@@ -161,11 +161,11 @@ export function CustomCursor() {
       <div
         className="custom-cursor-circle"
         style={{
-          left: `${cursorPosition.x}px`,
-          top: `${cursorPosition.y}px`,
           width: '40px',
           height: '40px',
-          border: `2px solid ${mainColor}`,
+          left: `${cursorPosition.x}px`,
+          top: `${cursorPosition.y}px`,
+          borderColor: mainColor,
           boxShadow: isHovering 
             ? `0 0 30px ${glowColor}, 0 0 60px ${shadowColor}, inset 0 0 20px ${shadowColor}` 
             : `0 0 20px ${glowColor}, 0 0 40px ${shadowColor}`,
@@ -177,27 +177,13 @@ export function CustomCursor() {
       <div
         className="cursor-inner-ring"
         style={{
-          left: `${cursorPosition.x}px`,
-          top: `${cursorPosition.y}px`,
           width: '20px',
           height: '20px',
-          border: `2px solid ${mainColor}`,
+          left: `${cursorPosition.x}px`,
+          top: `${cursorPosition.y}px`,
+          borderColor: mainColor,
           opacity: isHovering ? 0.8 : 0.4,
           transform: `translate(-50%, -50%) scale(${isHovering ? 0.8 : 0.6}) rotate(${isMoving ? '-45deg' : '0deg'})`,
-        }}
-      />
-
-      {/* Center dot with pulse */}
-      <div
-        className="custom-cursor-dot"
-        style={{
-          left: `${mousePosition.x}px`,
-          top: `${mousePosition.y}px`,
-          width: '8px',
-          height: '8px',
-          background: `radial-gradient(circle, ${mainColor}, ${glowColor})`,
-          boxShadow: `0 0 15px ${glowColor}, 0 0 30px ${shadowColor}`,
-          transform: `translate(-50%, -50%) scale(${isHovering ? 1.5 : 1})`,
         }}
       />
 
@@ -206,11 +192,11 @@ export function CustomCursor() {
         <div
           className="cursor-pulse"
           style={{
-            left: `${mousePosition.x}px`,
-            top: `${mousePosition.y}px`,
             width: '40px',
             height: '40px',
-            border: `2px solid ${mainColor}`,
+            left: `${mousePosition.x}px`,
+            top: `${mousePosition.y}px`,
+            borderColor: mainColor,
           }}
         />
       )}
