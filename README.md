@@ -2,7 +2,7 @@
 
 Welcome to **Ash Techie** — my personal portfolio website!
 
-🌐 **Live Site:** [ash-techie.vercel.app](https://ash-techie.vercel.app)
+🌐 **Live Site:** [ashisright.vercel.app](https://ashisright.vercel.app)
 
 ## About
 
