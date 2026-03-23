@@ -1,5 +1,5 @@
 
-import type {Metadata} from 'next';
+import type { Metadata } from 'next';
 import './globals.css';
 import { SocialBars } from '@/components/social-bars';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -7,7 +7,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { CustomCursor } from '@/components/custom-cursor';
 
 export const metadata: Metadata = {
-  title: 'Ash.Tech',
+  title: 'Ash.Tech || Portfolio ',
   description: 'Portfolio of Ashis Kumar Rai, an AI/ML Enthusiast, Full Stack Developer, and Innovator.',
   manifest: '/manifest.json',
 };

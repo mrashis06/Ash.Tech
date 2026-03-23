@@ -21,9 +21,9 @@ const PINNED_REPOS = ['SmartSetu', 'rag', 'OFFLINE_FILE_TRANSFER', 'musox'];
 
 async function getGitHubRepos(): Promise<GitHubRepo[]> {
   try {
-    // Fetch all repos sorted by most recently pushed
-    const response = await fetch('https://api.github.com/users/mrashis06/repos?type=public&sort=pushed&direction=desc', {
-      next: { revalidate: 3600 } // Revalidate every hour
+    // Fetch up to 100 repos, bypass Next.js cache to ensure fresh data
+    const response = await fetch('https://api.github.com/users/mrashis06/repos?type=public&per_page=100', {
+      cache: 'no-store'
     });
 
     if (!response.ok) {
@@ -31,30 +31,37 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
       return [];
     }
 
-    const allRepos: GitHubRepo[] = await response.json();
+    const allReposData: any = await response.json();
+    
+    if (!Array.isArray(allReposData)) {
+      console.error('Expected array from GitHub API, but got:', allReposData);
+      return [];
+    }
+    
+    const allRepos: GitHubRepo[] = allReposData;
     
     // Manually set descriptions for specific repos
     const repoDetails: { [key: string]: { description?: string; homepage?: string; appType?: string; } } = {
       smartsetu: {
         description: 'SmartSetu is a modern web application designed to streamline user onboarding and document verification, leveraging AI and Firebase for a seamless, secure, and user-friendly experience.',
         homepage: 'https://smart-setu.vercel.app/',
-        appType: 'Web App'
+        appType: 'Web'
       },
       rag: {
         description: 'Implemented a RAG system combining retrieval-based and generative models to enhance response generation.',
-        appType: 'AI System'
+        appType: 'AI & ML'
       },
       offline_file_transfer: {
         description: 'Developed a system enabling file transfers without an active internet connection.',
-        appType: 'System / Utility'
+        appType: 'Other'
       },
       musox: {
         description: 'Musox – A Python-based web app that uses the Spotify API to fetch song details, find matching audio on YouTube, and stream it seamlessly.',
-        appType: 'Web App'
+        appType: 'Web'
       },
       "ash.tech": {
         description: 'This is the GitHub repository for my portfolio website itself. Explore the code to see how it was built.',
-        appType: 'Web App'
+        appType: 'Web'
       }
     };
 
@@ -71,31 +78,27 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
           repo.appType = details.appType;
         }
       }
-    });
-
-    // Separate pinned repos from the rest
-    const pinnedRepos: GitHubRepo[] = [];
-    const otherRepos: GitHubRepo[] = [];
-
-    allRepos.forEach(repo => {
-      if (PINNED_REPOS.some(pinned => pinned.toLowerCase() === repo.name.toLowerCase())) {
-        pinnedRepos.push(repo);
-      } else {
-        otherRepos.push(repo);
+      
+      // Fallback inference for appType if not manually defined
+      if (!repo.appType) {
+        // @ts-ignore - GitHub API returns language but our type might not have it yet
+        const lang = repo.language; 
+        if (lang === 'Dart' || lang === 'Kotlin' || lang === 'Swift' || lang === 'Java') {
+           repo.appType = 'Mobile';
+        } else if (lang === 'Python' || lang === 'Jupyter Notebook') {
+           repo.appType = 'AI & ML';
+        } else if (lang === 'TypeScript' || lang === 'JavaScript' || lang === 'HTML' || lang === 'CSS' || lang === 'Vue') {
+           repo.appType = 'Web';
+        } else {
+           repo.appType = 'Other';
+        }
       }
     });
 
-    // Sort pinned repos according to the PINNED_REPOS array order
-    pinnedRepos.sort((a, b) => {
-      const aIndex = PINNED_REPOS.findIndex(name => name.toLowerCase() === a.name.toLowerCase());
-      const bIndex = PINNED_REPOS.findIndex(name => name.toLowerCase() === b.name.toLowerCase());
-      return aIndex - bIndex;
-    });
+    // Sort all repos by stars descending
+    allRepos.sort((a, b) => (b.stargazers_count || 0) - (a.stargazers_count || 0));
 
-    // Combine pinned repos with a slice of other repos to total 6
-    const combinedRepos = [...pinnedRepos, ...otherRepos.slice(0, 6 - pinnedRepos.length)];
-    
-    return combinedRepos;
+    return allRepos;
   } catch (error) {
     console.error('Error fetching GitHub repos:', error);
     return [];

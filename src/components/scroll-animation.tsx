@@ -16,7 +16,7 @@ export function ScrollAnimation({
   duration = 0.5,
 }: ScrollAnimationProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.2 });
+  const isInView = useInView(ref, { once: false, amount: 0.05 });
   const mainControls = useAnimation();
 
   useEffect(() => {
