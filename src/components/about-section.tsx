@@ -12,12 +12,12 @@ export function AboutSection() {
         </div>
         <div className="grid gap-12 lg:grid-cols-2">
           <div className="flex justify-center items-center">
-             <Image
-              src="/profile.jpeg"
+            <Image
+              src="/profile-new.jpeg"
               alt="Ashis Kumar Rai"
-              width={300}
-              height={300}
-              className="rounded-full object-cover shadow-lg filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out md:w-[400px] md:h-[400px]"
+              width={600}
+              height={600}
+              className="rounded-full object-cover shadow-lg filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out md:w-[500px] md:h-[500px]"
               data-ai-hint="professional portrait"
             />
           </div>

@@ -16,11 +16,43 @@ export function CustomCursor() {
   const [cursorColor, setCursorColor] = useState({ hue: 180, saturation: 70, lightness: 50 });
   const [trail, setTrail] = useState<TrailPoint[]>([]);
   const [isMoving, setIsMoving] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true);
+  const [isIdle, setIsIdle] = useState(true);
   const requestRef = useRef<number>();
   const moveTimeoutRef = useRef<NodeJS.Timeout>();
+  const idleTimeoutRef = useRef<NodeJS.Timeout>();
   const trailIdRef = useRef(0);
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (idleTimeoutRef.current) {
+      clearTimeout(idleTimeoutRef.current);
+    }
+    idleTimeoutRef.current = setTimeout(() => {
+      setIsIdle(true);
+    }, 2500);
+
+    return () => {
+      if (idleTimeoutRef.current) {
+        clearTimeout(idleTimeoutRef.current);
+      }
+    };
+  }, [mousePosition.x, mousePosition.y]);
+
+  useEffect(() => {
+    if (!isDesktop) {
+      setIsVisible(false);
+      return;
+    }
+
     setIsVisible(true);
 
     const updateMousePosition = (e: MouseEvent) => {
@@ -44,6 +76,7 @@ export function CustomCursor() {
 
       // Set moving state
       setIsMoving(true);
+      setIsIdle(false);
       if (moveTimeoutRef.current) {
         clearTimeout(moveTimeoutRef.current);
       }
@@ -117,9 +150,9 @@ export function CustomCursor() {
         clearTimeout(moveTimeoutRef.current);
       }
     };
-  }, [mousePosition.x, mousePosition.y, isHovering]);
+  }, [mousePosition.x, mousePosition.y, isHovering, isDesktop]);
 
-  if (!isVisible) return null;
+  if (!isVisible || !isDesktop || isIdle) return null;
 
   const mainColor = `hsl(${cursorColor.hue}, ${cursorColor.saturation}%, ${cursorColor.lightness}%)`;
   const glowColor = `hsla(${cursorColor.hue}, ${cursorColor.saturation}%, ${cursorColor.lightness}%, 0.6)`;
@@ -127,7 +160,16 @@ export function CustomCursor() {
   const trailColor = `hsla(${cursorColor.hue}, ${cursorColor.saturation}%, ${cursorColor.lightness}%, 0.15)`;
 
   return (
-    <>
+    <div
+      style={{
+        position: 'fixed',
+        inset: 0,
+        pointerEvents: 'none',
+        zIndex: 9999,
+        opacity: isIdle ? 0 : 1,
+        transition: 'opacity 0.6s ease',
+      }}
+    >
       {/* Trail particles */}
       {trail.map((point, index) => (
         <div
@@ -200,6 +242,6 @@ export function CustomCursor() {
           }}
         />
       )}
-    </>
+    </div>
   );
 }
