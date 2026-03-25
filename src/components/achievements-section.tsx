@@ -1,6 +1,7 @@
-import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+
 import { Trophy, Zap, Code, Cloud, BrainCircuit, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 const achievements = [
   {
@@ -44,49 +45,52 @@ export function AchievementsSection() {
             A few of my proudest accomplishments and experiences.
           </p>
         </div>
-        <div className="relative space-y-12">
+        <div className="relative space-y-16 md:space-y-12">
           {/* Vertical line for the timeline effect */}
-          <div className="absolute left-1/2 hidden md:block w-0.5 h-full bg-primary/20 transform -translate-x-1/2"></div>
+          <div className="absolute left-[23px] md:left-1/2 w-[2px] h-full bg-gradient-to-b from-primary/5 via-primary/20 to-primary/5 transform md:-translate-x-1/2"></div>
           
           {achievements.map((achievement, index) => (
-            <div 
+            <motion.div 
               key={index} 
-              className="relative md:grid md:grid-cols-2 md:gap-12 items-center group"
-              style={{ animation: `float 2s ease-in-out infinite`, animationDelay: `${index * 0.2}s` }}
+              className="relative flex flex-col md:grid md:grid-cols-2 md:gap-12 items-start md:items-center group"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.7, type: "spring", bounce: 0.4, delay: index * 0.1 }}
             >
               {/* Icon and Connector */}
-              <div className={`flex items-center gap-6 ${index % 2 === 0 ? 'md:col-start-1 md:justify-end' : 'md:col-start-2 md:justify-start'}`}>
+              <div className={`absolute left-0 top-0 md:relative flex items-center md:gap-6 z-10 ${index % 2 === 0 ? 'md:col-start-1 md:justify-end' : 'md:col-start-2 md:justify-start'}`}>
                 <div className="hidden md:block w-6 h-0.5 bg-primary/20"></div>
                 <div 
-                  className="relative p-3 rounded-full bg-card border border-primary/30 z-10"
+                  className="relative w-12 h-12 flex items-center justify-center rounded-full bg-background border-2 border-primary/40 group-hover:border-primary transition-colors shadow-sm"
                 >
-                  {achievement.icon}
+                    <span className="absolute inset-0 rounded-full bg-primary/20 animate-ping opacity-20 duration-1000"></span>
+                    <div className="relative z-10 w-6 h-6 flex items-center justify-center">
+                      {achievement.icon}
+                    </div>
                 </div>
                 <div className="hidden md:block w-6 h-0.5 bg-primary/20"></div>
               </div>
               
-              {/* Card Content */}
+              {/* Content Block */}
               <div 
-                className={`relative ${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1 md:row-start-1'}`}
+                className={`w-full pl-16 md:pl-0 min-h-[48px] flex flex-col md:block overflow-visible ${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1 md:row-start-1'}`}
               >
-                <div className="relative group animated-gradient-border rounded-2xl h-full transition-transform duration-300 hover:scale-105">
-                  <Card className="p-6 bg-card rounded-xl shadow-lg h-full">
-                    <CardHeader className="p-0">
-                      <div className="flex justify-between items-start">
-                        <CardTitle>{achievement.title}</CardTitle>
-                        {achievement.link && (
-                          <Link href={achievement.link} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors flex-shrink-0 ml-4">
-                            <ExternalLink className="w-5 h-5" />
-                            <span className="sr-only">View Certificate</span>
-                          </Link>
-                        )}
-                      </div>
-                    </CardHeader>
-                    <CardDescription className="text-muted-foreground mt-2">{achievement.description}</CardDescription>
-                  </Card>
+                <div className="relative group w-full py-1 md:p-6 md:clip-card transition-all duration-300 bg-transparent md:bg-card/50 md:border md:border-primary/20 md:hover:border-primary md:hover:bg-card md:hover:shadow-md md:hover:shadow-primary/10">
+                  <h3 className="text-xl md:text-2xl font-bold tracking-tight text-primary md:text-foreground md:group-hover:text-primary transition-colors mb-3 md:mb-4">
+                    {achievement.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-4">
+                    {achievement.description}
+                  </p>
+                  {achievement.link && (
+                    <Link href={achievement.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary font-medium text-sm hover:text-primary/80 transition-colors">
+                      View Details <ExternalLink className="w-4 h-4" />
+                    </Link>
+                  )}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

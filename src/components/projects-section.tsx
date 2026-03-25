@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import type { GitHubRepo } from '@/types';
 import { ProjectCard } from './project-card';
 import { FolderKanban } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface ProjectsSectionProps {
   repos: GitHubRepo[];
@@ -69,10 +70,13 @@ export function ProjectsSection({ repos }: ProjectsSectionProps) {
         <div className="relative space-y-12">
           <div className="absolute left-1/2 hidden md:block w-0.5 h-full bg-primary/20 transform -translate-x-1/2 transition-all duration-500"></div>
           {filteredRepos.map((repo, index) => (
-            <div 
+            <motion.div 
               key={repo.id} 
               className="relative md:grid md:grid-cols-2 md:gap-12 items-start group"
-              style={{ animation: `float 2s ease-in-out infinite`, animationDelay: `${index * 0.2}s` }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.35, delay: Math.min(index * 0.05, 0.4), ease: 'easeOut' }}
             >
               <div className={`hidden md:flex items-center gap-6 ${index % 2 === 0 ? 'col-start-1 justify-end' : 'col-start-2 justify-start'}`}>
                 <div className="w-6 h-0.5 bg-primary/20"></div>
@@ -84,11 +88,11 @@ export function ProjectsSection({ repos }: ProjectsSectionProps) {
                 <div className="w-6 h-0.5 bg-primary/20"></div>
               </div>
               <div 
-                className={`relative transition-transform duration-300 hover:scale-105 ${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1 md:row-start-1'}`}
+                className={`relative transition-transform duration-300 md:hover:scale-105 ${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1 md:row-start-1'}`}
               >
                 <ProjectCard repo={repo} />
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

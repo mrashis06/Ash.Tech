@@ -2,10 +2,10 @@
 "use client";
 
 import type { MediumPost } from '@/types';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { Rss } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface BlogsSectionProps {
   blogs: MediumPost[];
@@ -30,10 +30,13 @@ export function BlogsSection({ blogs }: BlogsSectionProps) {
         <div className="relative space-y-12">
           <div className="absolute left-1/2 hidden md:block w-0.5 h-full bg-primary/20 transform -translate-x-1/2"></div>
           {blogs.slice(0, 3).map((post, index) => (
-            <div 
+            <motion.div 
               key={post.guid} 
               className="relative md:grid md:grid-cols-2 md:gap-12 items-start group"
-              style={{ animation: `float 2s ease-in-out infinite`, animationDelay: `${index * 0.2}s` }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <div className={`hidden md:flex items-center gap-6 ${index % 2 === 0 ? 'col-start-1 justify-end' : 'col-start-2 justify-start'}`}>
                 <div className="w-6 h-0.5 bg-primary/20"></div>
@@ -48,28 +51,27 @@ export function BlogsSection({ blogs }: BlogsSectionProps) {
               <div 
                 className={`relative ${index % 2 === 0 ? 'md:col-start-2' : 'md:col-start-1 md:row-start-1'}`}
               >
-                <div className="relative group animated-gradient-border rounded-2xl h-full transition-transform duration-300 hover:scale-105">
-                  <Card className="flex flex-col h-full bg-card rounded-xl">
-                    <CardHeader>
-                      <CardTitle className="text-lg md:text-xl h-20 line-clamp-3">{post.title}</CardTitle>
-                      <CardDescription className="h-24 line-clamp-4">{createSnippet(post.content)}</CardDescription>
-                    </CardHeader>
-                    <CardContent className="flex-grow">
-                      <div className="flex flex-wrap gap-2">
-                        {post.categories.slice(0, 3).map((tag) => (
-                          <Badge key={tag} variant="secondary">{tag}</Badge>
-                        ))}
-                      </div>
-                    </CardContent>
-                    <CardFooter>
-                      <Link href={post.link} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-primary hover:underline">
+                <div className="clip-card relative group flex flex-col h-full p-5 md:p-6 transition-all duration-300 bg-card/50 border border-primary/20 hover:border-primary hover:bg-card hover:shadow-md hover:shadow-primary/10">
+                  <div className="mb-4">
+                    <h3 className="text-lg md:text-xl font-bold h-auto md:h-20 line-clamp-3 group-hover:text-primary transition-colors">{post.title}</h3>
+                    <p className="text-muted-foreground text-sm h-auto md:h-24 line-clamp-4 mt-2">{createSnippet(post.content)}</p>
+                  </div>
+                  <div className="flex-grow flex flex-col justify-end">
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {post.categories.slice(0, 3).map((tag) => (
+                        <Badge key={tag} variant="secondary" className="bg-secondary/50">{tag}</Badge>
+                      ))}
+                    </div>
+                    <div>
+                      <Link href={post.link} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-primary hover:underline inline-flex items-center">
                         Read More
+                        <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                       </Link>
-                    </CardFooter>
-                  </Card>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

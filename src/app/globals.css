@@ -116,6 +116,19 @@ a, button {
   .animate-fade-in {
     animation: fade-in 0.3s ease-in-out forwards;
   }
+
+  /* Clipped corner card — top-left and bottom-right corners diagonally cut */
+  .clip-card {
+    clip-path: polygon(
+      40px 0%,
+      100% 0%,
+      100% calc(100% - 40px),
+      calc(100% - 40px) 100%,
+      0% 100%,
+      0% 40px
+    );
+    border-radius: 0;
+  }
 }
 
 

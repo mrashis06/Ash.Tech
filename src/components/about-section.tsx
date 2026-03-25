@@ -17,7 +17,7 @@ export function AboutSection() {
               alt="Ashis Kumar Rai"
               width={600}
               height={600}
-              className="rounded-full object-cover shadow-lg filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out md:w-[500px] md:h-[500px]"
+              className="w-48 h-48 sm:w-64 sm:h-64 md:w-[500px] md:h-[500px] rounded-full object-cover shadow-lg filter grayscale hover:grayscale-0 transition-all duration-300 ease-in-out"
               data-ai-hint="professional portrait"
             />
           </div>
