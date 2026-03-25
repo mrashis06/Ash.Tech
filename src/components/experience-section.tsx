@@ -70,7 +70,7 @@ export function ExperienceSection() {
             className="relative flex flex-col md:grid md:grid-cols-2 md:gap-16 md:items-center group md:mb-16"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
+            viewport={{ once: false, margin: '-50px' }}
             transition={{ duration: 0.7, type: 'spring', bounce: 0.35, delay: index * 0.08 }}
           >
             {/* Icon Node — left rail on mobile, centred on desktop */}

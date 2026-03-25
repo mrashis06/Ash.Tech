@@ -75,7 +75,7 @@ export function ProjectsSection({ repos }: ProjectsSectionProps) {
               className="relative md:grid md:grid-cols-2 md:gap-12 items-start group"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
+              viewport={{ once: false, margin: "-30px" }}
               transition={{ duration: 0.35, delay: Math.min(index * 0.05, 0.4), ease: 'easeOut' }}
             >
               <div className={`hidden md:flex items-center gap-6 ${index % 2 === 0 ? 'col-start-1 justify-end' : 'col-start-2 justify-start'}`}>

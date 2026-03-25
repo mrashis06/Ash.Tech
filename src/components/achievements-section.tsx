@@ -55,7 +55,7 @@ export function AchievementsSection() {
               className="relative flex flex-col md:grid md:grid-cols-2 md:gap-12 items-start md:items-center group"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: false, margin: "-50px" }}
               transition={{ duration: 0.7, type: "spring", bounce: 0.4, delay: index * 0.1 }}
             >
               {/* Icon and Connector */}
