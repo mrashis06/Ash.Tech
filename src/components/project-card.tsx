@@ -1,16 +1,32 @@
 import Link from 'next/link';
-import { Star, GitFork, ArrowUpRight } from 'lucide-react';
+import { Star, GitFork, ArrowUpRight, Sparkles } from 'lucide-react';
 import type { GitHubRepo } from '@/types';
+import { motion } from 'framer-motion';
 
 interface ProjectCardProps {
   repo: GitHubRepo;
 }
 
+const tagVariants = {
+  hidden: { opacity: 0, x: -12, scale: 0.85 },
+  visible: (i: number) => ({
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    transition: { duration: 0.35, delay: i * 0.06, type: 'spring', bounce: 0.4 },
+  }),
+};
+
 export function ProjectCard({ repo }: ProjectCardProps) {
+  const tags = [repo.appType].filter(Boolean) as string[];
+
   return (
     <div className="flex flex-col h-full group">
       {/* The Dark Box */}
-      <div className="clip-card relative w-full bg-card/40 border border-primary/20 aspect-video flex flex-col items-center justify-center p-6 transition-all duration-300 group-hover:bg-card/60 group-hover:border-primary">
+      <div className="exp-card clip-card relative w-full bg-card/40 border border-primary/20 aspect-video flex flex-col items-center justify-center p-6 transition-all duration-500 group-hover:bg-card/60 group-hover:border-primary group-hover:shadow-xl group-hover:shadow-primary/10 overflow-hidden">
+        {/* Shimmer sweep */}
+        <span className="exp-shimmer" />
+
         {repo.homepage && (
           <Link
             href={repo.homepage}
@@ -45,11 +61,35 @@ export function ProjectCard({ repo }: ProjectCardProps) {
         </div>
       </div>
 
-      {/* Description and GitHub Link */}
+      {/* Description, Tags and GitHub Link */}
       <div className="mt-6 flex flex-col flex-grow px-2">
-        <p className="text-muted-foreground text-sm mb-6 flex-grow line-clamp-3 md:line-clamp-none">
+        <p className="text-muted-foreground text-sm mb-4 flex-grow line-clamp-3 md:line-clamp-none">
           {repo.description}
         </p>
+
+        {/* Staggered tag pop-in — same as experience skills */}
+        {tags.length > 0 && (
+          <motion.div
+            className="flex flex-wrap gap-2 mb-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, margin: '-40px' }}
+            variants={{ visible: { transition: { staggerChildren: 0.07, delayChildren: 0.1 } }, hidden: {} }}
+          >
+            {tags.map((tag, i) => (
+              <motion.span
+                key={i}
+                custom={i}
+                variants={tagVariants}
+                className="inline-flex items-center gap-1 text-xs px-3 py-1 rounded-full border border-primary/30 text-muted-foreground bg-primary/5 hover:bg-primary/20 hover:text-primary hover:border-primary hover:scale-105 transition-all duration-200 cursor-default"
+              >
+                <Sparkles className="w-2.5 h-2.5 opacity-60" />
+                {tag}
+              </motion.span>
+            ))}
+          </motion.div>
+        )}
+
         <Link href={repo.html_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
           View Project
           <ArrowUpRight className="w-4 h-4" />
