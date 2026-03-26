@@ -121,7 +121,7 @@ export function ProjectsSection({ repos }: ProjectsSectionProps) {
           <motion.div
             className="absolute left-1/2 hidden md:block w-0.5 h-full bg-gradient-to-b from-primary/5 via-primary/30 to-primary/5 transform -translate-x-1/2"
             initial={{ scaleY: 0, originY: 0 }}
-            animate={inView ? { scaleY: 1 } : { scaleY: 0 }}
+            animate={inView ? { scaleY: 1 } : undefined}
             transition={{ duration: 1.2, ease: 'easeOut' }}
           />
 

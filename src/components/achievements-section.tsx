@@ -83,12 +83,11 @@ const iconVariants = {
 
 function AchievementCard({ a, index }: { a: typeof achievements[0]; index: number }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: false, margin: '-60px' });
+  const inView = useInView(ref, { once: true, margin: '-60px' });
   const controls = useAnimation();
 
   useEffect(() => {
     if (inView) controls.start('visible');
-    else controls.start('hidden');
   }, [inView, controls]);
 
   const Icon = a.icon;
@@ -133,7 +132,7 @@ function AchievementCard({ a, index }: { a: typeof achievements[0]; index: numbe
           <motion.h3
             className="text-xl md:text-2xl font-bold tracking-tight text-primary md:text-foreground md:group-hover:text-primary transition-colors mb-3 md:mb-4"
             initial={{ opacity: 0, x: index % 2 === 0 ? 30 : -30 }}
-            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? 30 : -30 }}
+            animate={inView ? { opacity: 1, x: 0 } : undefined}
             transition={{ duration: 0.5, delay: 0.15 }}
           >
             {a.title}
@@ -141,7 +140,7 @@ function AchievementCard({ a, index }: { a: typeof achievements[0]; index: numbe
           <motion.p
             className="text-muted-foreground text-sm md:text-base leading-relaxed mb-4"
             initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : { opacity: 0 }}
+            animate={inView ? { opacity: 1 } : undefined}
             transition={{ duration: 0.5, delay: 0.25 }}
           >
             {a.description}
@@ -172,7 +171,7 @@ function AchievementCard({ a, index }: { a: typeof achievements[0]; index: numbe
           {a.link && (
             <motion.div
               initial={{ opacity: 0, y: 8 }}
-              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
+              animate={inView ? { opacity: 1, y: 0 } : undefined}
               transition={{ duration: 0.4, delay: 0.35 }}
             >
               <Link

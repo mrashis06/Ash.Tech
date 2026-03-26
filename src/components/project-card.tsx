@@ -73,7 +73,7 @@ export function ProjectCard({ repo }: ProjectCardProps) {
             className="flex flex-wrap gap-2 mb-4"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, margin: '-40px' }}
+            viewport={{ once: true, margin: '-40px' }}
             variants={{ visible: { transition: { staggerChildren: 0.07, delayChildren: 0.1 } }, hidden: {} }}
           >
             {tags.map((tag, i) => (

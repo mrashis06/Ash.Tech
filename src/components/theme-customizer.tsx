@@ -15,12 +15,12 @@ import { useThemeConfig } from "./theme-provider";
 import { cn } from "@/lib/utils";
 
 const themes = [
-  { name: "green", color: "hsl(142.1 76.2% 36.3%)" },
-  { name: "blue", color: "hsl(217.2 91.2% 59.8%)" },
-  { name: "violet", color: "hsl(262.1 83.3% 57.8%)" },
-  { name: "orange", color: "hsl(24.6 95% 53.1%)" },
-  { name: "red", color: "hsl(0 72.2% 50.6%)" },
-  { name: "cyan", color: "hsl(180 100% 40%)" },
+  { name: "cyan", color: "hsl(188 86% 53%)" },
+  { name: "emerald", color: "hsl(158 80% 42%)" },
+  { name: "indigo", color: "hsl(239 84% 67%)" },
+  { name: "rose", color: "hsl(346 87% 60%)" },
+  { name: "amber", color: "hsl(38 92% 50%)" },
+  { name: "slate", color: "hsl(215 16% 50%)" },
 ];
 
 export function ThemeCustomizer() {
@@ -62,29 +62,6 @@ export function ThemeCustomizer() {
                     <span className="sr-only">{t.name}</span>
                   </Button>
                 ))}
-              </div>
-            </div>
-            <div className="grid grid-cols-3 items-center gap-2">
-              <Label>Mode</Label>
-              <div className="col-span-2 flex items-center space-x-2">
-                <Button
-                  variant={theme === "light" ? "default" : "outline"}
-                  size="icon"
-                  className="h-8 w-8"
-                  onClick={() => setTheme("light")}
-                >
-                  <Sun className="h-4 w-4" />
-                  <span className="sr-only">Light</span>
-                </Button>
-                <Button
-                  variant={theme === "dark" ? "default" : "outline"}
-                  size="icon"
-                  className="h-8 w-8"
-                  onClick={() => setTheme("dark")}
-                >
-                  <Moon className="h-4 w-4" />
-                  <span className="sr-only">Dark</span>
-                </Button>
               </div>
             </div>
           </div>

@@ -16,16 +16,13 @@ export function ScrollAnimation({
   duration = 0.5,
 }: ScrollAnimationProps) {
   const ref = useRef(null);
-  // once: false → re-triggers every time the element enters/exits the viewport
-  const isInView = useInView(ref, { once: false, amount: 0.05 });
+  // once: true → animate in once, never reverse on scroll
+  const isInView = useInView(ref, { once: true, amount: 0.05 });
   const mainControls = useAnimation();
 
   useEffect(() => {
     if (isInView) {
       mainControls.start('visible');
-    } else {
-      // Reverse: slide back down + fade out when scrolled past
-      mainControls.start('hidden');
     }
   }, [isInView, mainControls]);
 

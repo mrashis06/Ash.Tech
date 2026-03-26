@@ -15,29 +15,29 @@ const ThemeConfigContext = React.createContext<ThemeConfig | undefined>(
 );
 
 const themes: { [key: string]: { [key: string]: string } } = {
-  green: {
-    "--primary": "142.1 76.2% 36.3%",
-    "--primary-foreground": "142.1 76.2% 96.3%",
+  emerald: {
+    "--primary": "158 80% 42%",
+    "--primary-foreground": "158 80% 98%",
   },
-  blue: {
-    "--primary": "217.2 91.2% 59.8%",
-    "--primary-foreground": "217.2 91.2% 9.8%",
+  indigo: {
+    "--primary": "239 84% 67%",
+    "--primary-foreground": "239 84% 98%",
   },
-  violet: {
-    "--primary": "262.1 83.3% 57.8%",
-    "--primary-foreground": "262.1 83.3% 97.8%",
+  rose: {
+    "--primary": "346 87% 60%",
+    "--primary-foreground": "346 87% 98%",
   },
-  orange: {
-    "--primary": "24.6 95% 53.1%",
-    "--primary-foreground": "24.6 95% 3.1%",
+  amber: {
+    "--primary": "38 92% 50%",
+    "--primary-foreground": "38 92% 4%",
   },
-  red: {
-    "--primary": "0 72.2% 50.6%",
-    "--primary-foreground": "0 72.2% 90.6%",
+  slate: {
+    "--primary": "215 16% 50%",
+    "--primary-foreground": "215 16% 98%",
   },
   cyan: {
-    "--primary": "180 100% 40%",
-    "--primary-foreground": "240 10% 3.9%",
+    "--primary": "188 86% 53%",
+    "--primary-foreground": "188 86% 4%",
   },
 };
 

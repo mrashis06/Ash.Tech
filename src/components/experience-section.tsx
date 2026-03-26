@@ -89,13 +89,11 @@ function NodePulse() {
 
 function ExperienceCard({ exp, index }: { exp: ExperienceItem; index: number }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: false, margin: '-60px' });
+  const inView = useInView(ref, { once: true, margin: '-60px' });
   const controls = useAnimation();
 
   useEffect(() => {
-    if (inView) controls.start('visible');
-    else controls.start('hidden');
-  }, [inView, controls]);
+    if (inView) controls.start('visible');}, [inView, controls]);
 
   return (
     <motion.div
@@ -215,7 +213,7 @@ export function ExperienceSection() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, margin: '-80px' }}
+        viewport={{ once: true, margin: '-80px' }}
       >
         {/* Desktop: vertical timeline line with animated fill */}
         <motion.div

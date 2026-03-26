@@ -64,12 +64,11 @@ function ReadingBar({ readTime }: { readTime: number }) {
 
 function BlogCard({ post, index }: { post: MediumPost; index: number }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: false, margin: '-60px' });
+  const inView = useInView(ref, { once: true, margin: '-60px' });
   const controls = useAnimation();
 
   useEffect(() => {
     if (inView) controls.start('visible');
-    else controls.start('hidden');
   }, [inView, controls]);
 
   const readTime = estimateReadTime(post.content || '');
@@ -119,7 +118,7 @@ function BlogCard({ post, index }: { post: MediumPost; index: number }) {
           <motion.span
             className="blog-num-badge"
             initial={{ opacity: 0, scale: 0 }}
-            animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+            animate={inView ? { opacity: 1, scale: 1 } : undefined}
             transition={{ type: 'spring', stiffness: 300, delay: 0.2 }}
           >
             0{index + 1}
@@ -129,7 +128,7 @@ function BlogCard({ post, index }: { post: MediumPost; index: number }) {
             <motion.h3
               className="text-lg md:text-xl font-bold h-auto md:h-20 line-clamp-3 group-hover:text-primary transition-colors duration-300"
               initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
-              animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
+              animate={inView ? { opacity: 1, x: 0 } : undefined}
               transition={{ duration: 0.45, delay: 0.1 }}
             >
               {post.title}
@@ -137,7 +136,7 @@ function BlogCard({ post, index }: { post: MediumPost; index: number }) {
             <motion.p
               className="text-muted-foreground text-sm line-clamp-3 mt-2 leading-relaxed"
               initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : { opacity: 0 }}
+              animate={inView ? { opacity: 1 } : undefined}
               transition={{ duration: 0.45, delay: 0.2 }}
             >
               {createSnippet(post.content)}

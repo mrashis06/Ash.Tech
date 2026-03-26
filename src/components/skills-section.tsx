@@ -52,13 +52,11 @@ const cardVariants = {
 /* ─── skill card ─── */
 function SkillCard({ name, icon, index }: { name: string; icon: string; index: number }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: false, margin: '-40px' });
+  const inView = useInView(ref, { once: true, margin: '-40px' });
   const controls = useAnimation();
 
   useEffect(() => {
-    if (inView) controls.start('visible');
-    else controls.start('hidden');
-  }, [inView, controls]);
+    if (inView) controls.start('visible');}, [inView, controls]);
 
   return (
     <motion.div
@@ -80,7 +78,7 @@ function SkillCard({ name, icon, index }: { name: string; icon: string; index: n
         {/* icon — greyscale fades to colour on inView */}
         <motion.div
           initial={{ filter: 'grayscale(1)', opacity: 0.5 }}
-          animate={inView ? { filter: 'grayscale(0)', opacity: 1 } : { filter: 'grayscale(1)', opacity: 0.5 }}
+          animate={inView ? { filter: 'grayscale(0)', opacity: 1 } : {}}
           transition={{ duration: 0.55, delay: index * 0.06 }}
           className="relative z-10"
         >
@@ -109,21 +107,21 @@ function SkillCategory({ title, Icon, skills, catIdx }: {
   title: string; Icon: React.ElementType; skills: typeof programmingLanguages; catIdx: number;
 }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: false, margin: '-60px' });
+  const inView = useInView(ref, { once: true, margin: '-60px' });
 
   return (
     <motion.div
       ref={ref}
       variants={categoryVariants}
       initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
+      animate={inView ? 'visible' : undefined}
       transition={{ delay: catIdx * 0.12 }}
     >
       {/* category header */}
       <motion.div
         className="flex items-center justify-center gap-2 mb-8"
         initial={{ opacity: 0, x: -20 }}
-        animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+        animate={inView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.45, delay: catIdx * 0.1 + 0.1 }}
       >
         <div className="h-px flex-1 max-w-[80px] bg-gradient-to-r from-transparent to-primary/30" />
