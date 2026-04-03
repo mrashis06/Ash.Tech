@@ -553,6 +553,12 @@ a, button {
   to   { transform: rotate(360deg); }
 }
 
+@keyframes about-border-spin {
+  from { --about-border-angle: 0deg; transform: rotate(0deg); }
+  to   { --about-border-angle: 360deg; transform: rotate(360deg); }
+}
+
+
 /* Shimmer overlay on the profile image on hover */
 .about-img-shimmer {
   position: absolute;

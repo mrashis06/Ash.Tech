@@ -51,7 +51,7 @@ export function AboutSection() {
         {/* ── Main editorial grid ── */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-12 lg:gap-24 xl:gap-32">
 
-          {/* ══ LEFT: Framed Image ══ */}
+          {/* ══ LEFT: Cinematic Framed Image ══ */}
           <motion.div
             className="flex-shrink-0 flex justify-center lg:justify-start lg:pl-4"
             initial={{ opacity: 0, x: -50 }}
@@ -59,62 +59,66 @@ export function AboutSection() {
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.75, type: 'spring', bounce: 0.22 }}
           >
-            {/* Safe bounding container */}
-            <div className="relative flex justify-center items-center group p-4 sm:p-8">
-              
-              {/* UNIQUE IDEA: Ambient Photographic Light Reflection (Apple UI Style)
-                  Instead of a fake CSS color glow, we use a deeply blurred duplicate of your exact 
-                  photograph to cast a perfectly color-matched, highly premium ambient shadow. */}
-              <motion.div 
-                className="absolute inset-0 z-0 flex items-center justify-center opacity-60 group-hover:opacity-90 transition-opacity duration-700 pointer-events-none"
-                animate={{ 
-                  scale: [0.95, 1.05, 0.95],
-                  rotate: [0, 1, -1, 0]
-                }}
-                transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <div className="w-[200px] h-[260px] sm:w-[260px] sm:h-[340px] lg:w-[310px] lg:h-[400px] rounded-full blur-[40px] border-none overflow-hidden">
-                  <Image
-                    src="/profile-new.jpeg"
-                    alt="Ashis Reflection"
-                    width={480}
-                    height={580}
-                    className="w-full h-full object-cover object-top opacity-80 grayscale group-hover:grayscale-0 group-active:grayscale-0 transition-all duration-700 ease-in-out"
-                  />
-                </div>
-              </motion.div>
+            {/* Outer padding + group for hover effects */}
+            <div className="relative flex justify-center items-center group p-6 sm:p-10">
 
-              {/* Top Layer: The Flawless Core Image Carrier */}
+              {/* Static subtle border (always visible) */}
+              <div
+                className="absolute z-10 rounded-[2rem] pointer-events-none border border-white/10 group-hover:border-primary/30 transition-colors duration-500"
+                style={{ inset: 0 }}
+              />
+
+              {/* ── 3. Main card — slight editorial tilt, straightens on hover ── */}
               <motion.div
-                className="relative overflow-hidden rounded-[1.8rem] bg-card z-10 border border-white/10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)]"
-                whileHover={{ scale: 1.03, y: -8 }}
-                transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+                className="relative z-20 overflow-hidden bg-card shadow-[0_32px_64px_-12px_rgba(0,0,0,0.85)]"
+                style={{ borderRadius: '1.75rem' }}
+                initial={{ rotate: -2 }}
+                whileInView={{ rotate: -2 }}
+                whileHover={{ rotate: 0, scale: 1.03, y: -8 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 22 }}
               >
-                <div className="w-[250px] h-[320px] sm:w-[310px] sm:h-[400px] lg:w-[360px] lg:h-[460px] relative">
+                {/* Photo */}
+                <div className="w-[250px] h-[333px] sm:w-[300px] sm:h-[400px] lg:w-[352px] lg:h-[469px] relative">
                   <Image
                     src="/profile-new.jpeg"
                     alt="Ashis Kumar Rai"
                     fill
-                    sizes="(max-width: 640px) 250px, (max-width: 1024px) 310px, 360px"
+                    sizes="(max-width: 640px) 250px, (max-width: 1024px) 300px, 352px"
                     className="object-cover object-top grayscale group-hover:grayscale-0 group-active:grayscale-0 transition-all duration-700 ease-in-out"
                     data-ai-hint="professional portrait"
                     priority
                   />
-                  
-                  {/* The Unique Animated Luxury Glass Foil Sweep */}
-                  <div 
-                    className="absolute inset-0 pointer-events-none z-20 opacity-30 group-hover:opacity-60 transition-opacity duration-700" 
+
+                  {/* Grain / noise texture for editorial feel */}
+                  <div
+                    className="absolute inset-0 pointer-events-none z-10 opacity-[0.18] mix-blend-overlay"
                     style={{
-                      backgroundImage: 'linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.03) 45%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.03) 55%, transparent 65%)',
-                      backgroundSize: '250% 100%',
-                      animation: 'glass-shimmer-diagonal 5s linear infinite'
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+                      backgroundSize: '180px 180px',
                     }}
                   />
-                  
-                  {/* Sleek Inner Shadow Reflection for 3D depth */}
-                  <div className="absolute inset-0 shadow-[inset_0_1.5px_2px_rgba(255,255,255,0.2),inset_0_-1px_3px_rgba(0,0,0,0.4)] pointer-events-none" />
+
+                  {/* Glass foil diagonal shimmer sweep */}
+                  <div
+                    className="absolute inset-0 pointer-events-none z-20 opacity-25 group-hover:opacity-50 transition-opacity duration-700"
+                    style={{
+                      backgroundImage: 'linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.03) 45%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0.03) 55%, transparent 65%)',
+                      backgroundSize: '250% 100%',
+                      animation: 'glass-shimmer-diagonal 5s linear infinite',
+                    }}
+                  />
+
+                  {/* Subtle bottom vignette for depth */}
+                  <div
+                    className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none z-30"
+                    style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 100%)' }}
+                  />
+
+                  {/* Inner shadow for 3-D depth */}
+                  <div className="absolute inset-0 shadow-[inset_0_1.5px_2px_rgba(255,255,255,0.18),inset_0_-1px_3px_rgba(0,0,0,0.5)] pointer-events-none z-50" />
                 </div>
               </motion.div>
+
 
             </div>
           </motion.div>

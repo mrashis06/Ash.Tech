@@ -3,7 +3,7 @@
 import { useState, useMemo, useRef } from 'react';
 import type { GitHubRepo } from '@/types';
 import { ProjectCard } from './project-card';
-import { FolderKanban, Layers } from 'lucide-react';
+import { FolderKanban, Layers, Smartphone, Globe, Bot, Grid3X3 } from 'lucide-react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 
 interface ProjectsSectionProps {
@@ -26,6 +26,14 @@ const rowVariants = {
   exit: { opacity: 0, y: -20, scale: 0.96, transition: { duration: 0.25 } },
 };
 
+const CATEGORY_META: Record<string, { icon: React.ElementType; label: string; shortLabel: string }> = {
+  All:      { icon: Grid3X3,    label: 'All',    shortLabel: 'All' },
+  Mobile:   { icon: Smartphone, label: 'Mobile', shortLabel: 'Mobile' },
+  Web:      { icon: Globe,      label: 'Web',    shortLabel: 'Web' },
+  'AI & ML':{ icon: Bot,        label: 'AI & ML',shortLabel: 'AI/ML' },
+  Other:    { icon: Layers,     label: 'Other',  shortLabel: 'Other' },
+};
+
 export function ProjectsSection({ repos }: ProjectsSectionProps) {
   const [activeCategory, setActiveCategory] = useState('All');
   const categories = ['All', 'Mobile', 'Web', 'AI & ML', 'Other'];
@@ -46,6 +54,8 @@ export function ProjectsSection({ repos }: ProjectsSectionProps) {
     if (activeCategory === 'All') return repos;
     return repos.filter(r => (r.appType || 'Other') === activeCategory);
   }, [repos, activeCategory]);
+
+  const visibleCategories = categories.filter(c => c === 'All' || (categoryCounts[c] || 0) > 0);
 
   return (
     <section id="projects" className="w-full py-12 md:py-24 overflow-hidden">
@@ -74,45 +84,136 @@ export function ProjectsSection({ repos }: ProjectsSectionProps) {
           </p>
         </motion.div>
 
-        {/* Category Filter */}
+        {/* ── Premium Category Filter ── */}
         <motion.div
-          className="flex justify-center mb-12"
-          initial={{ opacity: 0, y: 18 }}
+          className="w-full flex justify-center mb-12 px-4 sm:px-0"
+          initial={{ opacity: 0, y: 22 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15 }}
+          transition={{ duration: 0.55, delay: 0.18, ease: 'easeOut' }}
         >
-          <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2 p-1.5 sm:p-2 border border-primary/20 rounded-[2rem] bg-card overflow-hidden">
-            {categories.map(category => {
-              const count = categoryCounts[category] || 0;
-              if (count === 0 && category !== 'All') return null;
-              const isActive = activeCategory === category;
-              return (
-                <motion.button
-                  key={category}
-                  onClick={() => setActiveCategory(category)}
-                  className={`relative flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
-                    isActive
-                      ? 'bg-primary text-primary-foreground shadow-sm shadow-primary/20'
-                      : 'text-muted-foreground hover:text-foreground hover:bg-primary/5 border-transparent'
-                  }`}
-                  whileTap={{ scale: 0.94 }}
-                  whileHover={{ scale: isActive ? 1 : 1.04 }}
+          {/* Scroll-fade wrapper — masks edges on mobile */}
+          <div
+            className="relative max-w-full"
+            style={{
+              WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)',
+              maskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)',
+            }}
+          >
+            {/* Scrollable row */}
+            <div className="overflow-x-auto pb-0.5 scrollbar-none" style={{ scrollbarWidth: 'none' }}>
+              {/* Outer glow ring */}
+              <div className="relative p-[1.5px] rounded-[2.5rem] inline-flex"
+                style={{
+                  background: 'linear-gradient(135deg, hsl(var(--primary)/0.55) 0%, transparent 50%, hsl(var(--primary)/0.25) 100%)',
+                }}
+              >
+                {/* Inner pill container */}
+                <div
+                  className="relative flex items-center gap-0.5 p-1 sm:p-1.5 rounded-[2.5rem] overflow-hidden"
+                  style={{ background: 'hsl(var(--card)/0.85)', backdropFilter: 'blur(16px)' }}
                 >
-                  {isActive && (
-                    <motion.span
-                      className="absolute inset-0 rounded-full bg-primary/20 blur-md"
-                      layoutId="filter-glow"
-                      transition={{ type: 'spring', stiffness: 300, damping: 24 }}
-                    />
-                  )}
-                  <span className="relative">{category}</span>
-                  <span className={`relative text-xs font-normal opacity-80 ${isActive ? 'text-primary-foreground' : 'text-muted-foreground'}`}>
-                    {count}
-                  </span>
-                </motion.button>
-              );
-            })}
+              {/* Ambient background shimmer strip */}
+              <span
+                className="pointer-events-none absolute inset-0 opacity-30"
+                style={{
+                  background: 'radial-gradient(ellipse 80% 60% at 50% 50%, hsl(var(--primary)/0.18) 0%, transparent 70%)',
+                }}
+              />
+
+              {visibleCategories.map((category, idx) => {
+                const count = categoryCounts[category] || 0;
+                const isActive = activeCategory === category;
+                const { icon: Icon, shortLabel } = CATEGORY_META[category];
+                return (
+                  <div key={category} className="flex items-center">
+                    {/* Faint divider between items (not before first) */}
+                    {idx > 0 && (
+                      <span
+                        className="w-px h-4 rounded-full mx-0.5 shrink-0"
+                        style={{ background: 'hsl(var(--primary)/0.18)' }}
+                      />
+                    )}
+
+                    <motion.button
+                      onClick={() => setActiveCategory(category)}
+                      className="relative flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold select-none focus:outline-none whitespace-nowrap"
+                      style={{ color: isActive ? 'hsl(var(--primary-foreground))' : 'hsl(var(--muted-foreground))' }}
+                      whileTap={{ scale: 0.93 }}
+                      whileHover={!isActive ? { scale: 1.05 } : {}}
+                      transition={{ type: 'spring', stiffness: 380, damping: 22 }}
+                    >
+                      {/* Sliding pill background */}
+                      {isActive && (
+                        <motion.span
+                          layoutId="filter-pill"
+                          className="absolute inset-0 rounded-full"
+                          style={{
+                            background: 'linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary)/0.8) 100%)',
+                            boxShadow: '0 0 18px 4px hsl(var(--primary)/0.35), 0 2px 8px hsl(var(--primary)/0.4)',
+                          }}
+                          transition={{ type: 'spring', stiffness: 340, damping: 28 }}
+                        />
+                      )}
+
+                      {/* Hover shimmer on inactive */}
+                      {!isActive && (
+                        <motion.span
+                          className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100"
+                          style={{ background: 'hsl(var(--primary)/0.08)' }}
+                          whileHover={{ opacity: 1 }}
+                          initial={{ opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                        />
+                      )}
+
+                      {/* Icon */}
+                      <motion.span
+                        className="relative z-10"
+                        animate={{ rotate: isActive ? [0, -8, 8, 0] : 0 }}
+                        transition={{ duration: 0.4, delay: 0.05 }}
+                      >
+                        <Icon
+                          className="w-3.5 h-3.5 shrink-0"
+                          style={{
+                            color: isActive ? 'hsl(var(--primary-foreground))' : 'hsl(var(--muted-foreground))',
+                            filter: isActive ? 'drop-shadow(0 0 4px hsl(var(--primary-foreground)/0.5))' : 'none',
+                          }}
+                        />
+                      </motion.span>
+
+                      {/* Label — short on xs, full on sm+ */}
+                      <span className="relative z-10 tracking-wide sm:hidden">{shortLabel}</span>
+                      <span className="relative z-10 tracking-wide hidden sm:inline">{category}</span>
+
+                      {/* Count badge */}
+                      <motion.span
+                        className="relative z-10 inline-flex items-center justify-center min-w-[1.35rem] h-[1.35rem] rounded-full text-[0.65rem] font-bold px-1 tabular-nums"
+                        style={{
+                          background: isActive
+                            ? 'hsl(var(--primary-foreground)/0.18)'
+                            : 'hsl(var(--primary)/0.12)',
+                          color: isActive
+                            ? 'hsl(var(--primary-foreground)/0.9)'
+                            : 'hsl(var(--primary))',
+                          border: isActive
+                            ? '1px solid hsl(var(--primary-foreground)/0.2)'
+                            : '1px solid hsl(var(--primary)/0.25)',
+                          backdropFilter: 'blur(6px)',
+                        }}
+                        initial={false}
+                        animate={{ scale: isActive ? [1, 1.2, 1] : 1 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {count}
+                      </motion.span>
+                    </motion.button>
+                  </div>
+                );
+              })}
+                </div>
+              </div>
+            </div>
           </div>
         </motion.div>
 
