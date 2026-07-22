@@ -55,9 +55,13 @@ export function Footer() {
               <span className="sr-only">Medium</span>
             </Link>
         </div>
-        <div className="text-center text-sm text-muted-foreground">
-          <p>Designed & Built by Ashis Kumar Rai</p>
-          <p>&copy; {new Date().getFullYear()}. All Rights Reserved.</p>
+        <div className="text-center text-sm text-muted-foreground space-y-1">
+          <p className="flex items-center justify-center gap-1.5 font-medium text-foreground/90">
+            <span>Designed & Built with</span>
+            <span className="text-red-500 animate-pulse text-base inline-block">❤️</span>
+            <span>by Ashis Kumar Rai</span>
+          </p>
+          <p className="text-xs text-muted-foreground">&copy; {new Date().getFullYear()}. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

@@ -194,6 +194,55 @@ a, button {
   100% { opacity: 0.9; }
 }
 
+@keyframes logo-flicker {
+  0% {
+    opacity: 0.1;
+    filter: drop-shadow(0 0 2px transparent);
+    transform: scale(0.96);
+  }
+  3% {
+    opacity: 1;
+    filter: drop-shadow(0 0 15px hsl(var(--primary) / 0.8)) drop-shadow(0 0 35px hsl(var(--primary) / 0.4));
+    transform: scale(1);
+  }
+  8% {
+    opacity: 0.2;
+    filter: drop-shadow(0 0 2px transparent);
+  }
+  12% {
+    opacity: 1;
+    filter: drop-shadow(0 0 20px hsl(var(--primary) / 0.9)) drop-shadow(0 0 45px hsl(var(--primary) / 0.5));
+  }
+  16% {
+    opacity: 0.3;
+    filter: drop-shadow(0 0 5px hsl(var(--primary) / 0.3));
+  }
+  24% {
+    opacity: 1;
+    filter: drop-shadow(0 0 25px hsl(var(--primary) / 0.9)) drop-shadow(0 0 55px hsl(var(--primary) / 0.6));
+  }
+  70% {
+    opacity: 0.85;
+    filter: drop-shadow(0 0 20px hsl(var(--primary) / 0.7)) drop-shadow(0 0 40px hsl(var(--primary) / 0.4));
+  }
+  74% {
+    opacity: 0.35;
+  }
+  80% {
+    opacity: 1;
+    filter: drop-shadow(0 0 30px hsl(var(--primary) / 1)) drop-shadow(0 0 65px hsl(var(--primary) / 0.7));
+  }
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 25px hsl(var(--primary) / 0.85)) drop-shadow(0 0 50px hsl(var(--primary) / 0.5));
+    transform: scale(1);
+  }
+}
+
+.animate-logo-flicker {
+  animation: logo-flicker 1.8s ease-in-out forwards;
+}
+
 @keyframes float {
   0% {
     transform: translateY(0px);

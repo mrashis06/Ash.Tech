@@ -2,8 +2,7 @@
 'use client';
 
 import Image from 'next/image';
-import { motion, useAnimation, useInView } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { Code2, Layers, Server } from 'lucide-react';
 
 const programmingLanguages = [
@@ -32,107 +31,60 @@ const skillCategories = [
   { title: 'Backend & Cloud',       Icon: Server,  skills: backendSkills },
 ];
 
-/* ─── variants ─── */
-const categoryVariants = {
-  hidden: { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 28, scale: 0.88, rotate: -3 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    rotate: 0,
-    transition: { duration: 0.45, delay: i * 0.08, type: 'spring', bounce: 0.38 },
-  }),
-};
-
-/* ─── skill card ─── */
+/* ─── Classic Minimal Skill Card ─── */
 function SkillCard({ name, icon, index }: { name: string; icon: string; index: number }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-40px' });
-  const controls = useAnimation();
-
-  useEffect(() => {
-    if (inView) controls.start('visible');}, [inView, controls]);
-
   return (
     <motion.div
-      ref={ref}
-      custom={index}
-      variants={cardVariants}
-      initial="hidden"
-      animate={controls}
-      className="relative group animated-gradient-border rounded-2xl w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32"
-      style={{ animationDelay: `${index * 0.12}s` }}
-      whileHover={{ y: -6, scale: 1.07 }}
-      transition={{ type: 'spring', stiffness: 280, damping: 16 }}
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: index * 0.05, ease: 'easeOut' }}
+      whileHover={{ y: -3 }}
+      className="group relative flex flex-col items-center justify-center gap-2.5 px-4 py-3.5 sm:px-5 sm:py-4 rounded-2xl bg-card/60 border border-border/50 backdrop-blur-md shadow-sm hover:border-primary/40 hover:bg-card/90 hover:shadow-md transition-all duration-200 min-w-[110px] sm:min-w-[125px] md:min-w-[135px] max-w-[170px] flex-1 sm:flex-none cursor-pointer"
     >
-      {/* inner card */}
-      <div className="skill-inner flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-card h-full overflow-hidden">
-        {/* shimmer sweep */}
-        <span className="exp-shimmer" />
-
-        {/* icon — greyscale fades to colour on inView */}
-        <motion.div
-          initial={{ filter: 'grayscale(1)', opacity: 0.5 }}
-          animate={inView ? { filter: 'grayscale(0)', opacity: 1 } : {}}
-          transition={{ duration: 0.55, delay: index * 0.06 }}
-          className="relative z-10"
-        >
-          <Image
-            src={icon}
-            alt={name}
-            width={48}
-            height={48}
-            className="w-10 h-10 sm:w-12 sm:h-12 group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.6)] transition-all duration-300"
-          />
-        </motion.div>
-
-        <span className="relative z-10 text-[11px] sm:text-sm font-medium text-center group-hover:text-primary transition-colors duration-300">
-          {name}
-        </span>
-
-        {/* bottom glow on hover */}
-        <span className="skill-glow" />
+      {/* Icon */}
+      <div className="relative flex items-center justify-center">
+        <Image
+          src={icon}
+          alt={name}
+          width={40}
+          height={40}
+          className="w-8 h-8 sm:w-9 sm:h-9 object-contain transition-transform duration-200 group-hover:scale-105"
+        />
       </div>
+
+      {/* Skill Name */}
+      <span className="text-xs sm:text-sm font-semibold text-center text-foreground/90 group-hover:text-primary transition-colors duration-200 whitespace-nowrap">
+        {name}
+      </span>
     </motion.div>
   );
 }
 
-/* ─── category block ─── */
+/* ─── Category Block ─── */
 function SkillCategory({ title, Icon, skills, catIdx }: {
   title: string; Icon: React.ElementType; skills: typeof programmingLanguages; catIdx: number;
 }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-60px' });
-
   return (
     <motion.div
-      ref={ref}
-      variants={categoryVariants}
-      initial="hidden"
-      animate={inView ? 'visible' : undefined}
-      transition={{ delay: catIdx * 0.12 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: catIdx * 0.1, ease: 'easeOut' }}
+      className="space-y-6"
     >
-      {/* category header */}
-      <motion.div
-        className="flex items-center justify-center gap-2 mb-8"
-        initial={{ opacity: 0, x: -20 }}
-        animate={inView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.45, delay: catIdx * 0.1 + 0.1 }}
-      >
-        <div className="h-px flex-1 max-w-[80px] bg-gradient-to-r from-transparent to-primary/30" />
-        <div className="flex items-center gap-2">
-          <Icon className="w-5 h-5 text-primary" />
-          <h3 className="text-xl md:text-2xl font-bold">{title}</h3>
+      {/* Category Header */}
+      <div className="flex items-center justify-center gap-4">
+        <div className="h-px flex-1 max-w-[80px] sm:max-w-[120px] bg-border/50" />
+        <div className="flex items-center gap-2 text-foreground font-headline">
+          <Icon className="w-4 h-4 text-primary" />
+          <h3 className="text-base sm:text-lg font-bold">{title}</h3>
         </div>
-        <div className="h-px flex-1 max-w-[80px] bg-gradient-to-l from-transparent to-primary/30" />
-      </motion.div>
+        <div className="h-px flex-1 max-w-[80px] sm:max-w-[120px] bg-border/50" />
+      </div>
 
-      <div className="flex flex-wrap justify-center gap-4 md:gap-8">
+      {/* Cards Grid */}
+      <div className="flex flex-wrap justify-center items-center gap-3.5 sm:gap-4 md:gap-5">
         {skills.map((skill, index) => (
           <SkillCard key={skill.name} name={skill.name} icon={skill.icon} index={index} />
         ))}
@@ -143,33 +95,27 @@ function SkillCategory({ title, Icon, skills, catIdx }: {
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="w-full py-12 md:py-24 overflow-hidden">
-      <div className="container px-4 md:px-6">
+    <section id="skills" className="w-full py-16 md:py-24 bg-background border-t border-border/40">
+      <div className="container px-4 md:px-6 max-w-5xl mx-auto">
 
-        {/* Section header */}
+        {/* Section Header */}
         <motion.div
           className="text-center mb-14"
-          initial={{ opacity: 0, y: -24 }}
+          initial={{ opacity: 0, y: -16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
         >
-          <motion.p
-            className="text-sm uppercase tracking-widest text-primary mb-2 font-medium"
-            initial={{ opacity: 0, letterSpacing: '0.1em' }}
-            whileInView={{ opacity: 1, letterSpacing: '0.25em' }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-          >
+          <p className="text-xs font-mono tracking-widest text-primary uppercase mb-2 font-medium">
             Tech Stack
-          </motion.p>
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
+          </p>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl font-headline text-foreground">
             My Skills
           </h2>
         </motion.div>
 
-        {/* categories */}
-        <div className="space-y-16">
+        {/* Categories */}
+        <div className="space-y-12 sm:space-y-16">
           {skillCategories.map((cat, catIdx) => (
             <SkillCategory
               key={cat.title}

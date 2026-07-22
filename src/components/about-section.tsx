@@ -27,7 +27,7 @@ const stats = [
 ];
 
 /* word stagger */
-const bio = "A dedicated, results-driven developer with a strong passion for Artificial Intelligence and Machine Learning. I enjoy building scalable, efficient applications and am constantly exploring new technologies to push the boundaries of what's possible.";
+const bio = "Full-stack developer passionate about AI and Machine Learning. I love building fast, reliable software and turning complex ideas into clean, practical tools.";
 
 export function AboutSection() {
   const words = bio.split(' ');
