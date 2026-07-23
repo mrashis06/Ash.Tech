@@ -23,9 +23,9 @@ export function Header({ animated = false }: HeaderProps) {
 
   const navLinks = [
     { href: "#about", label: "About", number: "01." },
-    { href: "#skills", label: "Skills", number: "02." },
+    { href: "#projects", label: "Projects", number: "02." },
     { href: "#experience", label: "Experience", number: "03." },
-    { href: "#projects", label: "Projects", number: "04." },
+    { href: "#skills", label: "Skills", number: "04." },
     { href: "#achievements", label: "Achievements", number: "05." },
     { href: "#blogs", label: "Blogs", number: "06." },
     { href: "#contact", label: "Contact", number: "07." },

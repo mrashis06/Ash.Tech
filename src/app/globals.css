@@ -4,11 +4,6 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  cursor: none;
-}
-
-a, button {
-  cursor: none;
 }
 
 @layer base {
@@ -780,4 +775,26 @@ a, button {
   font-style: italic;
   color: hsl(var(--primary));
   font-family: var(--font-headline, sans-serif);
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animated border reflection beam */
+@keyframes border-reflect {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.reflecting-border {
+  background: linear-gradient(135deg, hsl(var(--primary)), #a855f7, #3b82f6, #10b981, hsl(var(--primary)));
+  background-size: 300% 300%;
+  animation: border-reflect 6s ease infinite;
 }

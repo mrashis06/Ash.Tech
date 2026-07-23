@@ -37,12 +37,6 @@ export function HeroSection({ animated = false }: HeroSectionProps) {
               startDelay={1400} // Delay in ms (1.1s + 0.3s fade-in)
             />
           </div>
-          <p className={cn(
-            "max-w-[700px] text-muted-foreground text-base md:text-xl opacity-0 text-center",
-            animated && "animate-fade-in"
-          )} style={{ animationDelay: '1.1s' }}>
-            Passionate about creating smart solutions, automating workflows, and deploying AI-driven applications efficiently
-          </p>
         </div>
       </div>
     </section>

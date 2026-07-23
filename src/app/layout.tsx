@@ -4,7 +4,6 @@ import './globals.css';
 import { SocialBars } from '@/components/social-bars';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
-import { CustomCursor } from '@/components/custom-cursor';
 
 export const metadata: Metadata = {
   title: 'Ash.Tech || Portfolio ',
@@ -32,6 +31,8 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/favicon.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://drive.google.com" />
+        <link rel="dns-prefetch" href="https://drive.google.com" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-sans antialiased">
@@ -41,7 +42,6 @@ export default function RootLayout({
           forcedTheme="dark"
           disableTransitionOnChange
         >
-          <CustomCursor />
           {children}
           <Toaster />
         </ThemeProvider>

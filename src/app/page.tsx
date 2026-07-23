@@ -162,14 +162,14 @@ export default function Home() {
             <ScrollAnimation>
               <AboutSection />
             </ScrollAnimation>
-            <ScrollAnimation>
-              <SkillsSection />
+            <ScrollAnimation duration={0.3}>
+              <ProjectsSection repos={repos} />
             </ScrollAnimation>
             <ScrollAnimation duration={0.3}>
               <ExperienceSection />
             </ScrollAnimation>
-            <ScrollAnimation duration={0.3}>
-              <ProjectsSection repos={repos} />
+            <ScrollAnimation>
+              <SkillsSection />
             </ScrollAnimation>
             <ScrollAnimation duration={0.3}>
               <AchievementsSection />
