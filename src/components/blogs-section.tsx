@@ -24,10 +24,7 @@ export function BlogsSection({ blogs }: BlogsSectionProps) {
   const displayBlogs = blogs.slice(0, 4);
 
   return (
-    <section id="blogs" className="w-full py-20 md:py-32 bg-background border-t border-border/30 relative overflow-hidden">
-      
-      {/* Soft Ambient Field */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary/5 rounded-full blur-[200px] pointer-events-none" />
+    <section id="blogs" className="w-full py-20 md:py-32 bg-background border-t border-border/30 relative">
 
       <div className="container px-4 md:px-6 max-w-6xl mx-auto relative z-10">
         
