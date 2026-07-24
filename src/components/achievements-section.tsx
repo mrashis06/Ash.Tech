@@ -11,7 +11,8 @@ import {
   ExternalLink, 
   Award,
   ShieldCheck,
-  ArrowUpRight
+  ArrowUpRight,
+  Sparkles
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import {
@@ -23,6 +24,16 @@ import {
 } from "@/components/ui/dialog";
 
 const certificates = [
+  {
+    icon: Sparkles,
+    bgGradient: 'bg-gradient-to-br from-blue-500 via-indigo-600 to-sky-600',
+    glowColor: 'rgba(59, 130, 246, 0.45)',
+    title: 'Solution Challenge 2026',
+    subtitle: 'Build with AI · Prototype Submission',
+    description: 'Awarded in recognition of successful prototype submission for Solution Challenge 2026: Build with AI, contributing to the spirit of innovation and problem-solving.',
+    link: 'https://drive.google.com/file/d/1vXCqwM39F9Wx5-02K_9LfTHHwP6TGfw_/view?usp=drive_link',
+    tags: ['Solution Challenge', 'Build with AI', 'Prototype'],
+  },
   {
     icon: Layers,
     bgGradient: 'bg-gradient-to-br from-amber-400 via-amber-500 to-orange-600',
@@ -89,6 +100,14 @@ function getDriveImageUrl(link: string) {
   const match = link.match(/\/file\/d\/([^\/]+)/);
   if (match && match[1]) {
     return `https://lh3.googleusercontent.com/d/${match[1]}=w1200`;
+  }
+  return '';
+}
+
+function getDrivePreviewUrl(link: string) {
+  const match = link.match(/\/file\/d\/([^\/]+)/);
+  if (match && match[1]) {
+    return `https://drive.google.com/file/d/${match[1]}/preview`;
   }
   return '';
 }
@@ -195,12 +214,12 @@ export function AchievementsSection() {
                 </DialogHeader>
 
                 {/* Document Viewer Frame — Ultra-Clean Cinema Presentation */}
-                <div className="relative flex-1 min-h-[320px] sm:min-h-[440px] w-full rounded-2xl border border-border/40 bg-card/60 backdrop-blur-md shadow-inner flex items-center justify-center p-3 sm:p-5 overflow-hidden">
-                  <img
-                    src={getDriveImageUrl(selectedCert.link)}
-                    alt={selectedCert.title}
-                    className="w-auto max-w-full max-h-[50vh] sm:max-h-[55vh] object-contain rounded-xl shadow-2xl border border-white/10"
-                    loading="eager"
+                <div className="relative flex-1 min-h-[360px] sm:min-h-[480px] w-full rounded-2xl border border-border/40 bg-card/60 backdrop-blur-md shadow-inner flex items-center justify-center overflow-hidden">
+                  <iframe
+                    src={getDrivePreviewUrl(selectedCert.link)}
+                    title={selectedCert.title}
+                    className="w-full h-full min-h-[360px] sm:min-h-[480px] border-0 rounded-xl"
+                    allow="autoplay"
                   />
                 </div>
 

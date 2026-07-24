@@ -6,7 +6,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Ash.Tech || Portfolio ',
+  title: 'sdjod.tech || Ashis Kumar Rai',
   description: 'Portfolio of Ashis Kumar Rai, an AI/ML Enthusiast, Full Stack Developer, and Innovator.',
   manifest: '/manifest.json',
   icons: {

@@ -74,7 +74,7 @@ export function AboutSection() {
                     alt="Ashis Kumar Rai"
                     fill
                     sizes="(max-width: 640px) 260px, (max-width: 1024px) 310px, 350px"
-                    className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out"
+                    className="object-cover object-top transition-all duration-500 ease-in-out group-hover:scale-105"
                     priority
                   />
                   {/* Glass foil shimmer sweep */}
