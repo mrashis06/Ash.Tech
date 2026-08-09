@@ -143,10 +143,7 @@ export default function Home() {
 
   const handleAnimationComplete = () => {
     setLoading(false);
-    // Use a timeout to sync with the fade-out animation of the landing screen
-    setTimeout(() => {
-      setShowContent(true);
-    }, 500);
+    setShowContent(true);
   };
 
   if (loading && !showContent) {

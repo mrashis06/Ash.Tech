@@ -13,15 +13,15 @@ export function LandingAnimation({ onComplete }: LandingAnimationProps) {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    // Start fading out after 2.4s
+    // Keep the branded intro brief so visitors reach the portfolio immediately.
     const fadeOutTimer = setTimeout(() => {
       setFadeOut(true);
-    }, 2400);
+    }, 150);
 
-    // Call onComplete after fade out finishes (3.2s total)
+    // Reveal the portfolio in well under one second.
     const completeTimer = setTimeout(() => {
       onComplete();
-    }, 3200);
+    }, 450);
 
     return () => {
       clearTimeout(fadeOutTimer);
