@@ -35,6 +35,16 @@ const certificates = [
     tags: ['Solution Challenge', 'Build with AI', 'Prototype'],
   },
   {
+    icon: FileText,
+    bgGradient: 'bg-gradient-to-br from-slate-700 via-red-800 to-rose-700',
+    glowColor: 'rgba(190, 24, 93, 0.45)',
+    title: 'Port Mortem: Code Resurrection',
+    subtitle: 'Worldwide Rank #29',
+    description: 'Participated in Code Resurrection, a 72-hour online Hackathon Raptors event. As part of Team Kernel Coffin, built TinyColor-Go and achieved a worldwide rank of 29th.',
+    link: 'https://drive.google.com/file/d/1uCd-aUjy6GEWBS5t0bKKhvO0O0gazzs6/view',
+    tags: ['Hackathon Raptors', 'Kernel Coffin', 'Global Rank #29'],
+  },
+  {
     icon: Layers,
     bgGradient: 'bg-gradient-to-br from-amber-400 via-amber-500 to-orange-600',
     glowColor: 'rgba(245, 158, 11, 0.45)',
@@ -83,16 +93,6 @@ const certificates = [
     description: 'Advanced concepts in mathematics for ML, predictive modeling, and feature engineering.',
     link: 'https://drive.google.com/file/d/1yjUMsknw_BuhKVTVPAfdV2RyVlLPLDjB/view?usp=drivesdk',
     tags: ['ML', 'Mathematics'],
-  },
-  {
-    icon: FileText,
-    bgGradient: 'bg-gradient-to-br from-indigo-500 via-blue-600 to-violet-800',
-    glowColor: 'rgba(99, 102, 241, 0.45)',
-    title: 'Full-Stack Development',
-    subtitle: 'Software Architecture',
-    description: 'Full stack web architecture, React, Node.js & modern cloud deployment certification.',
-    link: 'https://drive.google.com/file/d/1oFyeaTxsdiEUDdyae1nXtV-d2G2f-vhM/view?usp=drive_link',
-    tags: ['Full Stack', 'Web Architecture'],
   },
 ];
 
