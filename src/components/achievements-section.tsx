@@ -31,7 +31,7 @@ const certificates = [
     title: 'Solution Challenge 2026',
     subtitle: 'Build with AI · Prototype Submission',
     description: 'Awarded in recognition of successful prototype submission for Solution Challenge 2026: Build with AI, contributing to the spirit of innovation and problem-solving.',
-    link: 'https://drive.google.com/file/d/1vXCqwM39F9Wx5-02K_9LfTHHwP6TGfw_/view?usp=drive_link',
+    link: 'https://drive.google.com/file/d/1vXCqwM39F9Wx5-02K_9LfTHHwP6TGfw_/view',
     tags: ['Solution Challenge', 'Build with AI', 'Prototype'],
   },
   {
@@ -51,7 +51,7 @@ const certificates = [
     title: 'Nurturing Innovation 3.0',
     subtitle: 'Top 29 Finalist',
     description: 'Selected among Top 29 finalists for SmartSetu, a fintech platform that leverages AI and alternative data to assess creditworthiness of street vendors.',
-    link: 'https://drive.google.com/file/d/1oFyeaTxsdiEUDdyae1nXtV-d2G2f-vhM/view?usp=drive_link',
+    link: 'https://drive.google.com/file/d/1oFyeaTxsdiEUDdyae1nXtV-d2G2f-vhM/view',
     tags: ['Fintech', 'AI', 'Top 29'],
   },
   {
@@ -61,7 +61,7 @@ const certificates = [
     title: 'Adobe India Hackathon',
     subtitle: 'National AI Challenge',
     description: 'Participated in a national-level hackathon by Adobe, working on innovative AI-driven solutions.',
-    link: 'https://drive.google.com/file/d/1oFyeaTxsdiEUDdyae1nXtV-d2G2f-vhM/view?usp=drive_link',
+    link: 'https://drive.google.com/file/d/1oFyeaTxsdiEUDdyae1nXtV-d2G2f-vhM/view',
     tags: ['Hackathon', 'Adobe', 'AI'],
   },
   {
@@ -71,7 +71,7 @@ const certificates = [
     title: 'National Coding League 2.0',
     subtitle: 'Regional Qualifier',
     description: 'Achieved the position of regional qualifier in a competitive national coding league.',
-    link: 'https://drive.google.com/file/d/1Tfsksw1_OSRfxuZXDO2h3FdqtN2xuR8K/view?usp=drivesdk',
+    link: 'https://drive.google.com/file/d/1Tfsksw1_OSRfxuZXDO2h3FdqtN2xuR8K/view',
     tags: ['Competitive', 'NCL 2.0'],
   },
   {
@@ -81,7 +81,7 @@ const certificates = [
     title: 'Google Cloud Facilitator',
     subtitle: 'Cloud & Compute',
     description: 'Hands-on experience in Compute Engine, BigQuery, and Cloud Functions for scalable cloud solutions.',
-    link: 'https://drive.google.com/file/d/1SxkglvcgfX3ZJJZMkC9Ud3TxMLEqMkTi/view?usp=drivesdk',
+    link: 'https://drive.google.com/file/d/1SxkglvcgfX3ZJJZMkC9Ud3TxMLEqMkTi/view',
     tags: ['Google Cloud', 'BigQuery'],
   },
   {
@@ -91,7 +91,7 @@ const certificates = [
     title: 'Machine Learning',
     subtitle: 'Predictive Engineering',
     description: 'Advanced concepts in mathematics for ML, predictive modeling, and feature engineering.',
-    link: 'https://drive.google.com/file/d/1yjUMsknw_BuhKVTVPAfdV2RyVlLPLDjB/view?usp=drivesdk',
+    link: 'https://drive.google.com/file/d/1yjUMsknw_BuhKVTVPAfdV2RyVlLPLDjB/view',
     tags: ['ML', 'Mathematics'],
   },
 ];
