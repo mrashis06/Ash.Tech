@@ -15,7 +15,7 @@ const experiences: ExperienceItem[] = [
   {
     role: 'Core Member in AI',
     organization: 'GDG on Campus MCKV Institute of Engineering',
-    period: 'Sep 2025 – Present',
+    period: 'Sep 2025 – Sep 2026',
     location: 'Howrah, India',
     description:
       'An active member of Google Developer Groups on Campus, driving AI-focused workshops, speaker sessions, and developer events to build a stronger tech community at MCKV Institute of Engineering.',

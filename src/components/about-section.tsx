@@ -70,7 +70,7 @@ export function AboutSection() {
               >
                 <div className="w-[260px] h-[340px] sm:w-[310px] sm:h-[410px] lg:w-[350px] lg:h-[465px] relative">
                   <Image
-                    src="/profile-new.jpeg"
+                    src="/profile-new.jpg"
                     alt="Ashis Kumar Rai"
                     fill
                     sizes="(max-width: 640px) 260px, (max-width: 1024px) 310px, 350px"
